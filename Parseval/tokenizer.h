@@ -1,5 +1,6 @@
 #include <regex>
 #include <map>
+#include <vector>
 
 class Token
 {
@@ -16,9 +17,10 @@ class Token
 class Tokenizer
 {
 	public:
-		Tokenizer();
+		Tokenizer(const std::vector<std::string>&, const std::vector<std::regex>&);
 		~Tokenizer();
 
+		void setInput(const std::string&);
 		Token peekNextToken();
 		void advanceNextToken();	
 		bool hasNextToken();	
