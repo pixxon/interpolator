@@ -20,17 +20,12 @@ class Tokenizer
 		~Tokenizer();
 
 		Token peekNextToken();
-		void getNextToken();		
-
+		void advanceNextToken();	
+		bool hasNextToken();	
 
 	private:
 		std::map<std::string, std::regex> _table;
 		Token _current;
 
 		std::string _input;
-		int _pos;
-
-
-		bool anyMatch(std::string str);
-		std::string firstMatch(std::string str);
 };
