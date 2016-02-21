@@ -1,6 +1,8 @@
 #include "tokenizer.h"
 #include "symbol.h"
 
+#include <iostream>
+
 LexicalException::LexicalException(const std::string& what)
 {
 	_what = what;
@@ -73,10 +75,10 @@ void Tokenizer::advanceNextToken()
 	}
 	if (it == SymbolTable::table.end())
 	{
-		throw LexicalException("Wrong input!");
+		throw LexicalException("Wrong input: " + _input);
 	}
 
-	_current = Token(match[0], it->first);
+	_current = Token(it->first, match[0]);
 
 	_input.erase(0, match[0].length());
 }

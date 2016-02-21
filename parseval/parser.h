@@ -3,19 +3,18 @@
 
 
 #include "tokenizer.h"
-#include <functional>
 
 
 class Node
 	{
 	private:
-		std::function<double(double, double)> _func;
 
 	public:
 		Node* _left;
 		Node* _right;
+		Token _token;
 
-		Node(Node* left, Node* right, std::function<double(double, double)> func);
+		Node(Node* left, Node* right, Token);
 		Node();
 		~Node();
 };
@@ -32,7 +31,7 @@ class Parser
 	private:
 		Tokenizer _tokenizer;
 
-		Node* parse(Node* lhs, int min_prec);
+		Node* parse(int min_prec);
 		Node* parse_primary();
 };
 

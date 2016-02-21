@@ -2,12 +2,14 @@
 #include "symbol.h"
 #include "tokenizer.h"
 
+#include <iostream>
 
-Node::Node(Node* left, Node* right, std::function<double(double, double)> func)
+
+Node::Node(Node* left, Node* right, Token token)
 {
 	_left = left;
 	_right = right;
-	_func = func;
+	_token = token;
 }
 
 Node::Node()
@@ -38,23 +40,27 @@ Parser::~Parser()
 {
 }
 
-Node* Parser::parse(Node* lhs, int min_prec)
+Node* Parser::parse(int min_prec)
 {
+	Node* lhs = parse_primary();
+
 	Token peek = _tokenizer.peekNextToken();
-	while(SymbolTable::table[peek.getType()]._argc == binary && SymbolTable::table[peek.getType()]._prec > min_prec)
+	while(SymbolTable::table[peek.getType()]._argc == binary && SymbolTable::table[peek.getType()]._prec > min_prec && _tokenizer.hasNextToken())
 	{
-		Token op = peek;
 		_tokenizer.advanceNextToken();
-		Node* rhs = parse_primary();
-		peek = _tokenizer.peekNextToken();
-		while(SymbolTable::table[peek.getType()]._argc == binary &&
-			 	(SymbolTable::table[peek.getType()]._prec > SymbolTable::table[op.getType()]._prec ||
-			 	(SymbolTable::table[peek.getType()]._asso == right && SymbolTable::table[peek.getType()]._prec == SymbolTable::table[op.getType()]._prec)))
+
+		Node* rhs;
+		if (SymbolTable::table[peek.getType()]._asso == left)
 		{
-			rhs = parse(rhs, SymbolTable::table[peek.getType()]._prec);
-			peek = _tokenizer.peekNextToken();
+			rhs = parse(min_prec + 1);
 		}
-		lhs = new Node(lhs, rhs, SymbolTable::table[op.getType()]._func);
+		else
+		{
+			rhs = parse(min_prec);
+		}
+
+		lhs = new Node(lhs, rhs, peek);
+		peek = _tokenizer.peekNextToken();
 	}
 	return lhs;
 }
@@ -62,40 +68,45 @@ Node* Parser::parse(Node* lhs, int min_prec)
 Node* Parser::parse_primary()
 {
 	Token peek = _tokenizer.peekNextToken();
-	if (peek.getType() == "num")
+	if (peek.getType() == "num" || peek.getType() == "var")
 	{
-		return new Node(nullptr, nullptr, [peek](double x, double y){ return std::stod(peek.getValue()); });
-	}
-
-	if (peek.getType() == "var")
-	{
-		if (peek.getValue() == "x")
+		if (_tokenizer.hasNextToken())
 		{
-			return new Node(nullptr, nullptr, [](double x, double y){ return x; });
+			_tokenizer.advanceNextToken();
 		}
-		else
-		{
-			return new Node(nullptr, nullptr, [](double x, double y){ return y; });
-		}
+		return new Node(nullptr, nullptr, peek);
 	}
 
 	if (peek.getType() == "open")
 	{
-		_tokenizer.advanceNextToken();
-		Node* res = parse(parse_primary(), 0);
-		_tokenizer.advanceNextToken();
+		if (_tokenizer.hasNextToken())
+		{
+			_tokenizer.advanceNextToken();
+		}
+
+		Node* res = parse(0);
+
+		if (_tokenizer.hasNextToken())
+		{
+			_tokenizer.advanceNextToken();
+		}
 
 		return res;
 	}
 
 	if (SymbolTable::table[peek.getType()]._argc == unary)
 	{
-		_tokenizer.advanceNextToken();
-		return new Node(parse_primary(), nullptr, SymbolTable::table[peek.getType()]._func);
+		if (_tokenizer.hasNextToken())
+		{
+			_tokenizer.advanceNextToken();
+		}
+
+		return new Node(parse_primary(), nullptr, peek);
 	}
 }
 
 Node* Parser::getTree()
 {
-	return parse(parse_primary(), 0);
+	_tokenizer.advanceNextToken();
+	return parse(0);
 }
