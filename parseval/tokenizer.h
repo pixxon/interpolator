@@ -4,6 +4,7 @@
 
 #include <exception>
 #include <string>
+#include "symbol.h"
 
 
 class LexicalException: public std::exception
@@ -39,6 +40,7 @@ class Tokenizer
 {
 	public:
 		Tokenizer();
+		Tokenizer(SymbolTable&);
 		~Tokenizer();
 
 		void setInput(const std::string&);
@@ -49,6 +51,7 @@ class Tokenizer
 	private:
 		Token _current;
 		std::string _input;
+		SymbolTable _table;
 };
 
 

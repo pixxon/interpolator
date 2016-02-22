@@ -1,11 +1,24 @@
 #include "parser.h"
-#include "symbol.h"
-#include "tokenizer.h"
 
 #include <iostream>
 
 
-Node::Node(Node* left, Node* right, Token token)
+ParserException::ParserException(const std::string& what)
+{
+	_what = what;
+}
+
+ParserException::~ParserException()
+{
+}
+
+const char* ParserException::what() const throw()
+{
+	return _what.c_str();
+}
+
+
+Node::Node(Node* left, Node* right, const Token& token)
 {
 	_left = left;
 	_right = right;
@@ -31,8 +44,9 @@ Node::~Node()
 }
 
 
-Parser::Parser(Tokenizer tokenizer)
+Parser::Parser(const SymbolTable& table, const Tokenizer& tokenizer)
 {
+	_table = table;
 	_tokenizer = tokenizer;
 }
 
@@ -40,28 +54,38 @@ Parser::~Parser()
 {
 }
 
-Node* Parser::parse(int min_prec)
+Node* Parser::parse(const int& min_prec)
 {
 	Node* lhs = parse_primary();
+	Node* rhs;
 
 	Token peek = _tokenizer.peekNextToken();
-	while(SymbolTable::table[peek.getType()]._argc == binary && SymbolTable::table[peek.getType()]._prec > min_prec && _tokenizer.hasNextToken())
+	while(_table[peek.getType()]._argc == binary && _table[peek.getType()]._prec >= min_prec)
 	{
+		if (!_tokenizer.hasNextToken())
+		{
+			throw ParserException("Unexpected end of input!");
+		}
 		_tokenizer.advanceNextToken();
 
-		Node* rhs;
-		if (SymbolTable::table[peek.getType()]._asso == left)
+		if (_table[peek.getType()]._asso == left)
 		{
-			rhs = parse(min_prec + 1);
+			rhs = parse(_table[peek.getType()]._prec + 1);
 		}
 		else
 		{
-			rhs = parse(min_prec);
+			rhs = parse(_table[peek.getType()]._prec);
 		}
 
 		lhs = new Node(lhs, rhs, peek);
 		peek = _tokenizer.peekNextToken();
 	}
+
+	if(_tokenizer.hasNextToken())
+	{
+		throw ParserException("Expected: binary, got: " + peek.getType());
+	}
+
 	return lhs;
 }
 
@@ -70,39 +94,52 @@ Node* Parser::parse_primary()
 	Token peek = _tokenizer.peekNextToken();
 	if (peek.getType() == "num" || peek.getType() == "var")
 	{
-		if (_tokenizer.hasNextToken())
-		{
-			_tokenizer.advanceNextToken();
-		}
+		_tokenizer.advanceNextToken();
 		return new Node(nullptr, nullptr, peek);
+	}
+
+	if (peek.getType() == "min")
+	{
+		if (!_tokenizer.hasNextToken())
+		{
+			throw ParserException("Unexpected end of input!");
+		}
+		_tokenizer.advanceNextToken();
+		return new Node(nullptr, parse_primary(), peek);
 	}
 
 	if (peek.getType() == "open")
 	{
-		if (_tokenizer.hasNextToken())
+		if (!_tokenizer.hasNextToken())
 		{
-			_tokenizer.advanceNextToken();
+			throw ParserException("Unexpected end of input!");
 		}
+		_tokenizer.advanceNextToken();
 
 		Node* res = parse(0);
 
-		if (_tokenizer.hasNextToken())
+		if (_tokenizer.peekNextToken().getType() != "close")
 		{
-			_tokenizer.advanceNextToken();
+			throw ParserException("Unmatched parenthesis!");
 		}
 
+
+		_tokenizer.advanceNextToken();
 		return res;
 	}
 
-	if (SymbolTable::table[peek.getType()]._argc == unary)
+	if (_table[peek.getType()]._argc == unary)
 	{
-		if (_tokenizer.hasNextToken())
+		if (!_tokenizer.hasNextToken())
 		{
-			_tokenizer.advanceNextToken();
+			throw ParserException("Unexpected end of input!");
 		}
+		_tokenizer.advanceNextToken();
 
 		return new Node(parse_primary(), nullptr, peek);
 	}
+
+	throw ParserException("Unexpected token: " + peek.getValue() + "!");
 }
 
 Node* Parser::getTree()

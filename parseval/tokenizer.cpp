@@ -1,5 +1,4 @@
 #include "tokenizer.h"
-#include "symbol.h"
 
 #include <iostream>
 
@@ -47,6 +46,11 @@ Tokenizer::Tokenizer()
 {
 }
 
+Tokenizer::Tokenizer(SymbolTable& table)
+{
+	_table = table;
+}
+
 Tokenizer::~Tokenizer()
 {
 }
@@ -63,22 +67,27 @@ Token Tokenizer::peekNextToken()
 
 void Tokenizer::advanceNextToken()
 {
-	std::smatch match;
-	std::map<std::string, SymbolInfo>::const_iterator it = SymbolTable::table.begin();
-	while(it != SymbolTable::table.end())
+	if (_input == "")
 	{
-		if (std::regex_search(_input, match, it->second._rgx))
+		return;
+	}
+
+	std::smatch match;
+	SymbolTable::const_iterator it = _table.begin();
+	while(it != _table.end())
+	{
+		if (std::regex_search(_input, match, it->_rgx))
 		{
 			break;
 		}
 		++it;
 	}
-	if (it == SymbolTable::table.end())
+	if (it == _table.end())
 	{
 		throw LexicalException("Wrong input: " + _input);
 	}
 
-	_current = Token(it->first, match[0]);
+	_current = Token(it->_name, match[0]);
 
 	_input.erase(0, match[0].length());
 }

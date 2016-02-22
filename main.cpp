@@ -67,28 +67,30 @@ void print(Node* node, int level)
 
 int main()
 {
-	SymbolTable::insertSymbol("var", std::regex("^(x|y)"), constant, none, 0, 0);
-	SymbolTable::insertSymbol("num", std::regex("^[[:d:]](\\.[[:d:]])?"), constant, none, 0, 0);
-	SymbolTable::insertSymbol("open", std::regex("^\\("), constant, none, 0, 0);
-	SymbolTable::insertSymbol("close", std::regex("^\\)"), constant, none, 0, 0);
+	SymbolTable table;
+	table.insertSymbol("var", std::regex("^(x|y)"), constant, none, 0, 0);
+	table.insertSymbol("num", std::regex("^[[:d:]](\\.[[:d:]])?"), constant, none, 0, 0);
+	table.insertSymbol("open", std::regex("^\\("), constant, none, 0, 0);
+	table.insertSymbol("close", std::regex("^\\)"), constant, none, 0, 0);
 
-	SymbolTable::insertSymbol("add", std::regex("^\\+"), binary, left, 1, [](double a, double b){ return a + b; });
-	SymbolTable::insertSymbol("min", std::regex("^-"), binary, left, 1, [](double a, double b){ return a - b; });
-	SymbolTable::insertSymbol("mul", std::regex("^\\*"), binary, left, 2, [](double a, double b){ return a * b; });
-	SymbolTable::insertSymbol("div", std::regex("^/"), binary, left, 2, [](double a, double b){ return a / b; });
+	table.insertSymbol("add", std::regex("^\\+"), binary, left, 1, [](double a, double b){ return a + b; });
+	table.insertSymbol("min", std::regex("^-"), binary, left, 1, [](double a, double b){ return a - b; });
+	table.insertSymbol("mul", std::regex("^\\*"), binary, left, 2, [](double a, double b){ return a * b; });
+	table.insertSymbol("div", std::regex("^/"), binary, left, 2, [](double a, double b){ return a / b; });
+	table.insertSymbol("pow", std::regex("^\\^"), binary, right, 3, [](double a, double b){ return pow(a, b); });
 
-	SymbolTable::insertSymbol("sin", std::regex("^sin"), unary, none, 0, [](double a, double b){ return sin(a); });
-	SymbolTable::insertSymbol("cos", std::regex("^cos"), unary, none, 0, [](double a, double b){ return cos(a); });
-	SymbolTable::insertSymbol("tg", std::regex("^tg"), unary, none, 0, [](double a, double b){ return tan(a); });
-	SymbolTable::insertSymbol("ctg", std::regex("^ctg"), unary, none, 0, [](double a, double b){ return 1 / tan(a); });
-
-	Tokenizer tokenizer;
+	table.insertSymbol("sin", std::regex("^sin"), unary, none, 0, [](double a, double b){ return sin(a); });
+	table.insertSymbol("cos", std::regex("^cos"), unary, none, 0, [](double a, double b){ return cos(a); });
+	table.insertSymbol("tg", std::regex("^tg"), unary, none, 0, [](double a, double b){ return tan(a); });
+	table.insertSymbol("ctg", std::regex("^ctg"), unary, none, 0, [](double a, double b){ return 1 / tan(a); });
 
 	std::string input;
 	std::cin >> input;
+
+	Tokenizer tokenizer(table);
 	tokenizer.setInput(input);
 
-	Parser parser(tokenizer);
+	Parser parser(table, tokenizer);
 	Node* root = parser.getTree();
 
 	print(root, 0);
