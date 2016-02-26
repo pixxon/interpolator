@@ -86,5 +86,5 @@ bool SymbolTable::const_iterator::operator!=(const SymbolTable::const_iterator& 
 
 SymbolTable::const_iterator SymbolTable::const_iterator::operator++()
 {
-	_it++;
+    return _it++;
 }

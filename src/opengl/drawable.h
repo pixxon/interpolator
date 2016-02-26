@@ -17,6 +17,6 @@ public:
 private:
 	GLuint _vao;
 	std::map<int, GLuint> _vbo;
-	std::map<int, std::vector<float>> _data;
+    std::map<int, std::vector<float> > _data;
 	std::map<int, int> _attrib;
 };
