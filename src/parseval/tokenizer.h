@@ -23,7 +23,6 @@ class LexicalException: public std::exception
 class Token
 {
 	public:
-		Token();
 		Token(const std::string&, const std::string&);
 		~Token();
 
@@ -39,19 +38,18 @@ class Token
 class Tokenizer
 {
 	public:
-		Tokenizer();
-		Tokenizer(SymbolTable&);
+		Tokenizer(SymbolTable*);
 		~Tokenizer();
 
 		void setInput(const std::string&);
-		Token peekNextToken();
-		void advanceNextToken();	
-		bool hasNextToken();	
+		Token peek() const;
+		void next();	
+		bool hasNext() const;	
 
 	private:
 		Token _current;
 		std::string _input;
-		SymbolTable _table;
+		SymbolTable* _table;
 };
 
 

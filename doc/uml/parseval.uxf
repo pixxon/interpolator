@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?><diagram program="umlet" version="11.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1060</x>
+      <y>500</y>
+      <w>390</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>SymbolInfo
+--
+- _name: std::string
+- _rgx: std::regex
+- _argc: Arity
+- _asso: Associativity
+- _prec: int
+- _func: std::function
+--
++ getName(): std::string
++ getRegex(): std::regex
++ getArity(): Arity
++ getAssociativity(): Associativity
++ getPrecedence(): int
++ getFunction(): std::function</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1060</x>
+      <y>180</y>
+      <w>390</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>SymbolTable
+--
+- _table: std::vector&lt;SymbolInfo&gt;
+--
++ insertSymbol(info: SymbolInfo): void
++ operator[](name: std::string): SymbolInfo
++ begin(): const_iterator
++ end(): const_iterator
+{innerclass
+const_iterator
+--
+- _it: std::vector&lt;&gt;::const_iterator
+--
++ operator*(): SymbolInfo
++ operator-&gt;(): SymbolInfo*
++ operator==(other: const_iterator): bool
++ operator!=(other: const_iterator): bool
++ operator++(): const_iterator 
+innerclass}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>10</x>
+      <y>640</y>
+      <w>440</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Token
+--
+- _type: std::string
+- _value: std::string
+--
++ Token(_type: std::string, _value: std::string)
++ ~Token()
++ getType(): std::string
++ getValue(): std::string</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>510</x>
+      <y>640</y>
+      <w>490</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Tokenizer
+--
+- _current: Token
+- _input: std::string
+- _table: SymbolTable
+--
++ setInput(str: std::string): void
++ peek(): Token
++ next(): void
++ hasNext(): bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>10</x>
+      <y>410</y>
+      <w>440</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>Node
+--
+- _left: Node*
+- _right: Node*
+- _token: Token
+--
++ Node(left: Node*, right: Node*, token: Token)
++ getLeft(): Node*
++ getRight(): Node*
++ getToken(): Node*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>510</x>
+      <y>410</y>
+      <w>490</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>Parser
+--
+- _table: SymbolTable
+- _tokenizer: Tokenizer
+--
++ Parser(table: SymbolTable, tokenizer: Tokenizer)
++ ~Parser()
++ getTree(): Node*
++ setInput(str: std::string): void
+- parse(min_prec: int): Node*
+- parse_primary(): Node*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>510</x>
+      <y>180</y>
+      <w>490</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>Evaluator
+--
+- _parser: Parser
+- _table: SymbolTable
+- _root: Node*
+--
++ Evaluator(table: SymbolTable, parser: Parser)
++ ~Evaluator()
++ setExpression(str: std::string): void
++ calculate(x: double, y: double): double
+- calculateAt(node: Node*, x: double, y: double): double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>730</x>
+      <y>320</y>
+      <w>50</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>30;30;30;90</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>730</x>
+      <y>550</y>
+      <w>50</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>30;30;30;90</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>420</x>
+      <y>620</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>90;30;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>420</x>
+      <y>390</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>30;30;90;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>210</x>
+      <y>160</y>
+      <w>320</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>30;250;30;210;260;210;260;30;300;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>200</x>
+      <y>180</y>
+      <w>330</w>
+      <h>480</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>30;460;30;420;290;420;290;30;310;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>970</x>
+      <y>160</y>
+      <w>110</w>
+      <h>510</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>30;490;70;490;70;30;90;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>970</x>
+      <y>160</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>30;30;90;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>970</x>
+      <y>160</y>
+      <w>110</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>30;260;70;260;70;30;90;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1220</x>
+      <y>430</y>
+      <w>50</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>30;30;30;70</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>970</x>
+      <y>410</y>
+      <w>110</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>90;100;50;100;50;30;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>970</x>
+      <y>180</y>
+      <w>110</w>
+      <h>350</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>90;330;50;330;50;30;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>970</x>
+      <y>480</y>
+      <w>110</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>90;30;50;30;50;190;30;190</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1060</x>
+      <y>780</y>
+      <w>170</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+Arity
+--
+nullary
+unary
+binary</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1290</x>
+      <y>780</y>
+      <w>160</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+Associativity
+--
+none
+left
+right</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1200</x>
+      <y>710</y>
+      <w>80</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>30;120;60;120;60;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1230</x>
+      <y>710</y>
+      <w>80</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>60;120;30;120;30;30</additional_attributes>
+  </element>
+</diagram>

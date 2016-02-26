@@ -6,7 +6,9 @@
 #include "parseval/parser.h"
 #include "parseval/tokenizer.h"
 #include "parseval/symbol.h"
+#include "parseval/evaluator.h"
 
+#include <ctime>
 #include <set>
 
 
@@ -41,7 +43,7 @@ void ell(int level)
 	s.erase(level);
 }
 
-void print(Node* node, int level)
+void print(const Node* node, int level)
 {
 	if(node == nullptr)
 	{
@@ -49,21 +51,16 @@ void print(Node* node, int level)
 	}
 	else
 	{
-		std::cout << node->_token.getType() << std::endl;
-		if (node->_right != nullptr || node->_left != nullptr)
+		std::cout << node->getToken().getType() << std::endl;
+		if (node->getRight() != nullptr || node->getLeft() != nullptr)
 		{
 			tee(level);
-			print(node->_left, level + 1);
+			print(node->getLeft(), level + 1);
 			ell(level);
-			print(node->_right, level + 1);
+			print(node->getRight(), level + 1);
 		}
 	}
 }
-
-
-
-
-
 
 int main()
 {
@@ -84,16 +81,21 @@ int main()
 	table.insertSymbol("tg", std::regex("^tg"), unary, none, 0, [](double a, double b){ return tan(a); });
 	table.insertSymbol("ctg", std::regex("^ctg"), unary, none, 0, [](double a, double b){ return 1 / tan(a); });
 
-	std::string input;
-	std::cin >> input;
+	std::string input = "((x-1)^2+y^2-4)((x+1)^2+y^2-4)(x^2+(y-3^(1/2))^2-4)";
 
-	Tokenizer tokenizer(table);
-	tokenizer.setInput(input);
+	Evaluator evaluator(&table);
+	evaluator.setExpression(input);
 
-	Parser parser(table, tokenizer);
-	Node* root = parser.getTree();
-
-	print(root, 0);
+	clock_t start = clock();
+	for (double x = 0; x < 1000; x+=1)
+	{
+		for (double y = 0; y < 100; y+=1)
+		{
+			evaluator.calculate(x, y);
+		}
+	}
+	clock_t end = clock();
+	std::cout << (end - start) / CLOCKS_PER_SEC << std::endl;
 
 
 

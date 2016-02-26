@@ -22,28 +22,31 @@ class ParserException: public std::exception
 class Node
 	{
 	private:
-
-	public:
 		Node* _left;
 		Node* _right;
 		Token _token;
 
+	public:
 		Node(Node* left, Node* right, const Token&);
-		Node();
 		~Node();
+
+		const Node* getLeft() const;
+		const Node* getRight() const;
+		const Token& getToken() const;
 };
 
 
 class Parser
 {
 	public:
-		Parser(const SymbolTable&, const Tokenizer&);
+		Parser(SymbolTable*);
 		~Parser();
 
 		Node* getTree();
+		void setInput(const std::string& str);
 
 	private:
-		SymbolTable _table;
+		SymbolTable* _table;
 		Tokenizer _tokenizer;
 
 		Node* parse(const int& min_prec);

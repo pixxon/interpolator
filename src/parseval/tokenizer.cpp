@@ -17,10 +17,6 @@ const char* LexicalException::what() const throw()
 }
 
 
-Token::Token()
-{
-}
-
 Token::Token(const std::string& type, const std::string& value)
 {
 	_type = type;
@@ -42,13 +38,11 @@ std::string Token::getValue() const
 }
 
 
-Tokenizer::Tokenizer()
+Tokenizer::Tokenizer(SymbolTable* table):
+	_current("", ""),
+	_input(""),
+	_table(table)
 {
-}
-
-Tokenizer::Tokenizer(SymbolTable& table)
-{
-	_table = table;
 }
 
 Tokenizer::~Tokenizer()
@@ -60,12 +54,12 @@ void Tokenizer::setInput(const std::string& input)
 	_input = input;
 }
 
-Token Tokenizer::peekNextToken()
+Token Tokenizer::peek() const
 {
 	return _current;
 }
 
-void Tokenizer::advanceNextToken()
+void Tokenizer::next()
 {
 	if (_input == "")
 	{
@@ -73,8 +67,8 @@ void Tokenizer::advanceNextToken()
 	}
 
 	std::smatch match;
-	SymbolTable::const_iterator it = _table.begin();
-	while(it != _table.end())
+	SymbolTable::const_iterator it = _table->begin();
+	while(it != _table->end())
 	{
 		if (std::regex_search(_input, match, it->_rgx))
 		{
@@ -82,7 +76,7 @@ void Tokenizer::advanceNextToken()
 		}
 		++it;
 	}
-	if (it == _table.end())
+	if (it == _table->end())
 	{
 		throw LexicalException("Wrong input: " + _input);
 	}
@@ -92,7 +86,7 @@ void Tokenizer::advanceNextToken()
 	_input.erase(0, match[0].length());
 }
 
-bool Tokenizer::hasNextToken()
+bool Tokenizer::hasNext() const
 {
 	return _input != "";
 }
