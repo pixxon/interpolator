@@ -81,7 +81,7 @@ Node* Parser::parse(const int& min_prec)
 		}
 		_tokenizer.next();
 
-		if ((*_table)[peek.getType()]._asso == left)
+        if ((*_table)[peek.getType()]._asso == asd)
 		{
 			rhs = parse((*_table)[peek.getType()]._prec + 1);
 		}

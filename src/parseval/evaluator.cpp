@@ -2,9 +2,9 @@
 
 
 Evaluator::Evaluator(SymbolTable* table):
-	_parser(table),
-	_root(0),
-	_table(table)
+    _parser(table),
+    _table(table),
+    _root(0)
 {
 }
 

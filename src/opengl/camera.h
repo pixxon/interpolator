@@ -1,24 +1,28 @@
-#include "glm/glm.hpp"
+#include <QMatrix4x4>
+#include <QVector3D>
 
 class Camera
 {
 	public:
 		Camera();
-		Camera(glm::mat4, glm::mat4, glm::mat4);
-		~Camera();
+        Camera(QMatrix4x4, QMatrix4x4, QMatrix4x4);
+        ~Camera();
 
-		void setProj(glm::mat4);
-		void setView(glm::mat4);
-		void setWorld(glm::mat4);
+        void setProj(QMatrix4x4);
+        void setView(QMatrix4x4);
+        void setWorld(QMatrix4x4);
 
-		glm::mat4 getProj();
-		glm::mat4 getView();
-		glm::mat4 getWorld();
-		glm::mat4 getWorldIT();
-		glm::mat4 getMVP();
+        QMatrix4x4 getProj();
+        QMatrix4x4 getView();
+        QMatrix4x4 getWorld();
+        QMatrix4x4 getWorldIT();
+        QMatrix4x4 getMVP();
+
+        static QMatrix4x4 lookAt(QVector3D, QVector3D, QVector3D);
+        static QMatrix4x4 perspective(float, float, float, float);
 		
 	private:
-		glm::mat4 _proj;
-		glm::mat4 _view;
-		glm::mat4 _world;
+        QMatrix4x4 _proj;
+        QMatrix4x4 _view;
+        QMatrix4x4 _world;
 };

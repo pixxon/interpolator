@@ -1,56 +1,65 @@
 #include "drawable.h"
 
-Drawable::Drawable()
+Drawable::Drawable(QOpenGLShaderProgram* program):
+    _program(program),
+    _vao(0),
+    _pos_vbo(0),
+    _col_vbo(0)
 {
 
 }
 
 Drawable::~Drawable()
 {
-	for(std::map<int, GLuint>::iterator it = _vbo.begin(); it != _vbo.end(); ++it)
-	{
-		glDeleteBuffers(1, &(it->second));
-	}
-	glDeleteVertexArrays(1, &_vao);
+    _pos_vbo->destroy();
+    _col_vbo->destroy();
+    _vao->destroy();
+
+    delete _pos_vbo;
+    delete _col_vbo;
+    delete _vao;
 }
 
-void Drawable::setAttribute(int channel, int amount)
+void Drawable::addData(QVector3D pos, QVector3D col)
 {
-	_attrib[channel] = amount;
-}
-
-void Drawable::addData(int channel, std::vector<float> data)
-{
-	_data[channel].insert(_data[channel].end(), data.begin(), data.end());
+    _pos_data.push_back(pos);
+    _col_data.push_back(col);
 }
 
 void Drawable::init()
 {
-	glGenVertexArrays(1, &_vao);
-	glBindVertexArray(_vao);
+    _vao = new QOpenGLVertexArrayObject();
+    _vao->create();
+    _vao->bind();
 
-	for (std::map<int, int>::iterator it = _attrib.begin(); it != _attrib.end(); ++it)
-	{
-		GLuint vbo_id = 0;
+    _pos_vbo = new QOpenGLBuffer(QOpenGLBuffer::VertexBuffer);
+    _pos_vbo->create();
+    _pos_vbo->setUsagePattern(QOpenGLBuffer::DynamicDraw);
+    _pos_vbo->bind();
+    _pos_vbo->allocate(_pos_data.constBegin(), _pos_data.size() * sizeof(QVector3D));
 
-		glGenBuffers(1, &vbo_id);
-		glBindBuffer(GL_ARRAY_BUFFER, vbo_id);
+    _program->setAttributeBuffer(0, GL_FLOAT, 0, 3);
+    _program->enableAttributeArray(0);
+    _pos_vbo->release();
 
-		glBufferData(GL_ARRAY_BUFFER, sizeof(GL_FLOAT)*_data[it->first].size(), &(_data[it->first][0]), GL_STATIC_DRAW);
-		glVertexAttribPointer(it->first, it->second, GL_FLOAT, GL_FALSE, it->second * sizeof(GL_FLOAT),	0);
+    _col_vbo = new QOpenGLBuffer(QOpenGLBuffer::VertexBuffer);
+    _col_vbo->create();
+    _col_vbo->setUsagePattern(QOpenGLBuffer::DynamicDraw);
+    _col_vbo->bind();
+    _col_vbo->allocate(_col_data.constBegin(), _col_data.size() * sizeof(QVector3D));
 
-		glEnableVertexAttribArray(it->first);
+    _program->setAttributeBuffer(1, GL_FLOAT, 0, 3);
+    _program->enableAttributeArray(1);
+    _col_vbo->release();
 
-		_vbo[it->first] = vbo_id;
-	}
-
-	glBindVertexArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+    _vao->release();
 }
 
-void Drawable::draw(GLenum mode, int first, int count)
+void Drawable::draw(GLenum mode)
 {
-	glBindVertexArray(_vao);
-	glDrawArrays(mode, first, count);
-	glBindVertexArray(0);
+    _vao->bind();
+
+    glDrawArrays(mode, 0, _pos_data.size() * 3);
+
+    _vao->release();
 }

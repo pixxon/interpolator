@@ -1,22 +1,32 @@
-#include "GL/glew.h"
+#ifndef DRAWABLE_H
+#define DRAWABLE_H
 
-#include <map>
-#include <vector>
+#include <QOpenGLVertexArrayObject>
+#include <QOpenGLBuffer>
+#include <QOpenGLShaderProgram>
+
+#include <QVector>
+#include <QVector3D>
 
 class Drawable
 {
 public:
-	Drawable();
+    Drawable(QOpenGLShaderProgram*);
 	~Drawable();
 
-	void setAttribute(int, int);
-	void addData(int, std::vector<float>);
+    void addData(QVector3D, QVector3D);
 	void init();
-	void draw(GLenum, int, int);
+    void draw(GLenum);
 
 private:
-	GLuint _vao;
-	std::map<int, GLuint> _vbo;
-    std::map<int, std::vector<float> > _data;
-	std::map<int, int> _attrib;
+    QOpenGLShaderProgram* _program;
+
+    QOpenGLVertexArrayObject* _vao;
+    QOpenGLBuffer* _pos_vbo;
+    QOpenGLBuffer* _col_vbo;
+
+    QVector<QVector3D> _pos_data;
+    QVector<QVector3D> _col_data;
 };
+
+#endif // DRAWABLE_H

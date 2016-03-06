@@ -4,7 +4,7 @@ Camera::Camera()
 {
 }
 
-Camera::Camera(glm::mat4 proj, glm::mat4 view, glm::mat4 world)
+Camera::Camera(QMatrix4x4 proj, QMatrix4x4 view, QMatrix4x4 world)
 {
 	_proj = proj;
 	_view = view;
@@ -15,42 +15,56 @@ Camera::~Camera()
 {
 }
 
-void Camera::setProj(glm::mat4 proj)
+void Camera::setProj(QMatrix4x4 proj)
 {
 	_proj = proj;
 }
 
-void Camera::setView(glm::mat4 view)
+void Camera::setView(QMatrix4x4 view)
 {
 	_view = view;
 }
 
-void Camera::setWorld(glm::mat4 world)
+void Camera::setWorld(QMatrix4x4 world)
 {
 	_world = world;
 }
 
-glm::mat4 Camera::getProj()
+QMatrix4x4 Camera::getProj()
 {
 	return _proj;
 }
 
-glm::mat4 Camera::getView()
+QMatrix4x4 Camera::getView()
 {
 	return _view;
 }
 
-glm::mat4 Camera::getWorld()
+QMatrix4x4 Camera::getWorld()
 {
 	return _world;
 }
 
-glm::mat4 Camera::getWorldIT()
+QMatrix4x4 Camera::getWorldIT()
 {
-	return glm::transpose( glm::inverse( _world ) );
+    return _world.inverted().transposed();
 }
 
-glm::mat4 Camera::getMVP()
+QMatrix4x4 Camera::getMVP()
 {
 	return _proj * _view * _world;
+}
+
+QMatrix4x4 Camera::lookAt(QVector3D eye, QVector3D center, QVector3D up)
+{
+    QMatrix4x4 res;
+    res.lookAt(eye, center, up);
+    return res;
+}
+
+QMatrix4x4 Camera::perspective(float angle, float ratio, float near, float far)
+{
+    QMatrix4x4 res;
+    res.perspective(angle, ratio, near, far);
+    return res;
 }
