@@ -23,6 +23,7 @@ private:
     QOpenGLShaderProgram* _program;
     Camera _camera;
     Drawable* _surface;
+    Drawable* _coord;
 
 public slots:
     void init();

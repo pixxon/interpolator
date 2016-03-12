@@ -7,6 +7,7 @@ OpenGLView::OpenGLView(QWidget *parent) :
 {
     _program = new QOpenGLShaderProgram();
     _surface = new Drawable(_program);
+    _coord = new Drawable(_program);
 }
 
 OpenGLView::~OpenGLView()
@@ -33,6 +34,17 @@ void OpenGLView::initializeGL()
     _program->bind();
 
     _surface->init();
+
+    _coord->addData({-100, 0, 0}, {1, 1, 1});
+    _coord->addData({100, 0, 0}, {1, 1, 1});
+
+    _coord->addData({0, -100, 0}, {1, 1, 1});
+    _coord->addData({0, 100, 0}, {1, 1, 1});
+
+    _coord->addData({0, 0, -100}, {1, 1, 1});
+    _coord->addData({0, 0, 100}, {1, 1, 1});
+
+    _coord->init();
 
     _program->bindAttributeLocation("vs_in_pos", 0);
     _program->bindAttributeLocation("vs_in_col", 1);
@@ -62,6 +74,7 @@ void OpenGLView::paintGL()
     _program->setUniformValue("proj", _camera.getProj());
 
     _surface->draw(GL_QUADS);
+    _coord->draw(GL_LINES);
 
     _program->release();
     doneCurrent();
