@@ -41,10 +41,10 @@ void Model::setInput(QString str)
 {
     evaluator->setExpression(str.toStdString());
 
-    const float delta = 0.2f;
-    for (float i = 0; i < 3.14f; i+=delta)
+    const float delta = 0.1f;
+    for (float i = -3.14f; i < 3.14f; i+=delta)
     {
-        for (float j = 0; j < 3.14f; j+=delta)
+        for (float j = -3.14f; j < 3.14f; j+=delta)
         {
             float res = evaluator->calculate(i, j);
             emit(addData({i, res, j},

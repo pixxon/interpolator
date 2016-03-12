@@ -4,6 +4,9 @@
 #include <QWidget>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QSlider>
+#include <QSpinBox>
+#include <QLCDNumber>
 
 class MainView : public QWidget
 {
@@ -15,6 +18,9 @@ public:
 private:
     QPushButton* button;
     QLineEdit* input;
+    QSlider* maxSlider;
+    QSlider* minSlider;
+    QSpinBox* counter;
 
 public slots:
     void buttonClick();
