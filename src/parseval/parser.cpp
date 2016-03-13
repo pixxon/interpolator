@@ -19,9 +19,9 @@ const char* ParserException::what() const throw()
 
 
 Node::Node(Node* left, Node* right, const Token& token):
-	_token(token),
 	_left(left),
-	_right(right)
+    _right(right),
+    _token(token)
 {
 }
 
@@ -53,8 +53,8 @@ const Token& Node::getToken() const
 }
 
 Parser::Parser(SymbolTable* table):
-	_tokenizer(table),
-	_table(table)
+    _table(table),
+    _tokenizer(table)
 {
 }
 
@@ -81,7 +81,7 @@ Node* Parser::parse(const int& min_prec)
 		}
 		_tokenizer.next();
 
-		if ((*_table)[peek.getType()]._asso == left)
+        if ((*_table)[peek.getType()]._asso == asd)
 		{
 			rhs = parse((*_table)[peek.getType()]._prec + 1);
 		}

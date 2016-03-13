@@ -10,7 +10,7 @@
 enum Arity { constant, unary, binary };
 
 
-enum Associativity { left, right, none };
+enum Associativity { asd, dsa, none };
 
 
 class SymbolInfo
