@@ -13,33 +13,36 @@ TEMPLATE = app
 
 QMAKE_CXXFLAGS += -std=c++11
 
-LIBS += -lGLEW
-
 SOURCES += main.cpp\
-    opengl/drawable.cpp \
-    opengl/camera.cpp \
-    parseval/tokenizer.cpp \
-    parseval/symbol.cpp \
-    parseval/parser.cpp \
-    parseval/evaluator.cpp \
-    mainview.cpp \
-    model.cpp \
-    openglview.cpp
+    model/parseval/tokenizer.cpp \
+    model/parseval/symbol.cpp \
+    model/parseval/parser.cpp \
+    model/parseval/evaluator.cpp \
+    model/interpolate/interpolation.cpp \
+    model/model.cpp \
+    view/opengl/camera.cpp \
+    view/opengl/drawable.cpp \
+    view/mainview.cpp \
+    view/openglview.cpp \
+    model/interpolate/lagrange.cpp \
+    model/interpolate/datatable.cpp
 
 HEADERS  += \
-    opengl/drawable.h \
-    opengl/camera.h \
-    parseval/tokenizer.h \
-    parseval/symbol.h \
-    parseval/parser.h \
-    parseval/evaluator.h \
-    mainview.h \
-    model.h \
-    openglview.h
+    model/parseval/tokenizer.h \
+    model/parseval/symbol.h \
+    model/parseval/parser.h \
+    model/parseval/evaluator.h \
+    model/interpolate/interpolation.h \
+    model/model.h \
+    view/opengl/camera.h \
+    view/opengl/drawable.h \
+    view/mainview.h \
+    view/openglview.h \
+    model/interpolate/lagrange.h \
+    model/interpolate/datatable.h
 
-FORMS    +=
+RESOURCES += \
+    resources.qrc
 
-DISTFILES += \
-    opengl/fragment.shader \
-    opengl/myFrag.frag \
-    opengl/myVert.vert
+INCLUDEPATH += .
+

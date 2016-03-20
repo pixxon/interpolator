@@ -8,6 +8,8 @@
 #include "parseval/symbol.h"
 #include "parseval/evaluator.h"
 
+#include "interpolate/lagrange.h"
+
 class Model: public QObject
 {
     Q_OBJECT
@@ -19,6 +21,7 @@ private:
     SymbolTable* table;
     Evaluator* evaluator;
     QTimer* timer;
+    Lagrange* interpolator;
 
 public slots:
     void setInput(QString);

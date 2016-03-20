@@ -1,6 +1,6 @@
-#include "model.h"
-#include "mainview.h"
-#include "openglview.h"
+#include "model/model.h"
+#include "view/mainview.h"
+#include "view/openglview.h"
 
 #include <QApplication>
 #include <QVector3D>
@@ -20,11 +20,8 @@ int main(int argc, char *argv[])
     QObject::connect(&model, SIGNAL(init()), &openGLView, SLOT(init()));
     QObject::connect(&model, SIGNAL(addData(QVector3D,QVector3D)), &openGLView, SLOT(addPointToSurface(QVector3D,QVector3D)));
     QObject::connect(&model, SIGNAL(render()), &openGLView, SLOT(update()));
+
     mainView.show();
-    openGLView.hide();
-
-
-
 
     return a.exec();
 }

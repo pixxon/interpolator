@@ -128,7 +128,7 @@ Node* Parser::parse_primary()
 
 		if (_tokenizer.peek().getType() != "close")
 		{
-			throw ParserException("Unmatched parenthesis!");
+            throw ParserException("Unmatched parenthesis!" + _tokenizer.peek().getValue());
 		}
 
 
@@ -145,9 +145,9 @@ Node* Parser::parse_primary()
 		_tokenizer.next();
 
 		return new Node(parse_primary(), nullptr, peek);
-	}
+    }
 
-	throw ParserException("Unexpected token: " + peek.getValue() + "!");
+    throw ParserException("Unexpected token: " + peek.getValue() + "!");
 }
 
 Node* Parser::getTree()

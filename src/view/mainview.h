@@ -2,11 +2,12 @@
 #define MAINVIEW_H
 
 #include <QWidget>
+
 #include <QLineEdit>
 #include <QPushButton>
-#include <QSlider>
+
 #include <QSpinBox>
-#include <QLCDNumber>
+#include <QDoubleSpinBox>
 
 class MainView : public QWidget
 {
@@ -18,9 +19,14 @@ public:
 private:
     QPushButton* button;
     QLineEdit* input;
-    QSlider* maxSlider;
-    QSlider* minSlider;
-    QSpinBox* counter;
+
+    QDoubleSpinBox* minX;
+    QDoubleSpinBox* maxX;
+    QSpinBox* countX;
+
+    QDoubleSpinBox* minY;
+    QDoubleSpinBox* maxY;
+    QSpinBox* countY;
 
 public slots:
     void buttonClick();

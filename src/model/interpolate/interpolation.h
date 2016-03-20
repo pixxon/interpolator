@@ -1,33 +1,26 @@
 #ifndef INTERPOLATION_H
 #define INTERPOLATION_H
 
-class Position
-{
-public:
-	Position(double x, double y);
-	~Position();
+#include "../parseval/symbol.h"
+#include "datatable.h"
 
-	bool operator<(const Position& other);
-private:
-
-	double _x;
-	double _y;
-};
+#include <QString>
 
 class Interpolation
 {
-private:
-	std::map<Position, double> _data;
-
 public:
-	Interpolation();
-	~Interpolation();
+    Interpolation(SymbolTable* table);
+    virtual ~Interpolation();
 
-	void addData(double x, double y, double z);
-	void sortData();
+    void addData(double x, double y, double z);
 
-	virtual std::string createPolynomial();
+    virtual double calculate(double x, double y) = 0;
 
+protected:
+    DataTable _data;
+    SymbolTable* _table;
+
+    bool _needInitialize;
 };
 
 

@@ -9,22 +9,36 @@ MainView::MainView(QWidget *parent) :
 
     input = new QLineEdit();
 
-    minSlider = new QSlider(Qt::Horizontal);
-    minSlider->setTickPosition(QSlider::TicksBelow);
+    minX = new QDoubleSpinBox();
+    minX->setMinimum(-std::numeric_limits<double>::max());
+    minX->setMaximum(std::numeric_limits<double>::max());
+    maxX = new QDoubleSpinBox();
+    maxX->setMinimum(-std::numeric_limits<double>::max());
+    maxX->setMaximum(std::numeric_limits<double>::max());
+    countX = new QSpinBox();
+    countX->setMaximum(std::numeric_limits<int>::max());
 
-    maxSlider = new QSlider(Qt::Horizontal);
-    maxSlider->setTickPosition(QSlider::TicksBelow);
-    maxSlider->setInvertedAppearance(true);
-
-    counter = new QSpinBox();
+    minY = new QDoubleSpinBox();
+    minY->setMinimum(-std::numeric_limits<double>::max());
+    minY->setMaximum(std::numeric_limits<double>::max());
+    maxY = new QDoubleSpinBox();
+    maxY->setMinimum(-std::numeric_limits<double>::max());
+    maxY->setMaximum(std::numeric_limits<double>::max());
+    countY = new QSpinBox();
+    countY->setMaximum(std::numeric_limits<int>::max());
 
     QGridLayout* layout = new QGridLayout();
 
     layout->addWidget(input, 0, 0, 1, 2);
     layout->addWidget(button, 0, 2, 1, 1);
-    layout->addWidget(minSlider, 1, 0, 1, 2);
-    layout->addWidget(maxSlider, 2, 0, 1, 2);
-    layout->addWidget(counter, 1, 2, 2, 1);
+
+    layout->addWidget(minX, 1, 0, 1, 1);
+    layout->addWidget(maxX, 1, 1, 1, 1);
+    layout->addWidget(countX, 1, 2, 1, 1);
+
+    layout->addWidget(minY, 2, 0, 1, 1);
+    layout->addWidget(maxY, 2, 1, 1, 1);
+    layout->addWidget(countY, 2, 2, 1, 1);
 
     setLayout(layout);
 }

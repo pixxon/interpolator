@@ -1,5 +1,7 @@
 #include "evaluator.h"
 
+#include <QDebug>
+
 
 Evaluator::Evaluator(SymbolTable* table):
     _parser(table),
@@ -17,14 +19,27 @@ void Evaluator::setExpression(const std::string& str)
 {
 	_parser.setInput(str);
 	_root = _parser.getTree();
+
+    for (QMap<double, QMap<double, double>>::iterator it = _cache.begin(); it != _cache.end(); it++)
+    {
+        it->clear();
+    }
+    _cache.clear();
 }
 
-double Evaluator::calculate(const double& x, const double& y) const
+double Evaluator::calculate(const double& x, const double& y)
 {
-	return calculateAt(_root, x, y);
+    if (_cache.contains(x) && _cache[x].contains(y))
+    {
+        return _cache[x][y];
+    }
+
+    double tmp = calculateAt(_root, x, y);
+    _cache[x][y] = tmp;
+    return tmp;
 }
 
-double Evaluator::calculateAt(const Node* node, const double& x, const double& y) const
+double Evaluator::calculateAt(const Node* node, const double& x, const double& y)
 {
 	if (node == nullptr)
 	{

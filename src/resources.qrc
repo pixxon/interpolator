@@ -1,6 +1,7 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
 <qresource prefix="/shaders">
-	<file alias="vertex">view/opengl/myVert.vert</file>
+    <file alias="vertex">view/opengl/myVert.vert</file>
+    <file alias="fragment">view/opengl/myFrag.frag</file>
 </qresource>
-<qresource prefix="/shaders">
-	<file alias="fragment">view/opengl/myFrag.frag</file>
-</qresource>
+</RCC>

@@ -5,6 +5,8 @@
 #include "tokenizer.h"
 #include "symbol.h"
 
+#include <QMap>
+
 class Evaluator
 {
 	public:
@@ -12,14 +14,17 @@ class Evaluator
 		~Evaluator();
 
 		void setExpression(const std::string& str);
-		double calculate(const double& x, const double& y) const;
+        double calculate(const double& x, const double& y);
 
 	private:
 		Parser _parser;
 		SymbolTable* _table;
 		Node* _root;
 
-		double calculateAt(const Node* node, const double& x, const double& y) const;
+        QMap<double, QMap<double, double>> _cache;
+
+
+        double calculateAt(const Node* node, const double& x, const double& y);
 };
 
 
