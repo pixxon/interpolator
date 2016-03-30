@@ -3,9 +3,9 @@
 #include <iostream>
 
 
-ParserException::ParserException(const std::string& what)
+ParserException::ParserException(const QString& what):
+    _what(what)
 {
-	_what = what;
 }
 
 ParserException::~ParserException()
@@ -14,7 +14,7 @@ ParserException::~ParserException()
 
 const char* ParserException::what() const throw()
 {
-	return _what.c_str();
+    return ("Parser exception: " + _what.toStdString()).c_str();
 }
 
 
@@ -37,12 +37,12 @@ Node::~Node()
 	}
 }
 
-const Node* Node::getLeft() const
+Node* Node::getLeft() const
 {
 	return _left;
 }
 
-const Node* Node::getRight() const
+Node* Node::getRight() const
 {
 	return _right;
 }
@@ -62,7 +62,7 @@ Parser::~Parser()
 {
 }
 
-void Parser::setInput(const std::string& str)
+void Parser::setInput(const QString& str)
 {
 	_tokenizer.setInput(str);
 }
@@ -73,7 +73,7 @@ Node* Parser::parse(const int& min_prec)
 	Node* rhs;
 
 	Token peek = _tokenizer.peek();
-	while((*_table)[peek.getType()]._argc == binary && (*_table)[peek.getType()]._prec >= min_prec)
+    while((*_table)[peek.getType()].getArity() == ARITY_BINARY && (*_table)[peek.getType()].getPrecedence() >= min_prec)
 	{
 		if (!_tokenizer.hasNext())
 		{
@@ -81,14 +81,18 @@ Node* Parser::parse(const int& min_prec)
 		}
 		_tokenizer.next();
 
-        if ((*_table)[peek.getType()]._asso == asd)
+        if ((*_table)[peek.getType()].getAssociativity() == ASSOCIATIVITY_LEFT)
 		{
-			rhs = parse((*_table)[peek.getType()]._prec + 1);
+            rhs = parse((*_table)[peek.getType()].getPrecedence() + 1);
 		}
-		else
+        if ((*_table)[peek.getType()].getAssociativity() == ASSOCIATIVITY_RIGHT)
 		{
-			rhs = parse((*_table)[peek.getType()]._prec);
-		}
+            rhs = parse((*_table)[peek.getType()].getPrecedence());
+        }
+        if ((*_table)[peek.getType()].getAssociativity() == ASSOCIATIVITY_NONE)
+        {
+            throw ParserException("Associativity of binary operator is none.");
+        }
 
 		lhs = new Node(lhs, rhs, peek);
 		peek = _tokenizer.peek();
@@ -136,7 +140,7 @@ Node* Parser::parse_primary()
 		return res;
 	}
 
-	if ((*_table)[peek.getType()]._argc == unary)
+    if ((*_table)[peek.getType()].getArity() == ARITY_UNARY)
 	{
 		if (!_tokenizer.hasNext())
 		{

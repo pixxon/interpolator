@@ -1,9 +1,11 @@
 #include "datatable.h"
 #include <QDebug>
 
-DataTable::DataTable()
+DataTable::DataTable():
+    _baseX(),
+    _baseY(),
+    _val()
 {
-
 }
 
 
@@ -56,6 +58,25 @@ void DataTable::addPoint(double x, double y, double z)
     }
 
     _val[i][j] = new double(z);
+}
+
+void DataTable::clear()
+{
+     _baseX.clear();
+     _baseY.clear();
+
+     for (int i = 0; i < _val.size(); i++)
+     {
+         for (int j = 0; j < _val[i].size(); j++)
+         {
+             if (_val[i][j] != 0)
+             {
+                 delete _val[i][j];
+             }
+         }
+         _val[i].clear();
+     }
+     _val.clear();
 }
 
 int DataTable::sizeX()

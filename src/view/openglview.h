@@ -27,7 +27,7 @@ private:
 
 public slots:
     void init();
-    void render();
+    void clear();
     void addPointToSurface(QVector3D, QVector3D);
 
 signals:

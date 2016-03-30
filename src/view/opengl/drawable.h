@@ -17,6 +17,7 @@ public:
     void addData(QVector3D, QVector3D);
 	void init();
     void draw(GLenum);
+    void clear();
 
 private:
     QOpenGLShaderProgram* _program;

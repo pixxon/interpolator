@@ -15,7 +15,7 @@ Evaluator::~Evaluator()
 	delete _root;
 }
 
-void Evaluator::setExpression(const std::string& str)
+void Evaluator::setExpression(const QString& str)
 {
 	_parser.setInput(str);
 	_root = _parser.getTree();
@@ -48,7 +48,7 @@ double Evaluator::calculateAt(const Node* node, const double& x, const double& y
 
 	if (node->getToken().getType() == "num")
 	{
-		return stod(node->getToken().getValue());
+        return (node->getToken().getValue()).toDouble();
 	}
 
 	if (node->getToken().getType() == "var")
@@ -60,11 +60,11 @@ double Evaluator::calculateAt(const Node* node, const double& x, const double& y
 		if (node->getToken().getValue() == "y")
 		{
 			return y;
-		}
+        }
 	}
 
 	double lhs = calculateAt(node->getLeft(), x, y);
 	double rhs = calculateAt(node->getRight(), x, y);
 
-	return (*_table)[node->getToken().getType()]._func(lhs, rhs);
+    return (*_table)[node->getToken().getType()].getFunction()(lhs, rhs);
 }

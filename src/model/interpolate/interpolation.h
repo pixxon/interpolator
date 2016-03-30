@@ -13,6 +13,7 @@ public:
     virtual ~Interpolation();
 
     void addData(double x, double y, double z);
+    void clear();
 
     virtual double calculate(double x, double y) = 0;
 

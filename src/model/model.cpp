@@ -7,23 +7,23 @@ Model::Model():
     QObject()
 {
     table = new SymbolTable();
-    table->insertSymbol("var", std::regex("^(x|y)"), constant, none, 0, 0);
-    table->insertSymbol("num", std::regex("^[0-9]+(\\.[0-9]+)?"), constant, none, 0, 0);
-    table->insertSymbol("open", std::regex("^\\("), constant, none, 0, 0);
-    table->insertSymbol("close", std::regex("^\\)"), constant, none, 0, 0);
+    table->insertSymbol("var", QRegExp("^(x|y)"), ARITY_CONSTANT, ASSOCIATIVITY_NONE, 0, 0);
+    table->insertSymbol("num", QRegExp("^[0-9]+(\\.[0-9]+)?"), ARITY_CONSTANT, ASSOCIATIVITY_NONE, 0, 0);
+    table->insertSymbol("open", QRegExp("^\\("), ARITY_CONSTANT, ASSOCIATIVITY_NONE, 0, 0);
+    table->insertSymbol("close", QRegExp("^\\)"), ARITY_CONSTANT, ASSOCIATIVITY_NONE, 0, 0);
 
-    table->insertSymbol("add", std::regex("^\\+"), binary, asd, 1, [](double a, double b){ return a + b; });
-    table->insertSymbol("min", std::regex("^-"), binary, asd, 1, [](double a, double b){ return a - b; });
-    table->insertSymbol("mul", std::regex("^\\*"), binary, asd, 2, [](double a, double b){ return a * b; });
-    table->insertSymbol("div", std::regex("^/"), binary, asd, 2, [](double a, double b){ return a / b; });
-    table->insertSymbol("pow", std::regex("^\\^"), binary, dsa, 3, [](double a, double b){ return pow(a, b); });
+    table->insertSymbol("add", QRegExp("^\\+"), ARITY_BINARY, ASSOCIATIVITY_LEFT, 1, [](double a, double b){ return a + b; });
+    table->insertSymbol("min", QRegExp("^-"), ARITY_BINARY, ASSOCIATIVITY_LEFT, 1, [](double a, double b){ return a - b; });
+    table->insertSymbol("mul", QRegExp("^\\*"), ARITY_BINARY, ASSOCIATIVITY_LEFT, 2, [](double a, double b){ return a * b; });
+    table->insertSymbol("div", QRegExp("^/"), ARITY_BINARY, ASSOCIATIVITY_LEFT, 2, [](double a, double b){ return a / b; });
+    table->insertSymbol("pow", QRegExp("^\\^"), ARITY_BINARY, ASSOCIATIVITY_RIGHT, 3, [](double a, double b){ return pow(a, b); });
 
-    table->insertSymbol("abs", std::regex("^abs"), unary, none, 0, [](double a, double){ return abs(a); });
+    table->insertSymbol("abs", QRegExp("^abs"), ARITY_UNARY, ASSOCIATIVITY_NONE, 0, [](double a, double){ return a<0?-a:a; });
 
-    table->insertSymbol("sin", std::regex("^sin"), unary, none, 0, [](double a, double){ return sin(a); });
-    table->insertSymbol("cos", std::regex("^cos"), unary, none, 0, [](double a, double){ return cos(a); });
-    table->insertSymbol("tg", std::regex("^tg"), unary, none, 0, [](double a, double){ return tan(a); });
-    table->insertSymbol("ctg", std::regex("^ctg"), unary, none, 0, [](double a, double){ return 1 / tan(a); });
+    table->insertSymbol("sin", QRegExp("^sin"), ARITY_UNARY, ASSOCIATIVITY_NONE, 0, [](double a, double){ return sin(a); });
+    table->insertSymbol("cos", QRegExp("^cos"), ARITY_UNARY, ASSOCIATIVITY_NONE, 0, [](double a, double){ return cos(a); });
+    table->insertSymbol("tg", QRegExp("^tg"), ARITY_UNARY, ASSOCIATIVITY_NONE, 0, [](double a, double){ return tan(a); });
+    table->insertSymbol("ctg", QRegExp("^ctg"), ARITY_UNARY, ASSOCIATIVITY_NONE, 0, [](double a, double){ return 1 / tan(a); });
 
     evaluator = new Evaluator(table);
 
@@ -43,59 +43,70 @@ Model::~Model()
 
 void Model::setInput(QString str)
 {
-    evaluator->setExpression(str.toStdString());
+    emit(clear());
 
-    for (float i = -5; i < 5; i+= 1.0)
+    evaluator->setExpression(str);
+
+    interpolator->clear();
+    for (int i = 0; i < partX.getCount(); i++)
     {
-        for (float j = -5; j < 5; j+= 1.0)
+        for (int j = 0; j < partY.getCount(); j++)
         {
-            interpolator->addData(i, j, evaluator->calculate(i, j));
+            interpolator->addData(partX.at(i), partY.at(j), evaluator->calculate(partX.at(i), partY.at(j)));
         }
     }
 
     float delta = 0.1f;
-    for (float i = -5; i < 4; i+= delta)
+    for (float i = partX.at(0); i <= partX.at(partX.getCount() - 1); i+= delta)
     {
-        for (float j = -5; j < 4; j+= delta)
+        for (float j = partY.at(0); j <= partY.at(partY.getCount() - 1); j+= delta)
         {
             float tmp = interpolator->calculate(i, j);
-            float diff = tmp - evaluator->calculate(i, j);
+            float tmp2 = evaluator->calculate(i, j);
+            float diff = tmp - tmp2;
             if (diff < 0)
             {
                 diff *= -1;
             }
 
             emit(addData({i, tmp, j}, {diff, diff, diff}));
+            emit(addData2({i, tmp2, j}, {diff, diff, diff}));
 
 
             tmp = interpolator->calculate(i, j + delta);
-            diff = tmp - evaluator->calculate(i, j + delta);
+            tmp2 = evaluator->calculate(i, j + delta);
+            diff = tmp - tmp2;
             if (diff < 0)
             {
                 diff *= -1;
             }
 
             emit(addData({i, tmp, j + delta}, {diff, diff, diff}));
+            emit(addData2({i, tmp2, j + delta}, {diff, diff, diff}));
 
 
             tmp = interpolator->calculate(i + delta, j + delta);
-            diff = tmp - evaluator->calculate(i + delta, j + delta);
+            tmp2 = evaluator->calculate(i + delta, j + delta);
+            diff = tmp - tmp2;
             if (diff < 0)
             {
                 diff *= -1;
             }
 
             emit(addData({i + delta, tmp, j + delta}, {diff, diff, diff}));
+            emit(addData2({i + delta, tmp2, j + delta}, {diff, diff, diff}));
 
 
             tmp = interpolator->calculate(i + delta, j);
-            diff = tmp - evaluator->calculate(i + delta, j);
+            tmp2 = evaluator->calculate(i + delta, j);
+            diff = tmp - tmp2;
             if (diff < 0)
             {
                 diff *= -1;
             }
 
             emit(addData({i + delta, tmp, j}, {diff, diff, diff}));
+            emit(addData2({i + delta, tmp2, j}, {diff, diff, diff}));
         }
     }
 
@@ -109,3 +120,12 @@ void Model::timerTick()
     emit(render());
 }
 
+void Model::setPartX(double min, double max, int count)
+{
+    partX.setPartition(min, max, count);
+}
+
+void Model::setPartY(double min, double max, int count)
+{
+    partY.setPartition(min, max, count);
+}

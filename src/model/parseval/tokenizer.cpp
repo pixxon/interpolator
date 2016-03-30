@@ -1,10 +1,10 @@
 #include "tokenizer.h"
 
-#include <iostream>
+#include <QDebug>
 
-LexicalException::LexicalException(const std::string& what)
+LexicalException::LexicalException(const QString& what):
+    _what(what)
 {
-	_what = what;
 }
 
 LexicalException::~LexicalException()
@@ -13,26 +13,26 @@ LexicalException::~LexicalException()
 
 const char* LexicalException::what() const throw()
 {
-	return _what.c_str();
+    return ("Lexical exception: " + _what.toStdString()).c_str();
 }
 
 
-Token::Token(const std::string& type, const std::string& value)
+Token::Token(const QString& type, const QString& value):
+    _type(type),
+    _value(value)
 {
-	_type = type;
-	_value = value;
 }
 
 Token::~Token()
 {
 }
 
-std::string Token::getType() const
+const QString& Token::getType() const
 {
 	return _type;
 }
 
-std::string Token::getValue() const
+const QString& Token::getValue() const
 {
 	return _value;
 }
@@ -49,12 +49,12 @@ Tokenizer::~Tokenizer()
 {
 }
 
-void Tokenizer::setInput(const std::string& input)
+void Tokenizer::setInput(const QString& input)
 {
 	_input = input;
 }
 
-Token Tokenizer::peek() const
+const Token Tokenizer::peek() const
 {
 	return _current;
 }
@@ -66,11 +66,10 @@ void Tokenizer::next()
 		return;
 	}
 
-	std::smatch match;
 	SymbolTable::const_iterator it = _table->begin();
 	while(it != _table->end())
-	{
-		if (std::regex_search(_input, match, it->_rgx))
+    {
+        if (it->getRegex().indexIn(_input) >= 0)
 		{
 			break;
 		}
@@ -81,9 +80,8 @@ void Tokenizer::next()
 		throw LexicalException("Wrong input: " + _input);
 	}
 
-	_current = Token(it->_name, match[0]);
-
-	_input.erase(0, match[0].length());
+    _current = Token(it->getName(), it->getRegex().cap(0));
+    _input.remove(0, it->getRegex().cap(0).length());
 }
 
 bool Tokenizer::hasNext() const

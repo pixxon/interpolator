@@ -14,6 +14,8 @@ public:
     int sizeX();
     int sizeY();
 
+    void clear();
+
     double baseXAt(int);
     double baseYAt(int);
     double valueAt(int, int);

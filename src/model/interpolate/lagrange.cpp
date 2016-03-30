@@ -60,14 +60,14 @@ void Lagrange::initialize()
     for (int i = 0; i < _data.sizeX(); i++)
     {
         Evaluator* evaluator = new Evaluator(_table);
-        evaluator->setExpression(createPolynomialX(i).toStdString());
+        evaluator->setExpression(createPolynomialX(i));
         _polX.push_back(evaluator);
     }
 
     for (int j = 0; j < _data.sizeY(); j++)
     {
         Evaluator* evaluator = new Evaluator(_table);
-        evaluator->setExpression(createPolynomialY(j).toStdString());
+        evaluator->setExpression(createPolynomialY(j));
         _polY.push_back(evaluator);
     }
 
@@ -88,12 +88,12 @@ QString Lagrange::createPolynomialX(int v)
                 numerator << "*";
             }
 
-            numerator << "(x-" << QString::number(_data.baseXAt(i)) << ")";
+            numerator << "(x-" << QString::number(_data.baseXAt(i), 'f', 10) << ")";
             denominator *= (_data.baseXAt(v) -_data.baseXAt(i));
         }
     }
 
-    return "(" + numerator.join("") + ")/(" + QString::number(denominator) + ")";
+    return "(" + numerator.join("") + ")/(" + QString::number(denominator, 'f', 10) + ")";
 }
 
 QString Lagrange::createPolynomialY(int v)
@@ -110,11 +110,11 @@ QString Lagrange::createPolynomialY(int v)
                 numerator << "*";
             }
 
-            numerator << "(y-" << QString::number(_data.baseYAt(i)) << ")";
+            numerator << "(y-" << QString::number(_data.baseYAt(i), 'f', 10) << ")";
             denominator *= (_data.baseYAt(v) -_data.baseYAt(i));
         }
     }
 
-    return "(" + numerator.join("") + ")/(" + QString::number(denominator) + ")";
+    return "(" + numerator.join("") + ")/(" + QString::number(denominator, 'f', 10) + ")";
 }
 

@@ -32,8 +32,6 @@ void OpenGLView::initializeGL()
     _program->link();
     _program->bind();
 
-    _surface->init();
-
     _coord->addData({-100, 0, 0}, {1, 1, 1});
     _coord->addData({100, 0, 0}, {1, 1, 1});
 
@@ -50,7 +48,7 @@ void OpenGLView::initializeGL()
 
     _program->release();
 
-    _camera.setProj(Camera::perspective(45.f, 640/480.f, 0.001f, 1000.f));
+    _camera.setProj(Camera::perspective(45.f, 640/480.f, 0.001f, 100.f));
 }
 
 void OpenGLView::paintGL()
@@ -80,13 +78,22 @@ void OpenGLView::resizeGL(int w, int h)
     _camera.setProj(Camera::perspective(45.f, w/(float)h, 0.001f, 1000.f));
 }
 
-void OpenGLView::render()
-{
-    paintGL();
-    emit(frameSwapped());
-}
-
 void OpenGLView::init()
 {
     show();
+
+    makeCurrent();
+    _program->bind();
+
+    _surface->init();
+
+    _program->release();
+    doneCurrent();
+}
+
+void OpenGLView::clear()
+{
+    _surface->clear();
+
+    hide();
 }

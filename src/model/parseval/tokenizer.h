@@ -2,36 +2,37 @@
 #define TOKENIZER_H
 
 
-#include <exception>
-#include <string>
+#include <QException>
+#include <QString>
+
 #include "symbol.h"
 
 
-class LexicalException: public std::exception
+class LexicalException: public QException
 {
 	public:
-		LexicalException(const std::string& what);
+        LexicalException(const QString& what);
 		~LexicalException();
 
-		virtual const char* what() const throw();
+        const char* what() const throw();
 
 	private:
-		std::string _what;
+        const QString _what;
 };
 
 
 class Token
 {
 	public:
-		Token(const std::string&, const std::string&);
+        Token(const QString&, const QString&);
 		~Token();
 
-		std::string getType() const;
-		std::string getValue() const;
+        const QString& getType() const;
+        const QString& getValue() const;
 
 	private:
-		std::string _type;
-		std::string _value;
+        QString _type;
+        QString _value;
 };
 
 
@@ -41,15 +42,15 @@ class Tokenizer
 		Tokenizer(SymbolTable*);
 		~Tokenizer();
 
-		void setInput(const std::string&);
-		Token peek() const;
+        void setInput(const QString&);
+        const Token peek() const;
 		void next();	
 		bool hasNext() const;	
 
 	private:
 		Token _current;
-		std::string _input;
-		SymbolTable* _table;
+        QString _input;
+        const SymbolTable* _table;
 };
 
 

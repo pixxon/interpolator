@@ -1,18 +1,55 @@
 #include "symbol.h"
-#include <iostream>
+
+#include <cstring>
+#include <QDebug>
+
 
 SymbolInfo::SymbolInfo()
 {
 }
 
-SymbolInfo::SymbolInfo(std::string name, std::regex rgx, Arity argc, Associativity asso, int prec, std::function<double(double, double)> func)
+SymbolInfo::SymbolInfo(const QString& name, const QRegExp& rgx, const Arity& argc, const Associativity& asso, const int& prec, const binary_function& func):
+    _name(name),
+    _rgx(rgx),
+    _argc(argc),
+    _asso(asso),
+    _prec(prec),
+    _func(func)
 {
-	_name = name;
-	_rgx = rgx;
-	_argc = argc;
-	_asso = asso;
-	_prec = prec;
-	_func = func;
+}
+
+SymbolInfo::~SymbolInfo()
+{
+}
+
+const QString& SymbolInfo::getName() const
+{
+    return _name;
+}
+
+const QRegExp& SymbolInfo::getRegex() const
+{
+    return _rgx;
+}
+
+const Arity& SymbolInfo::getArity() const
+{
+    return _argc;
+}
+
+const Associativity& SymbolInfo::getAssociativity() const
+{
+    return _asso;
+}
+
+const int& SymbolInfo::getPrecedence() const
+{
+    return _prec;
+}
+
+const binary_function& SymbolInfo::getFunction() const
+{
+    return _func;
 }
 
 
@@ -24,17 +61,17 @@ SymbolTable::~SymbolTable()
 {
 }
 
-void SymbolTable::insertSymbol(std::string name, std::regex rgx, Arity argc, Associativity asso, int prec, std::function<double(double, double)> func)
+void SymbolTable::insertSymbol(const QString& name, const QRegExp& rgx, const Arity& argc, const Associativity& asso, const int& prec, const binary_function& func)
 {
-	table.push_back(SymbolInfo(name, rgx, argc, asso, prec, func));
+    _table.push_back(SymbolInfo(name, rgx, argc, asso, prec, func));
 }
 
-SymbolInfo SymbolTable::operator[](std::string name)
+const SymbolInfo& SymbolTable::operator[](const QString& name) const
 {
-	std::vector<SymbolInfo>::const_iterator it = table.begin();
-	while (it != table.end())
+    QVector<SymbolInfo>::const_iterator it = _table.begin();
+    while (it != _table.end())
 	{
-		if (it->_name == name)
+        if (it->getName() == name)
 		{
 			return *it;
 		}
@@ -44,20 +81,20 @@ SymbolInfo SymbolTable::operator[](std::string name)
 }
 
 
-SymbolTable::const_iterator SymbolTable::begin()
+SymbolTable::const_iterator SymbolTable::begin() const
 {
-	return const_iterator(table.begin());
+    return const_iterator(_table.begin());
 }
 
-SymbolTable::const_iterator SymbolTable::end()
+SymbolTable::const_iterator SymbolTable::end() const
 {
-	return const_iterator(table.end());
+    return const_iterator(_table.end());
 }
 
 
-SymbolTable::const_iterator::const_iterator(std::vector<SymbolInfo>::const_iterator it)
+SymbolTable::const_iterator::const_iterator(QVector<SymbolInfo>::const_iterator it):
+    _it(it)
 {
-	_it = it;
 }
 
 SymbolTable::const_iterator::~const_iterator()

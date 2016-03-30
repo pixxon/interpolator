@@ -2,29 +2,39 @@
 #define SYMBOL_H
 
 
-#include <vector>
-#include <regex>
-#include <functional>
+#include <QVector>
+#include <QRegExp>
+#include <QString>
+
+typedef double(*binary_function)(double, double);
+
+enum Arity { ARITY_CONSTANT, ARITY_UNARY, ARITY_BINARY };
 
 
-enum Arity { constant, unary, binary };
-
-
-enum Associativity { asd, dsa, none };
+enum Associativity { ASSOCIATIVITY_LEFT, ASSOCIATIVITY_RIGHT, ASSOCIATIVITY_NONE };
 
 
 class SymbolInfo
 {
 public:
-	SymbolInfo();
-	SymbolInfo(std::string, std::regex, Arity, Associativity, int, std::function<double(double, double)>);
+    SymbolInfo();
+    SymbolInfo(const QString&, const QRegExp&, const Arity&, const Associativity&, const int&, const binary_function&);
+    ~SymbolInfo();
 
-	std::string _name;
-	std::regex _rgx;
-	Arity _argc;
-	Associativity _asso;
-	int _prec;
-	std::function<double(double, double)> _func;
+    const QString& getName() const;
+    const QRegExp& getRegex() const;
+    const Arity& getArity() const;
+    const Associativity& getAssociativity() const;
+    const int& getPrecedence() const;
+    const binary_function& getFunction() const;
+
+private:
+    QString _name;
+    QRegExp _rgx;
+    Arity _argc;
+    Associativity _asso;
+    int _prec;
+    binary_function _func;
 };
 
 
@@ -34,16 +44,16 @@ public:
 	SymbolTable();
 	~SymbolTable();
 
-	void insertSymbol(std::string, std::regex, Arity, Associativity, int, std::function<double(double, double)>);
-	SymbolInfo operator[](std::string);
+    void insertSymbol(const QString&, const QRegExp&, const Arity&, const Associativity&, const int&, const binary_function&);
+    const SymbolInfo& operator[](const QString&) const;
 
 	class const_iterator
 	{
 	private:
-		std::vector<SymbolInfo>::const_iterator _it;
+        QVector<SymbolInfo>::const_iterator _it;
 
 	public:
-		const_iterator(std::vector<SymbolInfo>::const_iterator it);
+        const_iterator(QVector<SymbolInfo>::const_iterator it);
 		~const_iterator();
 
 		const SymbolInfo operator*() const;
@@ -53,11 +63,11 @@ public:
 		const_iterator operator++();
 	};
 
-	const_iterator begin();
-	const_iterator end();
+    const_iterator begin() const;
+    const_iterator end() const;
 
 private:	
-	std::vector<SymbolInfo> table;
+    QVector<SymbolInfo> _table;
 };
 
 

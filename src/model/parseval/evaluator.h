@@ -13,7 +13,7 @@ class Evaluator
 		Evaluator(SymbolTable* table);
 		~Evaluator();
 
-		void setExpression(const std::string& str);
+        void setExpression(const QString& str);
         double calculate(const double& x, const double& y);
 
 	private:
