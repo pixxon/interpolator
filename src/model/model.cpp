@@ -2,6 +2,7 @@
 #include <QVector3D>
 
 #include <QDebug>
+#include <QTime>
 
 Model::Model():
     QObject()
@@ -43,6 +44,9 @@ Model::~Model()
 
 void Model::setInput(QString str)
 {
+    QTime time;
+    time.start();
+
     emit(clear());
 
     evaluator->setExpression(str);
@@ -112,6 +116,9 @@ void Model::setInput(QString str)
 
 
     emit(init());
+
+    qDebug() << time.elapsed();
+
     timer->start();
 }
 

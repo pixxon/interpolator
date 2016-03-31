@@ -1,12 +1,14 @@
 #include "mainview.h"
-#include <QGridLayout>
-#include <QTabWidget>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
-#include <QDoubleValidator>
-#include <QDebug>
+
+
 #include <QLayout>
 #include <QLayoutItem>
+#include <QGridLayout>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QTabWidget>
+#include <QDoubleValidator>
+
 
 MainView::MainView(QWidget *parent) :
     QWidget(parent)
@@ -45,32 +47,45 @@ void MainView::initialize()
     _part_min_X = new QDoubleSpinBox();
     _part_min_X->setMinimum(-std::numeric_limits<double>::max());
     _part_min_X->setMaximum(std::numeric_limits<double>::max());
+
     _part_max_X = new QDoubleSpinBox();
     _part_max_X->setMinimum(-std::numeric_limits<double>::max());
     _part_max_X->setMaximum(std::numeric_limits<double>::max());
+
     _part_count_X = new QSpinBox();
     _part_count_X->setMaximum(10);
     QObject::connect(_part_count_X, SIGNAL(valueChanged(int)), this, SLOT(count_x_changed(int)));
 
+    _part_type_X = new QComboBox();
+    _part_type_X->addItems(QStringList({"Egyenletes", "Csebisev"}));
+
     _part_min_Y = new QDoubleSpinBox();
     _part_min_Y->setMinimum(-std::numeric_limits<double>::max());
     _part_min_Y->setMaximum(std::numeric_limits<double>::max());
+
     _part_max_Y = new QDoubleSpinBox();
     _part_max_Y->setMinimum(-std::numeric_limits<double>::max());
     _part_max_Y->setMaximum(std::numeric_limits<double>::max());
+
     _part_count_Y = new QSpinBox();
     _part_count_Y->setMaximum(10);
     QObject::connect(_part_count_Y, SIGNAL(valueChanged(int)), this, SLOT(count_y_changed(int)));
+
+    _part_type_Y = new QComboBox();
+    _part_type_Y->addItems(QStringList({"Egyenletes", "Csebisev"}));
 
     QGridLayout* _bottom_page_1_layout = new QGridLayout();
 
     _bottom_page_1_layout->addWidget(_part_min_X, 1, 0, 1, 1);
     _bottom_page_1_layout->addWidget(_part_max_X, 1, 1, 1, 1);
     _bottom_page_1_layout->addWidget(_part_count_X, 1, 2, 1, 1);
+    _bottom_page_1_layout->addWidget(_part_type_X, 1, 3, 1, 1);
 
     _bottom_page_1_layout->addWidget(_part_min_Y, 2, 0, 1, 1);
     _bottom_page_1_layout->addWidget(_part_max_Y, 2, 1, 1, 1);
     _bottom_page_1_layout->addWidget(_part_count_Y, 2, 2, 1, 1);
+    _bottom_page_1_layout->addWidget(_part_type_Y, 2, 3, 1, 1);
+
 
     _bottom_page_1->setLayout(_bottom_page_1_layout);
 
@@ -88,8 +103,8 @@ void MainView::initialize()
 
     //_all
     QVBoxLayout* layout = new QVBoxLayout();
-    layout->addWidget(top);
     layout->addWidget(bottom);
+    layout->addWidget(top);
     layout->addWidget(_render_button);
 
     setLayout(layout);

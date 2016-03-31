@@ -2,12 +2,12 @@
 #define MAINVIEW_H
 
 #include <QWidget>
-
 #include <QLineEdit>
 #include <QPushButton>
 #include <QVector>
 #include <QSpinBox>
 #include <QDoubleSpinBox>
+#include <QComboBox>
 
 class MainView : public QWidget
 {
@@ -32,10 +32,12 @@ private:
     QDoubleSpinBox* _part_min_X;
     QDoubleSpinBox* _part_max_X;
     QSpinBox* _part_count_X;
+    QComboBox* _part_type_X;
 
     QDoubleSpinBox* _part_min_Y;
     QDoubleSpinBox* _part_max_Y;
     QSpinBox* _part_count_Y;
+    QComboBox* _part_type_Y;
 
     void initialize();
 

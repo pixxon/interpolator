@@ -6,6 +6,7 @@
 #include <QRegExp>
 #include <QString>
 
+
 typedef double(*binary_function)(double, double);
 
 enum Arity { ARITY_CONSTANT, ARITY_UNARY, ARITY_BINARY };
@@ -13,7 +14,15 @@ enum Arity { ARITY_CONSTANT, ARITY_UNARY, ARITY_BINARY };
 
 enum Associativity { ASSOCIATIVITY_LEFT, ASSOCIATIVITY_RIGHT, ASSOCIATIVITY_NONE };
 
-
+/**
+ * @brief The SymbolInfo class
+ *
+ *
+ *
+ *
+ *
+ *
+ */
 class SymbolInfo
 {
 public:
