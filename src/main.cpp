@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
     QObject::connect(&mainView, SIGNAL(inputSet(QString)), &model, SLOT(setInput(QString)));
     QObject::connect(&mainView, SIGNAL(partXSet(double, double, int)), &model, SLOT(setPartX(double,double,int)));
     QObject::connect(&mainView, SIGNAL(partYSet(double, double, int)), &model, SLOT(setPartY(double,double,int)));
+    QObject::connect(&model, SIGNAL(part_changed(QVector<double>,QVector<double>)), &mainView, SLOT(part_changed(QVector<double>,QVector<double>)));
 
     QObject::connect(&model, SIGNAL(init()), &inter_view, SLOT(init()));
     QObject::connect(&model, SIGNAL(addData(QVector3D,QVector3D)), &inter_view, SLOT(addPointToSurface(QVector3D,QVector3D)));

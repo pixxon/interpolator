@@ -1,7 +1,5 @@
 #include "parser.h"
 
-#include <iostream>
-
 
 ParserException::ParserException(const QString& what):
     _what(what)

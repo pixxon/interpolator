@@ -39,6 +39,8 @@ signals:
     void clear();
     void addData(QVector3D, QVector3D);
     void addData2(QVector3D, QVector3D);
+
+    void part_changed(QVector<double>, QVector<double>);
 };
 
 #endif // MODEL_H

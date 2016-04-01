@@ -47,7 +47,7 @@ void Model::setInput(QString str)
     QTime time;
     time.start();
 
-    emit(clear());
+    clear();
 
     evaluator->setExpression(str);
 
@@ -73,8 +73,8 @@ void Model::setInput(QString str)
                 diff *= -1;
             }
 
-            emit(addData({i, tmp, j}, {diff, diff, diff}));
-            emit(addData2({i, tmp2, j}, {diff, diff, diff}));
+            addData({i, tmp, j}, {diff, diff, diff});
+            addData2({i, tmp2, j}, {diff, diff, diff});
 
 
             tmp = interpolator->calculate(i, j + delta);
@@ -85,8 +85,8 @@ void Model::setInput(QString str)
                 diff *= -1;
             }
 
-            emit(addData({i, tmp, j + delta}, {diff, diff, diff}));
-            emit(addData2({i, tmp2, j + delta}, {diff, diff, diff}));
+            addData({i, tmp, j + delta}, {diff, diff, diff});
+            addData2({i, tmp2, j + delta}, {diff, diff, diff});
 
 
             tmp = interpolator->calculate(i + delta, j + delta);
@@ -97,8 +97,8 @@ void Model::setInput(QString str)
                 diff *= -1;
             }
 
-            emit(addData({i + delta, tmp, j + delta}, {diff, diff, diff}));
-            emit(addData2({i + delta, tmp2, j + delta}, {diff, diff, diff}));
+            addData({i + delta, tmp, j + delta}, {diff, diff, diff});
+            addData2({i + delta, tmp2, j + delta}, {diff, diff, diff});
 
 
             tmp = interpolator->calculate(i + delta, j);
@@ -109,13 +109,13 @@ void Model::setInput(QString str)
                 diff *= -1;
             }
 
-            emit(addData({i + delta, tmp, j}, {diff, diff, diff}));
-            emit(addData2({i + delta, tmp2, j}, {diff, diff, diff}));
+            addData({i + delta, tmp, j}, {diff, diff, diff});
+            addData2({i + delta, tmp2, j}, {diff, diff, diff});
         }
     }
 
 
-    emit(init());
+    init();
 
     qDebug() << time.elapsed();
 
@@ -124,15 +124,43 @@ void Model::setInput(QString str)
 
 void Model::timerTick()
 {
-    emit(render());
+    render();
 }
 
 void Model::setPartX(double min, double max, int count)
 {
     partX.setPartition(min, max, count);
+
+    QVector<double> resultX;
+    for (int i = 0; i < partX.getCount(); i++)
+    {
+        resultX.push_back(partX.at(i));
+    }
+
+    QVector<double> resultY;
+    for (int i = 0; i < partY.getCount(); i++)
+    {
+        resultY.push_back(partY.at(i));
+    }
+
+    part_changed(resultX, resultY);
 }
 
 void Model::setPartY(double min, double max, int count)
 {
     partY.setPartition(min, max, count);
+
+    QVector<double> resultX;
+    for (int i = 0; i < partX.getCount(); i++)
+    {
+        resultX.push_back(partX.at(i));
+    }
+
+    QVector<double> resultY;
+    for (int i = 0; i < partY.getCount(); i++)
+    {
+        resultY.push_back(partY.at(i));
+    }
+
+    part_changed(resultX, resultY);
 }

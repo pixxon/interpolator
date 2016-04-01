@@ -39,12 +39,14 @@ private:
     QSpinBox* _part_count_Y;
     QComboBox* _part_type_Y;
 
-    void initialize();
+    void showEvent(QShowEvent*);
 
 public slots:
     void buttonClick();
-    void count_x_changed(int);
-    void count_y_changed(int);
+    void count_x_changed();
+    void count_y_changed();
+
+    void part_changed(QVector<double>, QVector<double>);
 
 signals:
     void inputSet(QString);

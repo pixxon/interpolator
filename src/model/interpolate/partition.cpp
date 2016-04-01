@@ -16,9 +16,10 @@ void Partition::setPartition(double min, double max, int count)
 {
     _points.clear();
 
-    for (double i = min; i <= max; i+= (max - min) / (count - 1))
+    double diff = (max - min) / (count - 1);
+    for (int i = 0; i < count; i++)
     {
-        _points.push_back(i);
+        _points.push_back(min + i * diff);
     }
 }
 
