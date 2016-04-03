@@ -29,8 +29,8 @@ private:
 
 public slots:
     void setInput(QString);
-    void setPartX(double, double, int);
-    void setPartY(double, double, int);
+    void setPartX(double, double, int, QString);
+    void setPartY(double, double, int, QString);
     void timerTick();
 
 signals:

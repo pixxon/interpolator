@@ -50,8 +50,8 @@ public slots:
 
 signals:
     void inputSet(QString);
-    void partXSet(double, double, int);
-    void partYSet(double, double, int);
+    void partXSet(double, double, int, QString);
+    void partYSet(double, double, int, QString);
 };
 
 #endif // MAINVIEW_H

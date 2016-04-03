@@ -11,8 +11,6 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = Interpolator
 TEMPLATE = app
 
-QMAKE_CXXFLAGS += -std=c++11
-
 SOURCES += main.cpp\
     model/parseval/tokenizer.cpp \
     model/parseval/symbol.cpp \
@@ -45,8 +43,4 @@ HEADERS  += \
 
 RESOURCES += \
     resources.qrc
-
-INCLUDEPATH += .
-
-FORMS +=
 

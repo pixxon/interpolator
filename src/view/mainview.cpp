@@ -63,6 +63,7 @@ void MainView::showEvent(QShowEvent*)
 
     _part_type_X = new QComboBox();
     _part_type_X->addItems(QStringList({"Egyenletes", "Csebisev"}));
+    QObject::connect(_part_type_X, SIGNAL(currentIndexChanged(int)), this, SLOT(count_x_changed()));
 
     _part_min_Y = new QDoubleSpinBox();
     _part_min_Y->setMinimum(-std::numeric_limits<double>::max());
@@ -81,6 +82,7 @@ void MainView::showEvent(QShowEvent*)
 
     _part_type_Y = new QComboBox();
     _part_type_Y->addItems(QStringList({"Egyenletes", "Csebisev"}));
+    QObject::connect(_part_type_Y, SIGNAL(currentIndexChanged(int)), this, SLOT(count_x_changed()));
 
     QGridLayout* _bottom_page_1_layout = new QGridLayout();
 
@@ -117,8 +119,8 @@ void MainView::showEvent(QShowEvent*)
 
     setLayout(layout);
 
-    partXSet(_part_min_X->value(), _part_max_X->value(), _part_count_X->value());
-    partYSet(_part_min_Y->value(), _part_max_Y->value(), _part_count_Y->value());
+    partXSet(_part_min_X->value(), _part_max_X->value(), _part_count_X->value(), _part_type_X->currentText());
+    partYSet(_part_min_Y->value(), _part_max_Y->value(), _part_count_Y->value(), _part_type_Y->currentText());
 }
 
 void MainView::buttonClick()
@@ -135,12 +137,12 @@ void MainView::buttonClick()
 
 void MainView::count_x_changed()
 {
-    partXSet(_part_min_X->value(), _part_max_X->value(), _part_count_X->value());
+    partXSet(_part_min_X->value(), _part_max_X->value(), _part_count_X->value(), _part_type_X->currentText());
 }
 
 void MainView::count_y_changed()
 {
-    partYSet(_part_min_Y->value(), _part_max_Y->value(), _part_count_Y->value());
+    partYSet(_part_min_Y->value(), _part_max_Y->value(), _part_count_Y->value(), _part_type_Y->currentText());
 }
 
 void MainView::part_changed(QVector<double> partX, QVector<double> partY)
@@ -165,7 +167,7 @@ void MainView::part_changed(QVector<double> partX, QVector<double> partY)
 
     for (int i = 0; i < partY.size(); i++)
     {
-        QLabel* num = new QLabel(QString::number(partY[i], 'g', 2));
+        QLabel* num = new QLabel(QString::number(partY[i], 'f', 2));
         num->setFixedHeight(30);
         num->setFixedWidth(50);
         num->setAlignment(Qt::AlignCenter);
@@ -174,7 +176,7 @@ void MainView::part_changed(QVector<double> partX, QVector<double> partY)
 
     for (int i = 0; i < partX.size(); i++)
     {
-        QLabel* num = new QLabel(QString::number(partX[i], 'g', 2));
+        QLabel* num = new QLabel(QString::number(partX[i], 'f', 2));
         num->setFixedHeight(30);
         num->setFixedWidth(50);
         num->setAlignment(Qt::AlignCenter);

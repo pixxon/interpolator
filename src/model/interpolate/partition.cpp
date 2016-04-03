@@ -12,14 +12,32 @@ Partition::~Partition()
     _points.clear();
 }
 
-void Partition::setPartition(double min, double max, int count)
+void Partition::setPartition(double min, double max, int count, Partition_Type type)
 {
-    _points.clear();
-
-    double diff = (max - min) / (count - 1);
-    for (int i = 0; i < count; i++)
+    if (type == PARTITION_TYPE_EVEN)
     {
-        _points.push_back(min + i * diff);
+        _points.clear();
+
+        double diff = (max - min) / (count - 1);
+        for (int i = 0; i < count; i++)
+        {
+            _points.push_back(min + i * diff);
+        }
+    }
+    if (type == PARTITION_TYPE_CHEBYSHEV)
+    {
+        _points.clear();
+
+        for (int i = 1; i <= count; i++)
+        {
+            double root;
+
+            root = cos((2.f * i - 1.f) / (2.f * count) * 3.14159265359);
+            root *= (max - min) / 2;
+            root += min + ((max - min) / 2);
+
+            _points.push_back(-root);
+        }
     }
 }
 

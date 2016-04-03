@@ -127,9 +127,16 @@ void Model::timerTick()
     render();
 }
 
-void Model::setPartX(double min, double max, int count)
+void Model::setPartX(double min, double max, int count, QString type)
 {
-    partX.setPartition(min, max, count);
+    if (type == "Egyenletes")
+    {
+        partX.setPartition(min, max, count, PARTITION_TYPE_EVEN);
+    }
+    if (type == "Csebisev")
+    {
+        partX.setPartition(min, max, count, PARTITION_TYPE_CHEBYSHEV);
+    }
 
     QVector<double> resultX;
     for (int i = 0; i < partX.getCount(); i++)
@@ -146,9 +153,16 @@ void Model::setPartX(double min, double max, int count)
     part_changed(resultX, resultY);
 }
 
-void Model::setPartY(double min, double max, int count)
+void Model::setPartY(double min, double max, int count, QString type)
 {
-    partY.setPartition(min, max, count);
+    if (type == "Egyenletes")
+    {
+        partY.setPartition(min, max, count, PARTITION_TYPE_EVEN);
+    }
+    if (type == "Csebisev")
+    {
+        partY.setPartition(min, max, count, PARTITION_TYPE_CHEBYSHEV);
+    }
 
     QVector<double> resultX;
     for (int i = 0; i < partX.getCount(); i++)
