@@ -25,7 +25,7 @@ private:
     QPushButton* _render_button;
 
     QLineEdit* _func_input;
-    QVector<QVector<QLineEdit*>> _point_input;
+    QVector<QVector<QLineEdit*> > _point_input;
     int _point_input_x_size;
     int _point_input_y_size;
 

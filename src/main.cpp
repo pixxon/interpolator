@@ -5,7 +5,6 @@
 #include <QApplication>
 #include <QVector3D>
 #include <QDebug>
-#include <regex>
 
 int main(int argc, char *argv[])
 {

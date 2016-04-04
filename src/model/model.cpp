@@ -3,11 +3,12 @@
 
 #include <QDebug>
 #include <QTime>
+#include <qmath.h>
 
 Model::Model():
     QObject()
 {
-    table = new SymbolTable();
+    table = SymbolTable::getInstance();
     table->insertSymbol("var", QRegExp("^(x|y)"), ARITY_CONSTANT, ASSOCIATIVITY_NONE, 0, 0);
     table->insertSymbol("num", QRegExp("^[0-9]+(\\.[0-9]+)?"), ARITY_CONSTANT, ASSOCIATIVITY_NONE, 0, 0);
     table->insertSymbol("open", QRegExp("^\\("), ARITY_CONSTANT, ASSOCIATIVITY_NONE, 0, 0);
@@ -26,18 +27,17 @@ Model::Model():
     table->insertSymbol("tg", QRegExp("^tg"), ARITY_UNARY, ASSOCIATIVITY_NONE, 0, [](double a, double){ return tan(a); });
     table->insertSymbol("ctg", QRegExp("^ctg"), ARITY_UNARY, ASSOCIATIVITY_NONE, 0, [](double a, double){ return 1 / tan(a); });
 
-    evaluator = new Evaluator(table);
+    evaluator = new Evaluator();
 
     timer = new QTimer();
     timer->setInterval(33);
     QObject::connect(timer, SIGNAL(timeout()), this, SLOT(timerTick()));
 
-    interpolator = new Lagrange(table);
+    interpolator = new Lagrange();
 }
 
 Model::~Model()
 {
-    delete table;
     delete evaluator;
     delete timer;
 }

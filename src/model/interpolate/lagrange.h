@@ -11,7 +11,7 @@
 class Lagrange : public Interpolation
 {
 public:
-    Lagrange(SymbolTable* table);
+    Lagrange();
     ~Lagrange();
 
     double calculate(double x, double y);

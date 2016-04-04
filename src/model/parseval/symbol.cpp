@@ -1,8 +1,5 @@
 #include "symbol.h"
 
-#include <cstring>
-#include <QDebug>
-
 
 SymbolInfo::SymbolInfo()
 {
@@ -61,6 +58,17 @@ SymbolTable::~SymbolTable()
 {
 }
 
+SymbolTable* SymbolTable::_instance = 0;
+
+SymbolTable* SymbolTable::getInstance()
+{
+    if (_instance == 0)
+    {
+        _instance = new SymbolTable();
+    }
+    return _instance;
+}
+
 void SymbolTable::insertSymbol(const QString& name, const QRegExp& rgx, const Arity& argc, const Associativity& asso, const int& prec, const binary_function& func)
 {
     _table.push_back(SymbolInfo(name, rgx, argc, asso, prec, func));
@@ -76,8 +84,7 @@ const SymbolInfo& SymbolTable::operator[](const QString& name) const
 			return *it;
 		}
 		++it;
-	}
-	throw std::exception();
+    }
 }
 
 

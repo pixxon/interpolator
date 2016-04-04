@@ -12,8 +12,9 @@ class LexicalException: public QException
 {
 	public:
         LexicalException(const QString& what);
-		~LexicalException();
+        ~LexicalException() throw();
 
+    protected:
         const char* what() const throw();
 
 	private:
@@ -39,7 +40,7 @@ class Token
 class Tokenizer
 {
 	public:
-		Tokenizer(SymbolTable*);
+        Tokenizer();
 		~Tokenizer();
 
         void setInput(const QString&);

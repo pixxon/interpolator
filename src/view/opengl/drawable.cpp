@@ -1,5 +1,8 @@
 #include "drawable.h"
 
+#include <QOpenGLContext>
+#include <QOpenGLFunctions>
+
 Drawable::Drawable(QOpenGLShaderProgram* program):
     _program(program)
 {
@@ -66,7 +69,7 @@ void Drawable::draw(GLenum mode)
 {
     _vao->bind();
 
-    glDrawArrays(mode, 0, _pos_data.size() * 3);
+    QOpenGLContext::currentContext()->functions()->glDrawArrays(mode, 0, _pos_data.size() * 3);
 
     _vao->release();
 }

@@ -10,7 +10,7 @@
 class Evaluator
 {
 	public:
-		Evaluator(SymbolTable* table);
+        Evaluator();
 		~Evaluator();
 
         void setExpression(const QString& str);
@@ -21,7 +21,7 @@ class Evaluator
 		SymbolTable* _table;
 		Node* _root;
 
-        QMap<double, QMap<double, double>> _cache;
+        QMap<double, QMap<double, double> > _cache;
 
 
         double calculateAt(const Node* node, const double& x, const double& y);

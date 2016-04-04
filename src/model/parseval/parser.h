@@ -13,7 +13,7 @@ class ParserException: public QException
 {
 	public:
         ParserException(const QString& what);
-		~ParserException();
+        ~ParserException() throw();
 
         const char* what() const throw();
 
@@ -42,7 +42,7 @@ class Node
 class Parser
 {
 	public:
-		Parser(SymbolTable*);
+        Parser();
 		~Parser();
 
 		Node* getTree();

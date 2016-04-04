@@ -1,9 +1,9 @@
 #include "evaluator.h"
 
 
-Evaluator::Evaluator(SymbolTable* table):
-    _parser(table),
-    _table(table),
+Evaluator::Evaluator():
+    _parser(),
+    _table(SymbolTable::getInstance()),
     _root(0)
 {
 }
@@ -15,7 +15,7 @@ Evaluator::~Evaluator()
 
 void Evaluator::setExpression(const QString& str)
 {
-    for (QMap<double, QMap<double, double>>::iterator it = _cache.begin(); it != _cache.end(); it++)
+    for (QMap<double, QMap<double, double> >::iterator it = _cache.begin(); it != _cache.end(); it++)
     {
         it->clear();
     }
@@ -40,7 +40,7 @@ double Evaluator::calculate(const double& x, const double& y)
 
 double Evaluator::calculateAt(const Node* node, const double& x, const double& y)
 {
-	if (node == nullptr)
+    if (node == 0)
 	{
 		return 0;
 	}

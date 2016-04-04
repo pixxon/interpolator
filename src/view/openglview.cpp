@@ -1,6 +1,8 @@
 #include "openglview.h"
 
 #include <QOpenGLShader>
+#include <QOpenGLFunctions>
+#include <QOpenGLContext>
 
 OpenGLView::OpenGLView(QWidget *parent) :
     QOpenGLWidget(parent)
@@ -21,8 +23,8 @@ void OpenGLView::addPointToSurface(QVector3D pos, QVector3D col)
 
 void OpenGLView::initializeGL()
 {
-    glClearColor(0.125f, 0.25f, 0.5f, 1.0f);
-    glEnable(GL_DEPTH_TEST);
+    QOpenGLContext::currentContext()->functions()->glClearColor(1, 1, 1, 1);
+    QOpenGLContext::currentContext()->functions()->glEnable(GL_DEPTH_TEST);
 
     _program->create();
 
@@ -55,7 +57,7 @@ void OpenGLView::paintGL()
 {
     _camera.setView(Camera::lookAt(QVector3D(10, 2, 10), QVector3D(0, 0, 0), QVector3D(0, 1, 0)));
 
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    QOpenGLContext::currentContext()->functions()->glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     QMatrix4x4 tmp = _camera.getWorld();
     tmp.rotate(1.f, 0.f, 1.f, 0.f);

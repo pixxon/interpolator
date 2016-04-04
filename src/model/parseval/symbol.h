@@ -9,74 +9,71 @@
 
 typedef double(*binary_function)(double, double);
 
+
 enum Arity { ARITY_CONSTANT, ARITY_UNARY, ARITY_BINARY };
 
 
 enum Associativity { ASSOCIATIVITY_LEFT, ASSOCIATIVITY_RIGHT, ASSOCIATIVITY_NONE };
 
-/**
- * @brief The SymbolInfo class
- *
- *
- *
- *
- *
- *
- */
+
 class SymbolInfo
 {
-public:
-    SymbolInfo();
-    SymbolInfo(const QString&, const QRegExp&, const Arity&, const Associativity&, const int&, const binary_function&);
-    ~SymbolInfo();
+    public:
+        SymbolInfo();
+        SymbolInfo(const QString&, const QRegExp&, const Arity&, const Associativity&, const int&, const binary_function&);
+        ~SymbolInfo();
 
-    const QString& getName() const;
-    const QRegExp& getRegex() const;
-    const Arity& getArity() const;
-    const Associativity& getAssociativity() const;
-    const int& getPrecedence() const;
-    const binary_function& getFunction() const;
+        const QString& getName() const;
+        const QRegExp& getRegex() const;
+        const Arity& getArity() const;
+        const Associativity& getAssociativity() const;
+        const int& getPrecedence() const;
+        const binary_function& getFunction() const;
 
-private:
-    QString _name;
-    QRegExp _rgx;
-    Arity _argc;
-    Associativity _asso;
-    int _prec;
-    binary_function _func;
+    private:
+        QString _name;
+        QRegExp _rgx;
+        Arity _argc;
+        Associativity _asso;
+        int _prec;
+        binary_function _func;
 };
 
 
 class SymbolTable
 {
-public:
-	SymbolTable();
-	~SymbolTable();
+    public:
+        static SymbolTable* getInstance();
 
-    void insertSymbol(const QString&, const QRegExp&, const Arity&, const Associativity&, const int&, const binary_function&);
-    const SymbolInfo& operator[](const QString&) const;
+        void insertSymbol(const QString&, const QRegExp&, const Arity&, const Associativity&, const int&, const binary_function&);
+        const SymbolInfo& operator[](const QString&) const;
 
-	class const_iterator
-	{
-	private:
-        QVector<SymbolInfo>::const_iterator _it;
+        const_iterator begin() const;
+        const_iterator end() const;
 
-	public:
-        const_iterator(QVector<SymbolInfo>::const_iterator it);
-		~const_iterator();
+        class const_iterator
+        {
+            private:
+                QVector<SymbolInfo>::const_iterator _it;
 
-		const SymbolInfo operator*() const;
-		const SymbolInfo* operator->() const;
-		bool operator==(const const_iterator& other) const;
-		bool operator!=(const const_iterator& other) const;
-		const_iterator operator++();
-	};
+            public:
+                const_iterator(QVector<SymbolInfo>::const_iterator it);
+                ~const_iterator();
 
-    const_iterator begin() const;
-    const_iterator end() const;
+                const SymbolInfo operator*() const;
+                const SymbolInfo* operator->() const;
+                bool operator==(const const_iterator& other) const;
+                bool operator!=(const const_iterator& other) const;
+                const_iterator operator++();
+        };
 
-private:	
-    QVector<SymbolInfo> _table;
+    private:
+        SymbolTable();
+        ~SymbolTable();
+
+        QVector<SymbolInfo> _table;
+
+        static SymbolTable* _instance;
 };
 
 

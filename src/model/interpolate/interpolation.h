@@ -9,7 +9,7 @@
 class Interpolation
 {
 public:
-    Interpolation(SymbolTable* table);
+    Interpolation();
     virtual ~Interpolation();
 
     void addData(double x, double y, double z);
@@ -19,7 +19,6 @@ public:
 
 protected:
     DataTable _data;
-    SymbolTable* _table;
 
     bool _needInitialize;
 };

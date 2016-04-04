@@ -11,6 +11,7 @@
 #include <QDoubleValidator>
 #include <QException>
 #include <QSpacerItem>
+#include <limits>
 
 
 MainView::MainView(QWidget *parent) :
@@ -82,7 +83,7 @@ void MainView::showEvent(QShowEvent*)
 
     _part_type_Y = new QComboBox();
     _part_type_Y->addItems(QStringList({"Egyenletes", "Csebisev"}));
-    QObject::connect(_part_type_Y, SIGNAL(currentIndexChanged(int)), this, SLOT(count_x_changed()));
+    QObject::connect(_part_type_Y, SIGNAL(currentIndexChanged(int)), this, SLOT(count_y_changed()));
 
     QGridLayout* _bottom_page_1_layout = new QGridLayout();
 

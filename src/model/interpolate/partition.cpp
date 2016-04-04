@@ -36,7 +36,7 @@ void Partition::setPartition(double min, double max, int count, Partition_Type t
             root *= (max - min) / 2;
             root += min + ((max - min) / 2);
 
-            _points.push_back(-root);
+            _points.push_front(root);
         }
     }
 }

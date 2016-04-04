@@ -6,7 +6,7 @@ ParserException::ParserException(const QString& what):
 {
 }
 
-ParserException::~ParserException()
+ParserException::~ParserException() throw()
 {
 }
 
@@ -25,11 +25,11 @@ Node::Node(Node* left, Node* right, const Token& token):
 
 Node::~Node()
 {
-	if (_left != nullptr)
+    if (_left != 0)
 	{
 		delete _left;
 	}
-	if (_right != nullptr)
+    if (_right != 0)
 	{
 		delete _right;
 	}
@@ -50,9 +50,9 @@ const Token& Node::getToken() const
 	return _token;
 }
 
-Parser::Parser(SymbolTable* table):
-    _table(table),
-    _tokenizer(table)
+Parser::Parser():
+    _table(SymbolTable::getInstance()),
+    _tokenizer()
 {
 }
 
@@ -105,7 +105,7 @@ Node* Parser::parse_primary()
 	if (peek.getType() == "num" || peek.getType() == "var")
 	{
 		_tokenizer.next();
-		return new Node(nullptr, nullptr, peek);
+        return new Node(0, 0, peek);
 	}
 
 	if (peek.getType() == "min")
@@ -115,7 +115,7 @@ Node* Parser::parse_primary()
 			throw ParserException("Unexpected end of input!");
 		}
 		_tokenizer.next();
-		return new Node(nullptr, parse_primary(), peek);
+        return new Node(0, parse_primary(), peek);
 	}
 
 	if (peek.getType() == "open")
@@ -146,7 +146,7 @@ Node* Parser::parse_primary()
 		}
 		_tokenizer.next();
 
-		return new Node(parse_primary(), nullptr, peek);
+        return new Node(parse_primary(), 0, peek);
     }
 
     throw ParserException("Unexpected token: " + peek.getValue() + "!");

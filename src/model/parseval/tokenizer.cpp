@@ -7,7 +7,7 @@ LexicalException::LexicalException(const QString& what):
 {
 }
 
-LexicalException::~LexicalException()
+LexicalException::~LexicalException() throw()
 {
 }
 
@@ -38,10 +38,10 @@ const QString& Token::getValue() const
 }
 
 
-Tokenizer::Tokenizer(SymbolTable* table):
+Tokenizer::Tokenizer():
 	_current("", ""),
 	_input(""),
-	_table(table)
+    _table(SymbolTable::getInstance())
 {
 }
 

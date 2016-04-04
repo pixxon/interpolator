@@ -1,7 +1,6 @@
 #include "interpolation.h"
 
-Interpolation::Interpolation(SymbolTable* table):
-    _table(table),
+Interpolation::Interpolation():
     _needInitialize(false)
 {
 }

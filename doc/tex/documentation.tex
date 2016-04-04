@@ -41,9 +41,15 @@
 
 \section{Osztály diagrammok}
 \begin{tikzpicture}
-\begin{class}{A}{0,0}
-	\attribute{\_b : B}
-	\operation{A()}
+\begin{class}{SymbolInfo}{0,0}
+	\attribute{-\_name : QString}
+	\attribute{-\_rgx : QRegExp}
+	\attribute{-\_name : Arity}
+	\attribute{-\_name : Associativity}
+	\attribute{-\_name : int}
+	\attribute{-\_func : binary\_function}
+	\operation{SymbolInfo()}
+		\operation{SymbolInfo()}
 	\operation{Foo(): void}
 \end{class}
 

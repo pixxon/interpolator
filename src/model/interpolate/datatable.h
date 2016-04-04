@@ -24,7 +24,7 @@ private:
     QVector<double> _baseX;
     QVector<double> _baseY;
 
-    QVector<QVector<double*>> _val;
+    QVector<QVector<double*> > _val;
 
 };
 

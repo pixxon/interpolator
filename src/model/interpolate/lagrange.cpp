@@ -3,7 +3,8 @@
 #include <QStringList>
 #include <QDebug>
 
-Lagrange::Lagrange(SymbolTable* table):Interpolation(table)
+Lagrange::Lagrange():
+    Interpolation()
 {
 
 }
@@ -59,14 +60,14 @@ void Lagrange::initialize()
 
     for (int i = 0; i < _data.sizeX(); i++)
     {
-        Evaluator* evaluator = new Evaluator(_table);
+        Evaluator* evaluator = new Evaluator();
         evaluator->setExpression(createPolynomialX(i));
         _polX.push_back(evaluator);
     }
 
     for (int j = 0; j < _data.sizeY(); j++)
     {
-        Evaluator* evaluator = new Evaluator(_table);
+        Evaluator* evaluator = new Evaluator();
         evaluator->setExpression(createPolynomialY(j));
         _polY.push_back(evaluator);
     }
