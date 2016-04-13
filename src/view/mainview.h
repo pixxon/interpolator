@@ -8,6 +8,7 @@
 #include <QSpinBox>
 #include <QDoubleSpinBox>
 #include <QComboBox>
+#include <QTabWidget>
 
 class MainView : public QWidget
 {
@@ -17,8 +18,11 @@ public:
     ~MainView();
 
 private:
+	QTabWidget* _top;
     QWidget* _top_page_1;
     QWidget* _top_page_2;
+
+	QTabWidget* _bottom;
     QWidget* _bottom_page_1;
     QWidget* _bottom_page_2;
 
@@ -26,8 +30,6 @@ private:
 
     QLineEdit* _func_input;
     QVector<QVector<QLineEdit*> > _point_input;
-    int _point_input_x_size;
-    int _point_input_y_size;
 
     QDoubleSpinBox* _part_min_X;
     QDoubleSpinBox* _part_max_X;
@@ -50,6 +52,7 @@ public slots:
 
 signals:
     void inputSet(QString);
+	void inputSet(QVector<QVector<double>>);
     void partXSet(double, double, int, QString);
     void partYSet(double, double, int, QString);
 };

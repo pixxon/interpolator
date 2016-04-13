@@ -26,20 +26,20 @@ Lagrange::~Lagrange()
 
 double Lagrange::calculate(double x, double y)
 {
-    if (_needInitialize)
-    {
-        initialize();
-    }
+	if (_needInitialize)
+	{
+		initialize();
+	}
 
-    double result = 0;
+	double result = 0;
 
-    for (int i = 0; i < _polX.size(); i++)
-    {
-        for (int j = 0; j < _polY.size(); j++)
-        {
-            result += _data.valueAt(i, j) * _polX[i]->calculate(x, y) * _polY[j]->calculate(x, y);
-        }
-    }
+	for (int i = 0; i < _polX.size(); i++)
+	{
+		for (int j = 0; j < _polY.size(); j++)
+		{
+			result += _data.valueAt(i, j) * _polX[i]->calculate(x, y) * _polY[j]->calculate(x, y);
+		}
+	}
 
     return result;
 }
@@ -94,7 +94,14 @@ QString Lagrange::createPolynomialX(int v)
         }
     }
 
-    return "(" + numerator.join("") + ")/(" + QString::number(denominator, 'f', 10) + ")";
+	if (_data.sizeX() > 1)
+	{
+		return "(" + numerator.join("") + ")/(" + QString::number(denominator, 'f', 10) + ")";
+	}
+	else
+	{
+		return "1";
+	}
 }
 
 QString Lagrange::createPolynomialY(int v)

@@ -12,6 +12,7 @@
 #include <QException>
 #include <QSpacerItem>
 #include <limits>
+#include <QDebug>
 
 
 MainView::MainView(QWidget *parent) :
@@ -37,13 +38,10 @@ void MainView::showEvent(QShowEvent*)
     //_top_page_2
     _top_page_2 = new QWidget();
 
-    _point_input_x_size = 0;
-    _point_input_y_size = 0;
-
     //_top_pages
-    QTabWidget* top = new QTabWidget();
-    top->addTab(_top_page_1, "Függvény");
-    top->addTab(_top_page_2, "Értékek");
+    _top = new QTabWidget();
+    _top->addTab(_top_page_1, "Függvény");
+    _top->addTab(_top_page_2, "Értékek");
 
     //_bottom_page_1
     _bottom_page_1 = new QWidget();
@@ -58,7 +56,7 @@ void MainView::showEvent(QShowEvent*)
     QObject::connect(_part_max_X, SIGNAL(valueChanged(double)), this, SLOT(count_x_changed()));
 
     _part_count_X = new QSpinBox();
-    _part_count_X->setMinimum(2);
+    _part_count_X->setMinimum(1);
     _part_count_X->setMaximum(10);
     QObject::connect(_part_count_X, SIGNAL(valueChanged(int)), this, SLOT(count_x_changed()));
 
@@ -104,9 +102,9 @@ void MainView::showEvent(QShowEvent*)
     _bottom_page_2 = new QWidget();
 
     //_bottom_pages
-    QTabWidget* bottom = new QTabWidget();
-    bottom->addTab(_bottom_page_1, "Eloszlás");
-    bottom->addTab(_bottom_page_2, "Alappontok");
+    _bottom = new QTabWidget();
+	_bottom->addTab(_bottom_page_1, "Eloszlás");
+	_bottom->addTab(_bottom_page_2, "Alappontok");
 
     //_button
     _render_button = new QPushButton("Render");
@@ -114,8 +112,8 @@ void MainView::showEvent(QShowEvent*)
 
     //_all
     QVBoxLayout* layout = new QVBoxLayout();
-    layout->addWidget(bottom);
-    layout->addWidget(top);
+    layout->addWidget(_bottom);
+    layout->addWidget(_top);
     layout->addWidget(_render_button);
 
     setLayout(layout);
@@ -126,14 +124,35 @@ void MainView::showEvent(QShowEvent*)
 
 void MainView::buttonClick()
 {
-    try
-    {
-        inputSet(_func_input->text());
-    }
-    catch(QException& ex)
-    {
-        _func_input->setText(ex.what());
-    }
+	if (_top->currentIndex() == 0)
+	{
+		try
+		{
+			inputSet(_func_input->text());
+		}
+		catch (QException& ex)
+		{
+			_func_input->setText(ex.what());
+		}
+	}
+
+	if (_top->currentIndex() == 1)
+	{
+		QVector<QVector<double>> points;
+
+		points.resize(_point_input.size());
+		for (int i = 0; i < _point_input.size(); i++)
+		{
+			points[i].resize(_point_input[i].size());
+			for (int j = 0; j < _point_input[i].size(); j++)
+			{
+				points[i][j] = _point_input[i][j]->text().toDouble();
+				qDebug() << points[i][j];
+			}
+		}
+
+		inputSet(points);
+	}
 }
 
 void MainView::count_x_changed()

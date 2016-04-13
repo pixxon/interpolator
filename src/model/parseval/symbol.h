@@ -7,7 +7,7 @@
 #include <QString>
 
 
-typedef double(*binary_function)(double, double);
+typedef double(*Binary_Function)(double, double);
 
 
 enum Arity { ARITY_CONSTANT, ARITY_UNARY, ARITY_BINARY };
@@ -20,7 +20,7 @@ class SymbolInfo
 {
     public:
         SymbolInfo();
-        SymbolInfo(const QString&, const QRegExp&, const Arity&, const Associativity&, const int&, const binary_function&);
+        SymbolInfo(const QString&, const QRegExp&, const Arity&, const Associativity&, const int&, const Binary_Function&);
         ~SymbolInfo();
 
         const QString& getName() const;
@@ -28,7 +28,7 @@ class SymbolInfo
         const Arity& getArity() const;
         const Associativity& getAssociativity() const;
         const int& getPrecedence() const;
-        const binary_function& getFunction() const;
+        const Binary_Function& getFunction() const;
 
     private:
         QString _name;
@@ -36,7 +36,7 @@ class SymbolInfo
         Arity _argc;
         Associativity _asso;
         int _prec;
-        binary_function _func;
+		Binary_Function _func;
 };
 
 
@@ -45,11 +45,11 @@ class SymbolTable
     public:
         static SymbolTable* getInstance();
 
-        void insertSymbol(const QString&, const QRegExp&, const Arity&, const Associativity&, const int&, const binary_function&);
-        const SymbolInfo& operator[](const QString&) const;
+        SymbolTable(const SymbolTable&) = delete;
+        SymbolTable& operator=(const SymbolTable&) = delete;
 
-        const_iterator begin() const;
-        const_iterator end() const;
+        void insertSymbol(const QString&, const QRegExp&, const Arity&, const Associativity&, const int&, const Binary_Function&);
+        const SymbolInfo& operator[](const QString&) const;
 
         class const_iterator
         {
@@ -66,6 +66,9 @@ class SymbolTable
                 bool operator!=(const const_iterator& other) const;
                 const_iterator operator++();
         };
+
+        const_iterator begin() const;
+        const_iterator end() const;
 
     private:
         SymbolTable();

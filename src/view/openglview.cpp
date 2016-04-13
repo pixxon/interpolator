@@ -69,7 +69,10 @@ void OpenGLView::paintGL()
     _program->setUniformValue("view", _camera.getView());
     _program->setUniformValue("proj", _camera.getProj());
 
+	_program->setUniformValue("coloring", 1);
     _surface->draw(GL_QUADS);
+
+	_program->setUniformValue("coloring", 0);
     _coord->draw(GL_LINES);
 
     _program->release();

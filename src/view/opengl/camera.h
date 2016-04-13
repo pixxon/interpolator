@@ -1,5 +1,10 @@
+#ifndef CAMERA_H
+#define CAMERA_H
+
+
 #include <QMatrix4x4>
 #include <QVector3D>
+
 
 class Camera
 {
@@ -26,3 +31,6 @@ class Camera
         QMatrix4x4 _view;
         QMatrix4x4 _world;
 };
+
+
+#endif // CAMERA_H

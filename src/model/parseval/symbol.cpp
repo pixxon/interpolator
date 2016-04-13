@@ -5,7 +5,7 @@ SymbolInfo::SymbolInfo()
 {
 }
 
-SymbolInfo::SymbolInfo(const QString& name, const QRegExp& rgx, const Arity& argc, const Associativity& asso, const int& prec, const binary_function& func):
+SymbolInfo::SymbolInfo(const QString& name, const QRegExp& rgx, const Arity& argc, const Associativity& asso, const int& prec, const Binary_Function& func):
     _name(name),
     _rgx(rgx),
     _argc(argc),
@@ -44,7 +44,7 @@ const int& SymbolInfo::getPrecedence() const
     return _prec;
 }
 
-const binary_function& SymbolInfo::getFunction() const
+const Binary_Function& SymbolInfo::getFunction() const
 {
     return _func;
 }
@@ -69,7 +69,7 @@ SymbolTable* SymbolTable::getInstance()
     return _instance;
 }
 
-void SymbolTable::insertSymbol(const QString& name, const QRegExp& rgx, const Arity& argc, const Associativity& asso, const int& prec, const binary_function& func)
+void SymbolTable::insertSymbol(const QString& name, const QRegExp& rgx, const Arity& argc, const Associativity& asso, const int& prec, const Binary_Function& func)
 {
     _table.push_back(SymbolInfo(name, rgx, argc, asso, prec, func));
 }

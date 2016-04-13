@@ -9,6 +9,7 @@ Model::Model():
     QObject()
 {
     table = SymbolTable::getInstance();
+
     table->insertSymbol("var", QRegExp("^(x|y)"), ARITY_CONSTANT, ASSOCIATIVITY_NONE, 0, 0);
     table->insertSymbol("num", QRegExp("^[0-9]+(\\.[0-9]+)?"), ARITY_CONSTANT, ASSOCIATIVITY_NONE, 0, 0);
     table->insertSymbol("open", QRegExp("^\\("), ARITY_CONSTANT, ASSOCIATIVITY_NONE, 0, 0);
@@ -120,6 +121,53 @@ void Model::setInput(QString str)
     qDebug() << time.elapsed();
 
     timer->start();
+}
+
+
+void Model::setInput(QVector<QVector<double>> points)
+{
+	QTime time;
+	time.start();
+
+	clear();
+
+	interpolator->clear();
+	for (int i = 0; i < partX.getCount(); i++)
+	{
+		for (int j = 0; j < partY.getCount(); j++)
+		{
+			interpolator->addData(partX.at(i), partY.at(j), points[i][j]);
+		}
+	}
+
+	float delta = 0.2f;
+	for (float i = partX.at(0); i <= partX.at(partX.getCount() - 1); i += delta)
+	{
+		for (float j = partY.at(0); j <= partY.at(partY.getCount() - 1); j += delta)
+		{
+			float tmp = interpolator->calculate(i, j);
+			addData({ i, tmp, j }, { 0, 0, 0 });
+
+
+			tmp = interpolator->calculate(i, j + delta);
+			addData({ i, tmp, j + delta }, { 0, 0, 0 });
+
+
+			tmp = interpolator->calculate(i + delta, j + delta);
+			addData({ i + delta, tmp, j + delta }, { 0, 0, 0 });
+
+
+			tmp = interpolator->calculate(i + delta, j);
+			addData({ i + delta, tmp, j }, { 0, 0, 0 });
+		}
+	}
+
+
+	init();
+
+	qDebug() << time.elapsed();
+
+	timer->start();
 }
 
 void Model::timerTick()
