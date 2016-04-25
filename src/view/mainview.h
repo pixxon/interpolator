@@ -17,6 +17,8 @@ public:
     explicit MainView(QWidget *parent = 0);
     ~MainView();
 
+    void part_changed(QVector<double>, QVector<double>);
+
 private:
 	QTabWidget* _top;
     QWidget* _top_page_1;
@@ -43,18 +45,17 @@ private:
 
     void showEvent(QShowEvent*);
 
-public slots:
+signals:
+    void inputSet(QString);
+	void inputSet(QVector<QVector<double>>);
+    void partSet(char, double, double, int, QString);
+    void partSet(QVector<double>);
+
+private slots:
     void buttonClick();
     void count_x_changed();
     void count_y_changed();
 
-    void part_changed(QVector<double>, QVector<double>);
-
-signals:
-    void inputSet(QString);
-	void inputSet(QVector<QVector<double>>);
-    void partXSet(double, double, int, QString);
-    void partYSet(double, double, int, QString);
 };
 
 #endif // MAINVIEW_H

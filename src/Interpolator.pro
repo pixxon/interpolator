@@ -26,7 +26,8 @@ SOURCES += main.cpp\
     view/openglview.cpp \
     model/interpolate/lagrange.cpp \
     model/interpolate/datatable.cpp \
-    model/interpolate/partition.cpp
+    model/interpolate/partition.cpp \
+    controller/controller.cpp
 
 HEADERS  += \
     model/parseval/tokenizer.h \
@@ -41,7 +42,8 @@ HEADERS  += \
     view/openglview.h \
     model/interpolate/lagrange.h \
     model/interpolate/datatable.h \
-    model/interpolate/partition.h
+    model/interpolate/partition.h \
+    controller/controller.h
 
 RESOURCES += \
     resources.qrc

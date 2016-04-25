@@ -14,12 +14,15 @@ OpenGLView::OpenGLView(QWidget *parent) :
 
 OpenGLView::~OpenGLView()
 {
+    _program->release();
+    _surface->clear();
+    _coord->clear();
+
+    delete _program;
+    delete _surface;
+    delete _coord;
 }
 
-void OpenGLView::addPointToSurface(QVector3D pos, QVector3D col)
-{
-    _surface->addData(pos, col);
-}
 
 void OpenGLView::initializeGL()
 {
@@ -83,6 +86,7 @@ void OpenGLView::resizeGL(int w, int h)
     _camera.setProj(Camera::perspective(45.f, w/(float)h, 0.001f, 1000.f));
 }
 
+
 void OpenGLView::init()
 {
     show();
@@ -101,4 +105,9 @@ void OpenGLView::clear()
     _surface->clear();
 
     hide();
+}
+
+void OpenGLView::addPoint(QVector3D pos, QVector3D col)
+{
+    _surface->addData(pos, col);
 }

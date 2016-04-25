@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.3.27)  3 APR 2016 19:07
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.3.27)  25 APR 2016 18:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -398,21 +398,53 @@ Struktogramok 2.5 [2001/01/26]
 \stuki@height=\skip47
 \stuki@condwidth=\skip48
 \stuki@condheight=\skip49
-) (/home/gergo/texmf/tex/latex/ucs/ucs.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/ms/ragged2e.sty
+Package: ragged2e 2009/05/21 v2.1 ragged2e Package (MS)
+
+(/usr/share/texlive/texmf-dist/tex/latex/ms/everysel.sty
+Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
+)
+\CenteringLeftskip=\skip50
+\RaggedLeftLeftskip=\skip51
+\RaggedRightLeftskip=\skip52
+\CenteringRightskip=\skip53
+\RaggedLeftRightskip=\skip54
+\RaggedRightRightskip=\skip55
+\CenteringParfillskip=\skip56
+\RaggedLeftParfillskip=\skip57
+\RaggedRightParfillskip=\skip58
+\JustifyingParfillskip=\skip59
+\CenteringParindent=\skip60
+\RaggedLeftParindent=\skip61
+\RaggedRightParindent=\skip62
+\JustifyingParindent=\skip63
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks25
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/home/gergo/texmf/tex/latex/ucs/ucs.sty
 Package: ucs 2013/05/11 v2.2 UCS: Unicode input support
 
 (/home/gergo/texmf/tex/latex/ucs/data/uni-global.def
 File: uni-global.def 2013/05/13 UCS: Unicode global data
 )
 \uc@secondtry=\count116
-\uc@combtoks=\toks25
-\uc@combtoksb=\toks26
-\uc@temptokena=\toks27
+\uc@combtoks=\toks26
+\uc@combtoksb=\toks27
+\uc@temptokena=\toks28
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2008/03/30 v1.1d Input encoding file
-\inpenc@prehook=\toks28
-\inpenc@posthook=\toks29
+\inpenc@prehook=\toks29
+\inpenc@posthook=\toks30
 
 (/home/gergo/texmf/tex/latex/ucs/utf8x.def
 File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
@@ -443,35 +475,170 @@ Package babel Info: Making ` an active character on input line 2735.
 \c@footnote@add=\count118
 \c@footnote@ch=\count119
 ))
+(/home/gergo/texmf/tex/latex/pgfplots/pgfplots.sty
+(/home/gergo/texmf/tex/generic/pgfplots/pgfplots.revision.tex)
+Package: pgfplots 2016/01/06 v1.13 Data Visualization (1.13)
+
+(/home/gergo/texmf/tex/generic/pgfplots/pgfplots.code.tex
+(/home/gergo/texmf/tex/generic/pgfplots/pgfplotscore.code.tex
+\t@pgfplots@toka=\toks31
+\t@pgfplots@tokb=\toks32
+\t@pgfplots@tokc=\toks33
+\pgfplots@tmpa=\dimen158
+\c@pgfplots@coordindex=\count120
+\c@pgfplots@scanlineindex=\count121
+
+(/home/gergo/texmf/tex/generic/pgfplots/sys/pgfplotssysgeneric.code.tex))
+(/home/gergo/texmf/tex/generic/pgfplots/libs/pgfplotslibrary.code.tex)
+(/home/gergo/texmf/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_loade
+r.code.tex
+Package pgfplots: loading complementary code for your PGF version...
+
+(/home/gergo/texmf/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_misc.
+code.tex)
+(/home/gergo/texmf/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfke
+ys.code.tex
+\pgfkeys@pathtoks=\toks34
+\pgfkeys@temptoks=\toks35
+
+(/home/gergo/texmf/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfke
+ysfiltered.code.tex
+\pgfkeys@tmptoks=\toks36
+))
+(/home/gergo/texmf/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfma
+thfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count122
+)
+(/home/gergo/texmf/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfli
+braryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2012/09/11 v2.10 (rcs-revision 1.17)
+\pgf@plot@mark@count=\count123
+\pgfplotmarksize=\dimen159
+)
+(/home/gergo/texmf/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfli
+braryfpu.code.tex)
+(/home/gergo/texmf/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfco
+rescopes.code.tex
+File: pgfcorescopes.code.tex 2012/11/30  (rcs-revision 1.38)
+\pgfpic=\box62
+\pgf@hbox=\box63
+\pgf@layerbox@main=\box64
+\pgf@picture@serial@count=\count124
+)
+(/home/gergo/texmf/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfco
+relayers.code.tex
+File: pgfcorelayers.code.tex 2012/11/07  (rcs-revision 1.5)
+)
+Package pgfplots: loading complementary utilities for your pgf version...
+\t@pgf@toka=\toks37
+\t@pgf@tokb=\toks38
+\t@pgf@tokc=\toks39
+
+(/home/gergo/texmf/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfut
+il-common-lists.tex)
+(/home/gergo/texmf/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_trig_
+format.code.tex))
+(/home/gergo/texmf/tex/generic/pgfplots/util/pgfplotsutil.code.tex
+(/home/gergo/texmf/tex/generic/pgfplots/liststructure/pgfplotsliststructure.cod
+e.tex)
+(/home/gergo/texmf/tex/generic/pgfplots/liststructure/pgfplotsliststructureext.
+code.tex)
+(/home/gergo/texmf/tex/generic/pgfplots/liststructure/pgfplotsarray.code.tex
+\c@pgfplotsarray@tmp=\count125
+)
+(/home/gergo/texmf/tex/generic/pgfplots/liststructure/pgfplotsmatrix.code.tex)
+(/home/gergo/texmf/tex/generic/pgfplots/numtable/pgfplotstableshared.code.tex
+\c@pgfplotstable@counta=\count126
+\t@pgfplotstable@a=\toks40
+)
+(/home/gergo/texmf/tex/generic/pgfplots/liststructure/pgfplotsdeque.code.tex)
+(/home/gergo/texmf/tex/generic/pgfplots/util/pgfplotsbinary.code.tex
+(/home/gergo/texmf/tex/generic/pgfplots/util/pgfplotsbinary.data.code.tex))
+(/home/gergo/texmf/tex/generic/pgfplots/util/pgfplotsutil.verb.code.tex)
+(/home/gergo/texmf/tex/generic/pgfplots/libs/pgflibrarypgfplots.surfshading.cod
+e.tex
+\c@pgfplotslibrarysurf@no=\count127
+
+(/home/gergo/texmf/tex/generic/pgfplots/sys/pgflibrarypgfplots.surfshading.pgfs
+ys-pdftex.def)))
+(/home/gergo/texmf/tex/generic/pgfplots/util/pgfplotscolormap.code.tex
+(/home/gergo/texmf/tex/generic/pgfplots/util/pgfplotscolor.code.tex))
+(/home/gergo/texmf/tex/generic/pgfplots/pgfplotsstackedplots.code.tex)
+(/home/gergo/texmf/tex/generic/pgfplots/pgfplotsplothandlers.code.tex
+(/home/gergo/texmf/tex/generic/pgfplots/pgfplotsmeshplothandler.code.tex
+(/home/gergo/texmf/tex/generic/pgfplots/pgfplotsmeshplotimage.code.tex)))
+(/home/gergo/texmf/tex/generic/pgfplots/pgfplots.scaling.code.tex)
+(/home/gergo/texmf/tex/generic/pgfplots/pgfplotscoordprocessing.code.tex)
+(/home/gergo/texmf/tex/generic/pgfplots/pgfplots.errorbars.code.tex)
+(/home/gergo/texmf/tex/generic/pgfplots/pgfplots.markers.code.tex)
+(/home/gergo/texmf/tex/generic/pgfplots/pgfplotsticks.code.tex)
+(/home/gergo/texmf/tex/generic/pgfplots/pgfplots.paths.code.tex)
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecor
+ations.code.tex
+(/usr/share/texmf/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
+\pgfdecoratedcompleteddistance=\dimen160
+\pgfdecoratedremainingdistance=\dimen161
+\pgfdecoratedinputsegmentcompleteddistance=\dimen162
+\pgfdecoratedinputsegmentremainingdistance=\dimen163
+\pgf@decorate@distancetomove=\dimen164
+\pgf@decorate@repeatstate=\count128
+\pgfdecorationsegmentamplitude=\dimen165
+\pgfdecorationsegmentlength=\dimen166
+)
+\tikz@lib@dec@box=\box65
+)
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecor
+ations.pathmorphing.code.tex
+(/usr/share/texmf/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.p
+athmorphing.code.tex))
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecor
+ations.pathreplacing.code.tex
+(/usr/share/texmf/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.p
+athreplacing.code.tex))
+\pgfplots@numplots=\count129
+\pgfplots@xmin@reg=\dimen167
+\pgfplots@xmax@reg=\dimen168
+\pgfplots@ymin@reg=\dimen169
+\pgfplots@ymax@reg=\dimen170
+\pgfplots@zmin@reg=\dimen171
+\pgfplots@zmax@reg=\dimen172
+)
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryplotm
+arks.code.tex
+File: tikzlibraryplotmarks.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
+
+(/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
+File: pgflibraryplotmarks.code.tex 2010/10/15 v2.10 (rcs-revision 1.12)
+)))
 (./documentation.aux)
 \openout1 = `documentation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count120
-\scratchdimen=\dimen158
-\scratchbox=\box62
-\nofMPsegments=\count121
-\nofMParguments=\count122
-\everyMPshowfont=\toks30
-\MPscratchCnt=\count123
-\MPscratchDim=\dimen159
-\MPnumerator=\count124
-\makeMPintoPDFobject=\count125
-\everyMPtoPDFconversion=\toks31
+\scratchcounter=\count130
+\scratchdimen=\dimen173
+\scratchbox=\box66
+\nofMPsegments=\count131
+\nofMParguments=\count132
+\everyMPshowfont=\toks41
+\MPscratchCnt=\count133
+\MPscratchDim=\dimen174
+\MPnumerator=\count134
+\makeMPintoPDFobject=\count135
+\everyMPtoPDFconversion=\toks42
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -550,7 +717,9 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-ABD: EveryShipout initializing macros
+ABD: EveryShipout initializing macros ABD: EverySelectfont initializing macros
+LaTeX Info: Redefining \selectfont on input line 28.
+
 (/home/gergo/texmf/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
@@ -565,22 +734,31 @@ LaTeX Warning: Please use \usepackage{t1enc} with
                \usepackage[hungarian]{babel}, to get accented chars hyphenated.
 
 
+
+Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
+ick labels; missing features). Consider writing \pgfplotsset{compat=1.13} into 
+your preamble.
+ on input line 28.
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
 LaTeX Info: Redefining \cal on input line 592.
 LaTeX Info: Redefining \mit on input line 593.
 )
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 28.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 28.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 28.
+LaTeX Font Info:    Try loading font information for U+msa on input line 32.
 
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 32.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
 <pics/eltecimerszines.jpg, id=4, 1333.98375pt x 1333.98375pt>
 File: pics/eltecimerszines.jpg Graphic file (type jpg)
 
 <use pics/eltecimerszines.jpg>
-Package pdftex.def Info: pics/eltecimerszines.jpg used on input line 28.
+Package pdftex.def Info: pics/eltecimerszines.jpg used on input line 32.
 (pdftex.def)             Requested size: 113.81102pt x 113.80438pt.
  (/home/gergo/texmf/tex/latex/ucs/data/uni-0.def
 File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
@@ -599,49 +777,193 @@ File: uni-1.def 2013/05/13 UCS: Unicode data U+0100..U+01FF
 
 [1
 
-]
+] [2]
 1. fejezet.
-[1
 
-
-]
-2. fejezet.
-[2
-
-]
-3. fejezet.
-
-Underfull \hbox (badness 2213) in paragraph at lines 48--48
- [][][][]\OT1/cmr/bx/n/12 A 
+Overfull \hbox (4.29315pt too wide) in paragraph at lines 39--40
+ [] \OT1/cmr/m/n/12 A matematika seg^^S^^Pts^^Seg^^Sevel v^^Saltoz^^Sasokat, fo
+lyamatokat, tulajdons^^Sagokat megpr^^Sob^^Sal-
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 55--55
- [][][][]\OT1/cmr/bx/n/12 B 
+Overfull \hbox (3.05289pt too wide) in paragraph at lines 41--42
+ [] \OT1/cmr/m/n/12 A l^^Senyege, hogy m^^Ser^^Sesek, mintav^^Setelez^^Sesek se
+g^^S^^Pts^^Seg^^Sevel bizonyos pontokban megha-
+ []
+
+
+Overfull \hbox (4.17227pt too wide) in paragraph at lines 41--42
+\OT1/cmr/m/n/12 f^^?uggv^^Senyt, mely ^^Sathalad ezen pontokon. Vagyis egy olya
+n $\OML/cmm/m/it/12 I\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 )$ f^^?
+uggv^^Seny meghat^^Saroz^^Sa-
+ []
+
+
+Overfull \hbox (4.94722pt too wide) in paragraph at lines 43--44
+ [] \OT1/cmr/m/n/12 Az el}o^^Sall^^S^^Ptott k^^?ozel^^S^^Pt^^Sesi f^^?uggv^^Sen
+y t^^S^^Ppusa alapj^^San h^^Sarom nagyobb csoportba sorolhat-
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 45.
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 45.
+
+Overfull \hbox (7.39452pt too wide) in paragraph at lines 46--47
+[]\OT1/cmr/m/n/12 Trigonometrikusak, ekkor $\OML/cmm/m/it/12 sin$ \OT1/cmr/m/n/
+12 ^^Ses $\OML/cmm/m/it/12 cos$ \OT1/cmr/m/n/12 f^^?uggv^^Senyek seg^^S^^Pts^^S
+eg^^Sevel t^^?ort^^Senik az interpol-
+ []
+
+[1
+
+
+] [2]
+2. fejezet.
+
+Overfull \hbox (5.04723pt too wide) in paragraph at lines 63--64
+\OT1/cmr/m/n/12 b^^Sazist, melyeket Lagrange alappolinomoknak nevez^^?unk, ^^Se
+s a line^^Saris kombin^^Saci^^Sojukkal
  []
 
 [3
 
+]
+Overfull \hbox (5.1125pt too wide) in paragraph at lines 110--110
+ [] \OT1/cmr/m/n/12 Felhaszn^^Salva az el}obb k^^Sesz^^S^^Ptett b^^Sazist, ^^Se
+s a f^^?uggv^^Seny ^^Sert^^Sekeket, az al^^Sabbi interpol^^Saci-
+ []
+
+<pics/polynomial_interpolation.png, id=34, 611.28375pt x 285.31593pt>
+File: pics/polynomial_interpolation.png Graphic file (type png)
+
+<use pics/polynomial_interpolation.png>
+Package pdftex.def Info: pics/polynomial_interpolation.png used on input line 1
+12.
+(pdftex.def)             Requested size: 284.52756pt x 132.80113pt.
+ [4 <./pics/polynomial_interpolation.png>] [5] [6] <pics/divide_difference_tabl
+e.png, id=47, 1260.71pt x 266.9975pt>
+File: pics/divide_difference_table.png Graphic file (type png)
+
+<use pics/divide_difference_table.png>
+Package pdftex.def Info: pics/divide_difference_table.png used on input line 15
+1.
+(pdftex.def)             Requested size: 426.79134pt x 90.38683pt.
+
+Overfull \hbox (3.48058pt too wide) in paragraph at lines 160--161
+\OT1/cmr/m/n/12 hib^^Saj^^Sat. Egy bev^^Salt m^^Sodszer, ha az alappontok megv^
+^Salaszt^^Sas^^Saval pr^^Sob^^Saljuk cs^^?okkente-
+ []
+
+[7 <./pics/divide_difference_table.png>]
+Overfull \hbox (0.27043pt too wide) in paragraph at lines 170--171
+\OML/cmm/m/it/12 f \OMS/cmsy/m/n/12 2 \OT1/cmr/m/n/12 [\OMS/cmsy/m/n/12 ^^@\OT1
+/cmr/m/n/12 1\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1] \OMS/cmsy/m/n/12 ! \OT1/cmr/
+m/n/12 [\OML/cmm/m/it/12 a; b\OT1/cmr/m/n/12 ]$ f^^?uggv^^Seny alkalmaz^^Sas^^S
+aval tudjuk lek^^Sepezni, mely $\OML/cmm/m/it/12 a$ \OT1/cmr/m/n/12 ^^Ses $\OML
+/cmm/m/it/12 b$ \OT1/cmr/m/n/12 param^^Seter-
+ []
+
+
+Overfull \hbox (5.11084pt too wide) in paragraph at lines 174--176
+[] \OMS/cmsy/m/n/12 j\OML/cmm/m/it/12 T[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT
+1/cmr/m/n/12 )\OMS/cmsy/m/n/12 j \OT1/cmr/m/n/12 = 2[] \OML/cmm/m/it/12 x \OMS/
+cmsy/m/n/12 2 \OT1/cmr/m/n/12 [\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 1\OML/cmm/m/
+it/12 ; \OT1/cmr/m/n/12 1]$. Le tudjuk vezetni, hiszen $\OML/cmm/m/it/12 T[]\OT
+1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 cos\OT1/cm
+r/m/n/12 (\OML/cmm/m/it/12 n \OMS/cmsy/m/n/12 ^^C \OML/cmm/m/it/12 arccos\OT1/c
+mr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ))$,
+ []
+
+
+Overfull \hbox (4.80966pt too wide) in paragraph at lines 174--176
+\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 a; b\OT1/cmr/m/n/12 ]$ transzform^^Saci^^Sot 
+kell elv^^Segezn^^?unk, ^^Ses az eredeti hibak^^Sepletben l^^Sev}o $\OMS/cmsy/m
+/n/12 j\OML/cmm/m/it/12 ![]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 )
+\OMS/cmsy/m/n/12 j$ \OT1/cmr/m/n/12 hely^^Sere
+ []
+
+[8] [9]
+Overfull \hbox (0.24727pt too wide) in paragraph at lines 182--183
+\OT1/cmr/m/n/12 Matematika vil^^Sag^^Saban mindent megpr^^Sob^^Salunk form^^Sal
+isan le^^S^^Prni, mert csak ^^S^^Pgy tudjuk
+ []
+
+
+Overfull \hbox (17.28876pt too wide) in paragraph at lines 202--203
+\OT1/cmr/m/n/12 melynek a gy^^?oker^^Seben a kezd}oszimb^^Solum, a leveleiben p
+edig nemtermin^^Salis szimb^^Solumok
+ []
+
+[10] <pics/syntax_tree.png, id=62, 102.98476pt x 100.57574pt>
+File: pics/syntax_tree.png Graphic file (type png)
+
+<use pics/syntax_tree.png>
+Package pdftex.def Info: pics/syntax_tree.png used on input line 204.
+(pdftex.def)             Requested size: 142.26378pt x 138.93584pt.
+
+Overfull \hbox (2.01392pt too wide) in paragraph at lines 209--210
+\OT1/cmr/m/n/12 eld^^?ontse, megfelel a nyelv ^^Sab^^Sec^^Sej^^Senek, ^^Ses szi
+mb^^Solumokra, ^^Sugynevezett tokenere bontsa
+ []
+
+
+Overfull \hbox (5.40558pt too wide) in paragraph at lines 213--214
+ [] \OT1/cmr/m/n/12 Miut^^San a bemenetet tokenekre bontottuk, meg kell }oket f
+eleltetn^^?unk a $\OML/cmm/m/it/12 P$ \OT1/cmr/m/n/12 halmazban
+ []
+
+
+Overfull \hbox (6.84026pt too wide) in paragraph at lines 215--216
+\OT1/cmr/m/n/12 szintaktikus elemz^^Seskor nem volt r^^Sa lehet}os^^Seg^^?unk. 
+Kifejez^^Sesek t^^S^^Ppus^^Sanak helyess^^Seg^^Senek
+ []
+
+[11 <./pics/syntax_tree.png>]
+Overfull \hbox (25.05127pt too wide) in paragraph at lines 220--221
+ [] \OT1/cmr/m/n/12 A f^^?uggv^^Senyek interpol^^Saci^^Soj^^Sahoz sz^^?uks^^Seg
+^^?unk van arra, hogy a programban a matematikai
+ []
+
+[12]
+Overfull \hbox (6.22221pt too wide) in paragraph at lines 262--263
+\OT1/cmr/m/n/12 elv^^Segezni, hogy a gyerekeiben l^^Sev}o m}uveletet elv^^Segez
+t^^?uk. Eg^^Seszen addig kell rekurz^^S^^Pvan
+ []
+
+[13]
+3. fejezet.
+[14
+
+]
+4. fejezet.
+[15
+
 ] (./documentation.aux) ) 
 Here is how much of TeX's memory you used:
- 14135 strings out of 495028
- 265221 string characters out of 6181497
- 332667 words of memory out of 5000000
- 17067 multiletter control sequences out of 15000+600000
- 8242 words of font info for 29 fonts, out of 8000000 for 9000
+ 23171 strings out of 495028
+ 546258 string characters out of 6181497
+ 1059079 words of memory out of 5000000
+ 25914 multiletter control sequences out of 15000+600000
+ 12108 words of font info for 47 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 56i,12n,62p,425b,697s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,12n,84p,1045b,1860s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
-2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb>
-Output written on documentation.pdf (5 pages, 972455 bytes).
+m/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
+12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on documentation.pdf (18 pages, 1111423 bytes).
 PDF statistics:
- 52 PDF objects out of 1000 (max. 8388607)
- 36 compressed objects within 1 object stream
+ 113 PDF objects out of 1000 (max. 8388607)
+ 75 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 18 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 33 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -133,7 +133,6 @@ Node* Parser::parse_primary()
             throw ParserException("Unmatched parenthesis!" + _tokenizer.peek().getValue());
 		}
 
-
 		_tokenizer.next();
 		return res;
 	}

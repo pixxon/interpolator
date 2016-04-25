@@ -30,8 +30,7 @@ private:
 public slots:
     void setInput(QString);
 	void setInput(QVector<QVector<double>>);
-    void setPartX(double, double, int, QString);
-    void setPartY(double, double, int, QString);
+    void setPart(char, double, double, int, QString);
     void timerTick();
 
 signals:

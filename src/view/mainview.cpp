@@ -118,22 +118,15 @@ void MainView::showEvent(QShowEvent*)
 
     setLayout(layout);
 
-    partXSet(_part_min_X->value(), _part_max_X->value(), _part_count_X->value(), _part_type_X->currentText());
-    partYSet(_part_min_Y->value(), _part_max_Y->value(), _part_count_Y->value(), _part_type_Y->currentText());
+    partSet('x', _part_min_X->value(), _part_max_X->value(), _part_count_X->value(), _part_type_X->currentText());
+    partSet('y', _part_min_Y->value(), _part_max_Y->value(), _part_count_Y->value(), _part_type_Y->currentText());
 }
 
 void MainView::buttonClick()
 {
 	if (_top->currentIndex() == 0)
-	{
-		try
-		{
-			inputSet(_func_input->text());
-		}
-		catch (QException& ex)
-		{
-			_func_input->setText(ex.what());
-		}
+    {
+        inputSet(_func_input->text());
 	}
 
 	if (_top->currentIndex() == 1)
@@ -157,12 +150,12 @@ void MainView::buttonClick()
 
 void MainView::count_x_changed()
 {
-    partXSet(_part_min_X->value(), _part_max_X->value(), _part_count_X->value(), _part_type_X->currentText());
+    partSet('x', _part_min_X->value(), _part_max_X->value(), _part_count_X->value(), _part_type_X->currentText());
 }
 
 void MainView::count_y_changed()
 {
-    partYSet(_part_min_Y->value(), _part_max_Y->value(), _part_count_Y->value(), _part_type_Y->currentText());
+    partSet('y', _part_min_Y->value(), _part_max_Y->value(), _part_count_Y->value(), _part_type_Y->currentText());
 }
 
 void MainView::part_changed(QVector<double> partX, QVector<double> partY)

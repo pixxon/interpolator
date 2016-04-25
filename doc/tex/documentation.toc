@@ -1,7 +1,63 @@
 \select@language {hungarian} \contentsline {chapter}{\numberline {1}Bevezet\IeC {\'e}s}{1}
-\select@language {hungarian} \contentsline {chapter}{\numberline {2}Felhaszn\IeC {\'a}l\IeC {\'o}i dokument\IeC {\'a}ci\IeC {\'o}}{2}
-\select@language {hungarian} \contentsline {section}{\numberline {2.1}Telep\IeC {\'\i }t\IeC {\'e}s}{2}
-\select@language {hungarian} \contentsline {section}{\numberline {2.2}Haszn\IeC {\'a}lat}{2}
-\select@language {hungarian} \contentsline {section}{\numberline {2.3}Gyakran Ism\IeC {\'e}telt K\IeC {\'e}rd\IeC {\'e}sek}{2}
-\select@language {hungarian} \contentsline {chapter}{\numberline {3}Fejleszt\IeC {\H o}i dokument\IeC {\'a}ci\IeC {\'o}}{3}
-\select@language {hungarian} \contentsline {section}{\numberline {3.1}Oszt\IeC {\'a}ly diagrammok}{3}
+\select@language {hungarian} \contentsline {paragraph}{}{1}
+\select@language {hungarian} \contentsline {paragraph}{}{1}
+\select@language {hungarian} \contentsline {paragraph}{}{1}
+\select@language {hungarian} \contentsline {paragraph}{}{1}
+\select@language {hungarian} \contentsline {paragraph}{}{2}
+\select@language {hungarian} \contentsline {paragraph}{}{2}
+\select@language {hungarian} \contentsline {chapter}{\numberline {2}Tudom\IeC {\'a}nyos h\IeC {\'a}tt\IeC {\'e}r}{3}
+\select@language {hungarian} \contentsline {section}{\numberline {2.1}Interpol\IeC {\'a}ci\IeC {\'o}}{3}
+\select@language {hungarian} \contentsline {paragraph}{}{3}
+\select@language {hungarian} \contentsline {subsection}{\numberline {2.1.1}Lagrange-interpol\IeC {\'a}ci\IeC {\'o}}{3}
+\select@language {hungarian} \contentsline {paragraph}{}{3}
+\select@language {hungarian} \contentsline {paragraph}{}{3}
+\select@language {hungarian} \contentsline {paragraph}{}{4}
+\select@language {hungarian} \contentsline {paragraph}{}{5}
+\select@language {hungarian} \contentsline {paragraph}{}{5}
+\select@language {hungarian} \contentsline {paragraph}{}{6}
+\select@language {hungarian} \contentsline {subsection}{\numberline {2.1.2}Newton-f\IeC {\'e}le interpol\IeC {\'a}ci\IeC {\'o}s polinom}{6}
+\select@language {hungarian} \contentsline {paragraph}{}{6}
+\select@language {hungarian} \contentsline {paragraph}{}{6}
+\select@language {hungarian} \contentsline {paragraph}{}{7}
+\select@language {hungarian} \contentsline {subsection}{\numberline {2.1.3}Alappontok}{7}
+\select@language {hungarian} \contentsline {paragraph}{}{7}
+\select@language {hungarian} \contentsline {paragraph}{}{7}
+\select@language {hungarian} \contentsline {paragraph}{}{8}
+\select@language {hungarian} \contentsline {paragraph}{}{8}
+\select@language {hungarian} \contentsline {paragraph}{}{8}
+\select@language {hungarian} \contentsline {paragraph}{}{8}
+\select@language {hungarian} \contentsline {section}{\numberline {2.2}3D grafika}{9}
+\select@language {hungarian} \contentsline {subsection}{\numberline {2.2.1}Modellez\IeC {\'e}s}{9}
+\select@language {hungarian} \contentsline {subsection}{\numberline {2.2.2}Megjelen\IeC {\'\i }t\IeC {\'e}s}{9}
+\select@language {hungarian} \contentsline {section}{\numberline {2.3}Form\IeC {\'a}lis nyelvek \IeC {\'e}s ford\IeC {\'\i }t\IeC {\'o} programok}{10}
+\select@language {hungarian} \contentsline {subsection}{\numberline {2.3.1}Nyelvek le\IeC {\'\i }r\IeC {\'a}sa form\IeC {\'a}lisan}{10}
+\select@language {hungarian} \contentsline {paragraph}{}{10}
+\select@language {hungarian} \contentsline {paragraph}{}{10}
+\select@language {hungarian} \contentsline {paragraph}{}{10}
+\select@language {hungarian} \contentsline {paragraph}{}{10}
+\select@language {hungarian} \contentsline {subsection}{\numberline {2.3.2}Ford\IeC {\'\i }t\IeC {\'a}s menete}{11}
+\select@language {hungarian} \contentsline {paragraph}{}{11}
+\select@language {hungarian} \contentsline {paragraph}{}{11}
+\select@language {hungarian} \contentsline {paragraph}{}{11}
+\select@language {hungarian} \contentsline {paragraph}{}{11}
+\select@language {hungarian} \contentsline {paragraph}{}{12}
+\select@language {hungarian} \contentsline {subsection}{\numberline {2.3.3}Matematikai f\IeC {\"u}ggv\IeC {\'e}nyek form\IeC {\'a}lis nyelve}{12}
+\select@language {hungarian} \contentsline {paragraph}{}{12}
+\select@language {hungarian} \contentsline {paragraph}{}{12}
+\select@language {hungarian} \contentsline {paragraph}{}{13}
+\select@language {hungarian} \contentsline {chapter}{\numberline {3}Felhaszn\IeC {\'a}l\IeC {\'o}i dokument\IeC {\'a}ci\IeC {\'o}}{14}
+\select@language {hungarian} \contentsline {section}{\numberline {3.1}Telep\IeC {\'\i }t\IeC {\'e}s}{14}
+\select@language {hungarian} \contentsline {section}{\numberline {3.2}Haszn\IeC {\'a}lat}{14}
+\select@language {hungarian} \contentsline {section}{\numberline {3.3}Gyakran ism\IeC {\'e}telt k\IeC {\'e}rd\IeC {\'e}sek}{14}
+\select@language {hungarian} \contentsline {chapter}{\numberline {4}Fejleszt\IeC {\H o}i dokument\IeC {\'a}ci\IeC {\'o}}{15}
+\select@language {hungarian} \contentsline {section}{\numberline {4.1}Tervez\IeC {\'e}s}{15}
+\select@language {hungarian} \contentsline {subsection}{\numberline {4.1.1}Feladat specifik\IeC {\'a}l\IeC {\'a}sa}{15}
+\select@language {hungarian} \contentsline {subsection}{\numberline {4.1.2}Felhaszn\IeC {\'a}l\IeC {\'o}i esetek}{15}
+\select@language {hungarian} \contentsline {subsection}{\numberline {4.1.3}Grafikus fel\IeC {\"u}let}{15}
+\select@language {hungarian} \contentsline {section}{\numberline {4.2}Program fel\IeC {\'e}p\IeC {\'\i }t\IeC {\'e}se}{15}
+\select@language {hungarian} \contentsline {section}{\numberline {4.3}Oszt\IeC {\'a}lyok le\IeC {\'\i }r\IeC {\'a}sa}{15}
+\select@language {hungarian} \contentsline {subsection}{\numberline {4.3.1}Controller oszt\IeC {\'a}ly}{15}
+\select@language {hungarian} \contentsline {subsection}{\numberline {4.3.2}MainView oszt\IeC {\'a}ly}{15}
+\select@language {hungarian} \contentsline {subsection}{\numberline {4.3.3}OpenGLView oszt\IeC {\'a}ly}{15}
+\select@language {hungarian} \contentsline {subsection}{\numberline {4.3.4}Model oszt\IeC {\'a}ly}{15}
+\select@language {hungarian} \contentsline {section}{\numberline {4.4}Tesztel\IeC {\'e}s}{15}

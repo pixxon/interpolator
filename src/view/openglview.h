@@ -19,18 +19,15 @@ public:
     void paintGL();
     void resizeGL(int w, int h);
 
+    void init();
+    void clear();
+    void addPoint(QVector3D, QVector3D);
+
 private:
     QOpenGLShaderProgram* _program;
     Camera _camera;
     Drawable* _surface;
     Drawable* _coord;
-
-public slots:
-    void init();
-    void clear();
-    void addPointToSurface(QVector3D, QVector3D);
-
-signals:
 };
 
 #endif // OPENGLVIEW_H
