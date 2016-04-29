@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.3.27)  25 APR 2016 18:41
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.3.27)  27 APR 2016 15:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -88,347 +88,13 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 (/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
 ))
-(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks16
-)
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box26
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks16
+\inpenc@posthook=\toks17
 
-(/usr/share/texlive/texmf-dist/tex/latex/ms/everyshi.sty
-Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
-))
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfrcs.code.tex
-Package: pgfrcs 2010/10/25 v2.10 (rcs-revision 1.24)
-))
-Package: pgf 2008/01/15 v2.10 (rcs-revision 1.12)
-
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
-Package: pgfsys 2010/06/30 v2.10 (rcs-revision 1.37)
-
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks17
-\pgfkeys@temptoks=\toks18
-
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
-\pgfkeys@tmptoks=\toks19
-))
-\pgf@x=\dimen113
-\pgf@y=\dimen114
-\pgf@xa=\dimen115
-\pgf@ya=\dimen116
-\pgf@xb=\dimen117
-\pgf@yb=\dimen118
-\pgf@xc=\dimen119
-\pgf@yc=\dimen120
-\w@pgf@writea=\write3
-\r@pgf@reada=\read1
-\c@pgf@counta=\count92
-\c@pgf@countb=\count93
-\c@pgf@countc=\count94
-\c@pgf@countd=\count95
-
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgf.cfg
-File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
-)
-Package pgfsys Info: Driver file for pgf: pgfsys-pdftex.def on input line 900.
-
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
-File: pgfsys-pdftex.def 2009/05/22  (rcs-revision 1.26)
-
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
-File: pgfsys-common-pdf.def 2008/05/19  (rcs-revision 1.10)
-)))
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
-File: pgfsyssoftpath.code.tex 2008/07/18  (rcs-revision 1.7)
-\pgfsyssoftpath@smallbuffer@items=\count96
-\pgfsyssoftpath@bigbuffer@items=\count97
-)
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
-File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
-))
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
-Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
-
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
-File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
-)
-Package xcolor Info: Driver file: pdftex.def on input line 225.
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
-Package xcolor Info: Model `RGB' extended on input line 1353.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
-Package: pgfcore 2010/04/11 v2.10 (rcs-revision 1.7)
-
-(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathutil.code.tex)
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen121
-\pgfmath@count=\count98
-\pgfmath@box=\box27
-\pgfmath@toks=\toks20
-\pgfmath@stack@operand=\toks21
-\pgfmath@stack@operation=\toks22
-)
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex)
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex)
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.random.code.tex)
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex)
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.base.code.tex)
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.round.code.tex)
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex)))
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count99
-))
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
-File: pgfcorepoints.code.tex 2010/04/09  (rcs-revision 1.20)
-\pgf@picminx=\dimen122
-\pgf@picmaxx=\dimen123
-\pgf@picminy=\dimen124
-\pgf@picmaxy=\dimen125
-\pgf@pathminx=\dimen126
-\pgf@pathmaxx=\dimen127
-\pgf@pathminy=\dimen128
-\pgf@pathmaxy=\dimen129
-\pgf@xx=\dimen130
-\pgf@xy=\dimen131
-\pgf@yx=\dimen132
-\pgf@yy=\dimen133
-\pgf@zx=\dimen134
-\pgf@zy=\dimen135
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
-File: pgfcorepathconstruct.code.tex 2010/08/03  (rcs-revision 1.24)
-\pgf@path@lastx=\dimen136
-\pgf@path@lasty=\dimen137
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
-File: pgfcorepathusage.code.tex 2008/04/22  (rcs-revision 1.12)
-\pgf@shorten@end@additional=\dimen138
-\pgf@shorten@start@additional=\dimen139
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
-File: pgfcorescopes.code.tex 2010/09/08  (rcs-revision 1.34)
-\pgfpic=\box28
-\pgf@hbox=\box29
-\pgf@layerbox@main=\box30
-\pgf@picture@serial@count=\count100
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
-File: pgfcoregraphicstate.code.tex 2008/04/22  (rcs-revision 1.9)
-\pgflinewidth=\dimen140
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
-File: pgfcoretransformations.code.tex 2009/06/10  (rcs-revision 1.11)
-\pgf@pt@x=\dimen141
-\pgf@pt@y=\dimen142
-\pgf@pt@temp=\dimen143
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
-File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
-File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
-File: pgfcorepathprocessing.code.tex 2008/10/09  (rcs-revision 1.8)
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
-File: pgfcorearrows.code.tex 2008/04/23  (rcs-revision 1.11)
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
-File: pgfcoreshade.code.tex 2008/11/23  (rcs-revision 1.13)
-\pgf@max=\dimen144
-\pgf@sys@shading@range@num=\count101
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-File: pgfcoreimage.code.tex 2010/03/25  (rcs-revision 1.16)
-
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
-File: pgfcoreexternal.code.tex 2010/09/01  (rcs-revision 1.17)
-\pgfexternal@startupbox=\box31
-))
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
-File: pgfcorelayers.code.tex 2010/08/27  (rcs-revision 1.2)
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
-File: pgfcoretransparency.code.tex 2008/01/17  (rcs-revision 1.2)
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
-File: pgfcorepatterns.code.tex 2009/07/02  (rcs-revision 1.3)
-)))
-(/usr/share/texmf/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
-File: pgfmoduleshapes.code.tex 2010/09/09  (rcs-revision 1.13)
-\pgfnodeparttextbox=\box32
-)
-(/usr/share/texmf/tex/generic/pgf/modules/pgfmoduleplot.code.tex
-File: pgfmoduleplot.code.tex 2010/10/22  (rcs-revision 1.8)
-)
-(/usr/share/texmf/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
-Package: pgfcomp-version-0-65 2007/07/03 v2.10 (rcs-revision 1.7)
-\pgf@nodesepstart=\dimen145
-\pgf@nodesepend=\dimen146
-)
-(/usr/share/texmf/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
-Package: pgfcomp-version-1-18 2007/07/23 v2.10 (rcs-revision 1.1)
-))
-(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex))
-(/usr/share/texmf/tex/generic/pgf/utilities/pgffor.code.tex
-Package: pgffor 2010/03/23 v2.10 (rcs-revision 1.18)
-\pgffor@iter=\dimen147
-\pgffor@skip=\dimen148
-\pgffor@stack=\toks23
-\pgffor@toks=\toks24
-))
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-Package: tikz 2010/10/13 v2.10 (rcs-revision 1.76)
-
-(/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
-File: pgflibraryplothandlers.code.tex 2010/05/31 v2.10 (rcs-revision 1.15)
-\pgf@plot@mark@count=\count102
-\pgfplotmarksize=\dimen149
-)
-\tikz@lastx=\dimen150
-\tikz@lasty=\dimen151
-\tikz@lastxsaved=\dimen152
-\tikz@lastysaved=\dimen153
-\tikzleveldistance=\dimen154
-\tikzsiblingdistance=\dimen155
-\tikz@figbox=\box33
-\tikz@tempbox=\box34
-\tikztreelevel=\count103
-\tikznumberofchildren=\count104
-\tikznumberofcurrentchild=\count105
-\tikz@fig@count=\count106
-
-(/usr/share/texmf/tex/generic/pgf/modules/pgfmodulematrix.code.tex
-File: pgfmodulematrix.code.tex 2010/08/24  (rcs-revision 1.4)
-\pgfmatrixcurrentrow=\count107
-\pgfmatrixcurrentcolumn=\count108
-\pgf@matrix@numberofcolumns=\count109
-)
-\tikz@expandcount=\count110
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex
-File: tikzlibrarytopaths.code.tex 2008/06/17 v2.10 (rcs-revision 1.2)
-))) (/home/gergo/texmf/tex/latex/pgf-umlcd/pgf-umlcd.sty
-Package: pgf-umlcd 2011/10/01 v0.3dev Some LaTeX macros for UML Class Diagrams.
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrow
-s.code.tex
-File: tikzlibraryarrows.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
-
-(/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
-File: pgflibraryarrows.code.tex 2008/10/27 v2.10 (rcs-revision 1.9)
-\arrowsize=\dimen156
-))
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshape
-s.multipart.code.tex
-File: tikzlibraryshapes.multipart.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
-
-(/usr/share/texmf/tex/generic/pgf/libraries/shapes/pgflibraryshapes.multipart.c
-ode.tex
-File: pgflibraryshapes.multipart.code.tex 2010/01/07 v2.10 (rcs-revision 1.2)
-\pgfnodepartlowerbox=\box35
-\pgfnodeparttwobox=\box36
-\pgfnodepartthreebox=\box37
-\pgfnodepartfourbox=\box38
-\pgfnodeparttwentybox=\box39
-\pgfnodepartnineteenbox=\box40
-\pgfnodeparteighteenbox=\box41
-\pgfnodepartseventeenbox=\box42
-\pgfnodepartsixteenbox=\box43
-\pgfnodepartfifteenbox=\box44
-\pgfnodepartfourteenbox=\box45
-\pgfnodepartthirteenbox=\box46
-\pgfnodeparttwelvebox=\box47
-\pgfnodepartelevenbox=\box48
-\pgfnodeparttenbox=\box49
-\pgfnodepartninebox=\box50
-\pgfnodeparteightbox=\box51
-\pgfnodepartsevenbox=\box52
-\pgfnodepartsixbox=\box53
-\pgfnodepartfivebox=\box54
-))
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarybackg
-rounds.code.tex
-File: tikzlibrarybackgrounds.code.tex 2010/02/08 v2.10 (rcs-revision 1.2)
-\pgf@layerbox@background=\box55
-\pgf@layerboxsaved@background=\box56
-)
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfit.c
-ode.tex
-File: tikzlibraryfit.code.tex 2008/06/21 v2.10 (rcs-revision 1.3)
-)
-\pgf@layerbox@background=\box57
-\pgf@layerboxsaved@background=\box58
-\pgf@layerbox@connectionlayers=\box59
-\pgf@layerboxsaved@connectionlayers=\box60
-\c@umlcdClassAttributesNum=\count111
-\c@umlcdClassOperationsNum=\count112
-\c@umlcdClassAbstractClassNum=\count113
-\c@umlcdClassInterfaceNum=\count114
-\c@umlcdClassSplitPartNum=\count115
-) (./stuki.sty
-Package: stuki 2001/01/26 2.5 Lorentey
-
-Struktogramok 2.5 [2001/01/26]
-\stukiwidth=\skip43
-\stmheight=\skip44
-\stuki@box=\box61
-\stuki@width=\skip45
-\stm@height=\skip46
-\stuki@height=\skip47
-\stuki@condwidth=\skip48
-\stuki@condheight=\skip49
-) (/usr/share/texlive/texmf-dist/tex/latex/ms/ragged2e.sty
-Package: ragged2e 2009/05/21 v2.1 ragged2e Package (MS)
-
-(/usr/share/texlive/texmf-dist/tex/latex/ms/everysel.sty
-Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
-)
-\CenteringLeftskip=\skip50
-\RaggedLeftLeftskip=\skip51
-\RaggedRightLeftskip=\skip52
-\CenteringRightskip=\skip53
-\RaggedLeftRightskip=\skip54
-\RaggedRightRightskip=\skip55
-\CenteringParfillskip=\skip56
-\RaggedLeftParfillskip=\skip57
-\RaggedRightParfillskip=\skip58
-\JustifyingParfillskip=\skip59
-\CenteringParindent=\skip60
-\RaggedLeftParindent=\skip61
-\RaggedRightParindent=\skip62
-\JustifyingParindent=\skip63
-)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-Package: amssymb 2013/01/14 v3.01 AMS font symbols
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
-Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\@emptytoks=\toks25
-\symAMSa=\mathgroup4
-\symAMSb=\mathgroup5
-LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
-(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+(/home/gergo/texmf/tex/latex/ucs/utf8x.def
+File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
 ))
 (/home/gergo/texmf/tex/latex/ucs/ucs.sty
 Package: ucs 2013/05/11 v2.2 UCS: Unicode input support
@@ -436,19 +102,11 @@ Package: ucs 2013/05/11 v2.2 UCS: Unicode input support
 (/home/gergo/texmf/tex/latex/ucs/data/uni-global.def
 File: uni-global.def 2013/05/13 UCS: Unicode global data
 )
-\uc@secondtry=\count116
-\uc@combtoks=\toks26
-\uc@combtoksb=\toks27
-\uc@temptokena=\toks28
+\uc@secondtry=\count92
+\uc@combtoks=\toks18
+\uc@combtoksb=\toks19
+\uc@temptokena=\toks20
 )
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-Package: inputenc 2008/03/30 v1.1d Input encoding file
-\inpenc@prehook=\toks29
-\inpenc@posthook=\toks30
-
-(/home/gergo/texmf/tex/latex/ucs/utf8x.def
-File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
-))
 (/home/gergo/texmf/tex/generic/babel/babel.sty
 Package: babel 2016/02/24 3.9q The Babel package
 
@@ -460,8 +118,8 @@ Language: english 2012/08/20 v3.3p English support from the babel system
 
 (/home/gergo/texmf/tex/generic/babel/babel.def
 File: babel.def 2016/02/24 3.9q Babel common definitions
-\babel@savecnt=\count117
-\U@D=\dimen157
+\babel@savecnt=\count93
+\U@D=\dimen113
 )
 \l@british = a dialect from \language\l@english 
 \l@UKenglish = a dialect from \language\l@english 
@@ -472,173 +130,38 @@ File: babel.def 2016/02/24 3.9q Babel common definitions
 (/home/gergo/texmf/tex/generic/babel-hungarian/magyar.ldf
 Language: hungarian 2015/11/24 v1.5c Magyar support from the babel v3.7 system
 Package babel Info: Making ` an active character on input line 2735.
-\c@footnote@add=\count118
-\c@footnote@ch=\count119
+\c@footnote@add=\count94
+\c@footnote@ch=\count95
 ))
-(/home/gergo/texmf/tex/latex/pgfplots/pgfplots.sty
-(/home/gergo/texmf/tex/generic/pgfplots/pgfplots.revision.tex)
-Package: pgfplots 2016/01/06 v1.13 Data Visualization (1.13)
-
-(/home/gergo/texmf/tex/generic/pgfplots/pgfplots.code.tex
-(/home/gergo/texmf/tex/generic/pgfplots/pgfplotscore.code.tex
-\t@pgfplots@toka=\toks31
-\t@pgfplots@tokb=\toks32
-\t@pgfplots@tokc=\toks33
-\pgfplots@tmpa=\dimen158
-\c@pgfplots@coordindex=\count120
-\c@pgfplots@scanlineindex=\count121
-
-(/home/gergo/texmf/tex/generic/pgfplots/sys/pgfplotssysgeneric.code.tex))
-(/home/gergo/texmf/tex/generic/pgfplots/libs/pgfplotslibrary.code.tex)
-(/home/gergo/texmf/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_loade
-r.code.tex
-Package pgfplots: loading complementary code for your PGF version...
-
-(/home/gergo/texmf/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_misc.
-code.tex)
-(/home/gergo/texmf/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfke
-ys.code.tex
-\pgfkeys@pathtoks=\toks34
-\pgfkeys@temptoks=\toks35
-
-(/home/gergo/texmf/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfke
-ysfiltered.code.tex
-\pgfkeys@tmptoks=\toks36
-))
-(/home/gergo/texmf/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfma
-thfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count122
-)
-(/home/gergo/texmf/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfli
-braryplothandlers.code.tex
-File: pgflibraryplothandlers.code.tex 2012/09/11 v2.10 (rcs-revision 1.17)
-\pgf@plot@mark@count=\count123
-\pgfplotmarksize=\dimen159
-)
-(/home/gergo/texmf/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfli
-braryfpu.code.tex)
-(/home/gergo/texmf/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfco
-rescopes.code.tex
-File: pgfcorescopes.code.tex 2012/11/30  (rcs-revision 1.38)
-\pgfpic=\box62
-\pgf@hbox=\box63
-\pgf@layerbox@main=\box64
-\pgf@picture@serial@count=\count124
-)
-(/home/gergo/texmf/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfco
-relayers.code.tex
-File: pgfcorelayers.code.tex 2012/11/07  (rcs-revision 1.5)
-)
-Package pgfplots: loading complementary utilities for your pgf version...
-\t@pgf@toka=\toks37
-\t@pgf@tokb=\toks38
-\t@pgf@tokc=\toks39
-
-(/home/gergo/texmf/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfut
-il-common-lists.tex)
-(/home/gergo/texmf/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_trig_
-format.code.tex))
-(/home/gergo/texmf/tex/generic/pgfplots/util/pgfplotsutil.code.tex
-(/home/gergo/texmf/tex/generic/pgfplots/liststructure/pgfplotsliststructure.cod
-e.tex)
-(/home/gergo/texmf/tex/generic/pgfplots/liststructure/pgfplotsliststructureext.
-code.tex)
-(/home/gergo/texmf/tex/generic/pgfplots/liststructure/pgfplotsarray.code.tex
-\c@pgfplotsarray@tmp=\count125
-)
-(/home/gergo/texmf/tex/generic/pgfplots/liststructure/pgfplotsmatrix.code.tex)
-(/home/gergo/texmf/tex/generic/pgfplots/numtable/pgfplotstableshared.code.tex
-\c@pgfplotstable@counta=\count126
-\t@pgfplotstable@a=\toks40
-)
-(/home/gergo/texmf/tex/generic/pgfplots/liststructure/pgfplotsdeque.code.tex)
-(/home/gergo/texmf/tex/generic/pgfplots/util/pgfplotsbinary.code.tex
-(/home/gergo/texmf/tex/generic/pgfplots/util/pgfplotsbinary.data.code.tex))
-(/home/gergo/texmf/tex/generic/pgfplots/util/pgfplotsutil.verb.code.tex)
-(/home/gergo/texmf/tex/generic/pgfplots/libs/pgflibrarypgfplots.surfshading.cod
-e.tex
-\c@pgfplotslibrarysurf@no=\count127
-
-(/home/gergo/texmf/tex/generic/pgfplots/sys/pgflibrarypgfplots.surfshading.pgfs
-ys-pdftex.def)))
-(/home/gergo/texmf/tex/generic/pgfplots/util/pgfplotscolormap.code.tex
-(/home/gergo/texmf/tex/generic/pgfplots/util/pgfplotscolor.code.tex))
-(/home/gergo/texmf/tex/generic/pgfplots/pgfplotsstackedplots.code.tex)
-(/home/gergo/texmf/tex/generic/pgfplots/pgfplotsplothandlers.code.tex
-(/home/gergo/texmf/tex/generic/pgfplots/pgfplotsmeshplothandler.code.tex
-(/home/gergo/texmf/tex/generic/pgfplots/pgfplotsmeshplotimage.code.tex)))
-(/home/gergo/texmf/tex/generic/pgfplots/pgfplots.scaling.code.tex)
-(/home/gergo/texmf/tex/generic/pgfplots/pgfplotscoordprocessing.code.tex)
-(/home/gergo/texmf/tex/generic/pgfplots/pgfplots.errorbars.code.tex)
-(/home/gergo/texmf/tex/generic/pgfplots/pgfplots.markers.code.tex)
-(/home/gergo/texmf/tex/generic/pgfplots/pgfplotsticks.code.tex)
-(/home/gergo/texmf/tex/generic/pgfplots/pgfplots.paths.code.tex)
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecor
-ations.code.tex
-(/usr/share/texmf/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
-\pgfdecoratedcompleteddistance=\dimen160
-\pgfdecoratedremainingdistance=\dimen161
-\pgfdecoratedinputsegmentcompleteddistance=\dimen162
-\pgfdecoratedinputsegmentremainingdistance=\dimen163
-\pgf@decorate@distancetomove=\dimen164
-\pgf@decorate@repeatstate=\count128
-\pgfdecorationsegmentamplitude=\dimen165
-\pgfdecorationsegmentlength=\dimen166
-)
-\tikz@lib@dec@box=\box65
-)
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecor
-ations.pathmorphing.code.tex
-(/usr/share/texmf/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.p
-athmorphing.code.tex))
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecor
-ations.pathreplacing.code.tex
-(/usr/share/texmf/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.p
-athreplacing.code.tex))
-\pgfplots@numplots=\count129
-\pgfplots@xmin@reg=\dimen167
-\pgfplots@xmax@reg=\dimen168
-\pgfplots@ymin@reg=\dimen169
-\pgfplots@ymax@reg=\dimen170
-\pgfplots@zmin@reg=\dimen171
-\pgfplots@zmax@reg=\dimen172
-)
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryplotm
-arks.code.tex
-File: tikzlibraryplotmarks.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
-
-(/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
-File: pgflibraryplotmarks.code.tex 2010/10/15 v2.10 (rcs-revision 1.12)
-)))
 (./documentation.aux)
 \openout1 = `documentation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count130
-\scratchdimen=\dimen173
-\scratchbox=\box66
-\nofMPsegments=\count131
-\nofMParguments=\count132
-\everyMPshowfont=\toks41
-\MPscratchCnt=\count133
-\MPscratchDim=\dimen174
-\MPnumerator=\count134
-\makeMPintoPDFobject=\count135
-\everyMPtoPDFconversion=\toks42
+\scratchcounter=\count96
+\scratchdimen=\dimen114
+\scratchbox=\box26
+\nofMPsegments=\count97
+\nofMParguments=\count98
+\everyMPshowfont=\toks21
+\MPscratchCnt=\count99
+\MPscratchDim=\dimen115
+\MPnumerator=\count100
+\makeMPintoPDFobject=\count101
+\everyMPtoPDFconversion=\toks22
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -717,9 +240,6 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-ABD: EveryShipout initializing macros ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 28.
-
 (/home/gergo/texmf/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
@@ -734,31 +254,22 @@ LaTeX Warning: Please use \usepackage{t1enc} with
                \usepackage[hungarian]{babel}, to get accented chars hyphenated.
 
 
-
-Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
-ick labels; missing features). Consider writing \pgfplotsset{compat=1.13} into 
-your preamble.
- on input line 28.
-
 (/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
 LaTeX Info: Redefining \cal on input line 592.
 LaTeX Info: Redefining \mit on input line 593.
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 32.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 20.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 20.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 20.
 
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 32.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-<pics/eltecimerszines.jpg, id=4, 1333.98375pt x 1333.98375pt>
+<pics/eltecimerszines.jpg, id=1, 1333.98375pt x 1333.98375pt>
 File: pics/eltecimerszines.jpg Graphic file (type jpg)
 
 <use pics/eltecimerszines.jpg>
-Package pdftex.def Info: pics/eltecimerszines.jpg used on input line 32.
+Package pdftex.def Info: pics/eltecimerszines.jpg used on input line 20.
 (pdftex.def)             Requested size: 113.81102pt x 113.80438pt.
  (/home/gergo/texmf/tex/latex/ucs/data/uni-0.def
 File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
@@ -770,51 +281,57 @@ File: uni-1.def 2013/05/13 UCS: Unicode data U+0100..U+01FF
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./pics/eltecimerszines.jpg
->] (./documentation.toc)
-\tf@toc=\write4
-\openout4 = `documentation.toc'.
-
-
+>] (./documentation.toc
 [1
 
-] [2]
+])
+\tf@toc=\write3
+\openout3 = `documentation.toc'.
+
+ [2]
 1. fejezet.
 
-Overfull \hbox (4.29315pt too wide) in paragraph at lines 39--40
+Overfull \hbox (16.6958pt too wide) in paragraph at lines 27--28
  [] \OT1/cmr/m/n/12 A matematika seg^^S^^Pts^^Seg^^Sevel v^^Saltoz^^Sasokat, fo
-lyamatokat, tulajdons^^Sagokat megpr^^Sob^^Sal-
+lyamatokat, tulajdons^^Sagokat megpr^^Sob^^Saljuk
  []
 
 
-Overfull \hbox (3.05289pt too wide) in paragraph at lines 41--42
+Overfull \hbox (29.82196pt too wide) in paragraph at lines 27--28
+\OT1/cmr/m/n/12 k^^?olts^^Seges, polinom interpol^^Saci^^Soval egy k^^?ozeli be
+csl^^Sest tudunk kapni kisebb m}uveletig^^Sennyel.
+ []
+
+
+Overfull \hbox (43.1983pt too wide) in paragraph at lines 29--30
  [] \OT1/cmr/m/n/12 A l^^Senyege, hogy m^^Ser^^Sesek, mintav^^Setelez^^Sesek se
-g^^S^^Pts^^Seg^^Sevel bizonyos pontokban megha-
+g^^S^^Pts^^Seg^^Sevel bizonyos pontokban meghat^^Sarozzuk
  []
 
 
-Overfull \hbox (4.17227pt too wide) in paragraph at lines 41--42
-\OT1/cmr/m/n/12 f^^?uggv^^Senyt, mely ^^Sathalad ezen pontokon. Vagyis egy olya
-n $\OML/cmm/m/it/12 I\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 )$ f^^?
-uggv^^Seny meghat^^Saroz^^Sa-
- []
-
-
-Overfull \hbox (4.94722pt too wide) in paragraph at lines 43--44
+Overfull \hbox (17.34987pt too wide) in paragraph at lines 31--32
  [] \OT1/cmr/m/n/12 Az el}o^^Sall^^S^^Ptott k^^?ozel^^S^^Pt^^Sesi f^^?uggv^^Sen
-y t^^S^^Ppusa alapj^^San h^^Sarom nagyobb csoportba sorolhat-
+y t^^S^^Ppusa alapj^^San h^^Sarom nagyobb csoportba sorolhatjuk
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 45.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 33.
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 45.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 33.
 
-Overfull \hbox (7.39452pt too wide) in paragraph at lines 46--47
+Overfull \hbox (2.69029pt too wide) in paragraph at lines 33--34
+[]\OT1/cmr/m/n/12 Polinomi^^Salisak, ekkor az $\OML/cmm/m/it/12 n \OT1/cmr/m/n/
+12 + 1$ darab alappontra egy $\OML/cmm/m/it/12 n$ \OT1/cmr/m/n/12 fok^^Su polin
+omot illeszt^^?unk. 
+ []
+
+
+Overfull \hbox (26.97765pt too wide) in paragraph at lines 34--35
 []\OT1/cmr/m/n/12 Trigonometrikusak, ekkor $\OML/cmm/m/it/12 sin$ \OT1/cmr/m/n/
 12 ^^Ses $\OML/cmm/m/it/12 cos$ \OT1/cmr/m/n/12 f^^?uggv^^Senyek seg^^S^^Pts^^S
-eg^^Sevel t^^?ort^^Senik az interpol-
+eg^^Sevel t^^?ort^^Senik az interpol^^Saci^^So.
  []
 
 [1
@@ -823,42 +340,73 @@ eg^^Sevel t^^?ort^^Senik az interpol-
 ] [2]
 2. fejezet.
 
-Overfull \hbox (5.04723pt too wide) in paragraph at lines 63--64
-\OT1/cmr/m/n/12 b^^Sazist, melyeket Lagrange alappolinomoknak nevez^^?unk, ^^Se
-s a line^^Saris kombin^^Saci^^Sojukkal
+Overfull \hbox (49.10927pt too wide) in paragraph at lines 51--52
+\OT1/cmr/m/n/12 polinom b^^Sazist, melyeket Lagrange alappolinomoknak nevez^^?u
+nk, ^^Ses a line^^Saris kombin^^Saci^^Sojukkal
  []
 
 [3
 
-]
-Overfull \hbox (5.1125pt too wide) in paragraph at lines 110--110
+] <pics/lagrange_basis.png, id=31, 1072.005pt x 911.405pt>
+File: pics/lagrange_basis.png Graphic file (type png)
+
+<use pics/lagrange_basis.png>
+Package pdftex.def Info: pics/lagrange_basis.png used on input line 76.
+(pdftex.def)             Requested size: 227.61403pt x 170.70723pt.
+
+Overfull \hbox (11.70549pt too wide) in paragraph at lines 80--80
  [] \OT1/cmr/m/n/12 Felhaszn^^Salva az el}obb k^^Sesz^^S^^Ptett b^^Sazist, ^^Se
-s a f^^?uggv^^Seny ^^Sert^^Sekeket, az al^^Sabbi interpol^^Saci-
+s a f^^?uggv^^Seny ^^Sert^^Sekeket, az al^^Sabbi interpol^^Saci^^Sos
  []
 
-<pics/polynomial_interpolation.png, id=34, 611.28375pt x 285.31593pt>
+<pics/polynomial_interpolation.png, id=32, 1086.0575pt x 899.36pt>
 File: pics/polynomial_interpolation.png Graphic file (type png)
 
 <use pics/polynomial_interpolation.png>
-Package pdftex.def Info: pics/polynomial_interpolation.png used on input line 1
-12.
-(pdftex.def)             Requested size: 284.52756pt x 132.80113pt.
- [4 <./pics/polynomial_interpolation.png>] [5] [6] <pics/divide_difference_tabl
-e.png, id=47, 1260.71pt x 266.9975pt>
+Package pdftex.def Info: pics/polynomial_interpolation.png used on input line 8
+2.
+(pdftex.def)             Requested size: 227.61479pt x 170.7155pt.
+ [4 <./pics/lagrange_basis.png> <./pics/polynomial_interpolation.png>]
+<pics/bivariable_grid.png, id=38, 506.89375pt x 379.4175pt>
+File: pics/bivariable_grid.png Graphic file (type png)
+
+<use pics/bivariable_grid.png>
+Package pdftex.def Info: pics/bivariable_grid.png used on input line 90.
+(pdftex.def)             Requested size: 284.52756pt x 212.97603pt.
+ [5 <./pics/bivariable_grid.png>]
+Overfull \hbox (8.53746pt too wide) in paragraph at lines 99--100
+\OT1/cmr/m/n/12 ^^Sujra sz^^Samolni, elegend}o csak az utols^^So egy^^?utthat^^
+Sot kisz^^Samolni. H^^Satr^^Sanya, hogy nehezen
+ []
+
+
+Overfull \hbox (10.9083pt too wide) in paragraph at lines 101--102
+ [] \OT1/cmr/m/n/12 El}osz^^?or defini^^Salnunk kell az osztott differenci^^Sat
+, $\OML/cmm/m/it/12 k$ \OT1/cmr/m/n/12 darab pont osztott differenci^^Saj^^Sana
+k
+ []
+
+<pics/divide_difference_table.png, id=42, 1234.6125pt x 580.1675pt>
 File: pics/divide_difference_table.png Graphic file (type png)
 
 <use pics/divide_difference_table.png>
-Package pdftex.def Info: pics/divide_difference_table.png used on input line 15
-1.
-(pdftex.def)             Requested size: 426.79134pt x 90.38683pt.
-
-Overfull \hbox (3.48058pt too wide) in paragraph at lines 160--161
+Package pdftex.def Info: pics/divide_difference_table.png used on input line 10
+5.
+(pdftex.def)             Requested size: 284.52756pt x 133.7013pt.
+ [6 <./pics/divide_difference_table.png>]
+Overfull \hbox (9.35551pt too wide) in paragraph at lines 114--115
 \OT1/cmr/m/n/12 hib^^Saj^^Sat. Egy bev^^Salt m^^Sodszer, ha az alappontok megv^
-^Salaszt^^Sas^^Saval pr^^Sob^^Saljuk cs^^?okkente-
+^Salaszt^^Sas^^Saval pr^^Sob^^Saljuk cs^^?okkenteni
  []
 
-[7 <./pics/divide_difference_table.png>]
-Overfull \hbox (0.27043pt too wide) in paragraph at lines 170--171
+
+Overfull \hbox (5.99165pt too wide) in paragraph at lines 120--121
+ [] \OT1/cmr/m/n/12 Azonban l^^Setezik megold^^Sas ennek a hib^^Sanak a lecs^^?
+okkent^^Ses^^Sere, a Csebisev alappontok
+ []
+
+
+Overfull \hbox (0.27043pt too wide) in paragraph at lines 124--125
 \OML/cmm/m/it/12 f \OMS/cmsy/m/n/12 2 \OT1/cmr/m/n/12 [\OMS/cmsy/m/n/12 ^^@\OT1
 /cmr/m/n/12 1\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1] \OMS/cmsy/m/n/12 ! \OT1/cmr/
 m/n/12 [\OML/cmm/m/it/12 a; b\OT1/cmr/m/n/12 ]$ f^^?uggv^^Seny alkalmaz^^Sas^^S
@@ -866,8 +414,8 @@ aval tudjuk lek^^Sepezni, mely $\OML/cmm/m/it/12 a$ \OT1/cmr/m/n/12 ^^Ses $\OML
 /cmm/m/it/12 b$ \OT1/cmr/m/n/12 param^^Seter-
  []
 
-
-Overfull \hbox (5.11084pt too wide) in paragraph at lines 174--176
+[7]
+Overfull \hbox (5.11084pt too wide) in paragraph at lines 128--130
 [] \OMS/cmsy/m/n/12 j\OML/cmm/m/it/12 T[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT
 1/cmr/m/n/12 )\OMS/cmsy/m/n/12 j \OT1/cmr/m/n/12 = 2[] \OML/cmm/m/it/12 x \OMS/
 cmsy/m/n/12 2 \OT1/cmr/m/n/12 [\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 1\OML/cmm/m/
@@ -878,7 +426,7 @@ mr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ))$,
  []
 
 
-Overfull \hbox (4.80966pt too wide) in paragraph at lines 174--176
+Overfull \hbox (4.80966pt too wide) in paragraph at lines 128--130
 \OT1/cmr/m/n/12 [\OML/cmm/m/it/12 a; b\OT1/cmr/m/n/12 ]$ transzform^^Saci^^Sot 
 kell elv^^Segezn^^?unk, ^^Ses az eredeti hibak^^Sepletben l^^Sev}o $\OMS/cmsy/m
 /n/12 j\OML/cmm/m/it/12 ![]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 )
@@ -886,70 +434,80 @@ kell elv^^Segezn^^?unk, ^^Ses az eredeti hibak^^Sepletben l^^Sev}o $\OMS/cmsy/m
  []
 
 [8] [9]
-Overfull \hbox (0.24727pt too wide) in paragraph at lines 182--183
+Overfull \hbox (0.24727pt too wide) in paragraph at lines 136--137
 \OT1/cmr/m/n/12 Matematika vil^^Sag^^Saban mindent megpr^^Sob^^Salunk form^^Sal
 isan le^^S^^Prni, mert csak ^^S^^Pgy tudjuk
  []
 
 
-Overfull \hbox (17.28876pt too wide) in paragraph at lines 202--203
+Overfull \hbox (17.28876pt too wide) in paragraph at lines 158--159
 \OT1/cmr/m/n/12 melynek a gy^^?oker^^Seben a kezd}oszimb^^Solum, a leveleiben p
 edig nemtermin^^Salis szimb^^Solumok
  []
 
-[10] <pics/syntax_tree.png, id=62, 102.98476pt x 100.57574pt>
+[10] <pics/syntax_tree.png, id=59, 650.43pt x 350.30875pt>
 File: pics/syntax_tree.png Graphic file (type png)
 
 <use pics/syntax_tree.png>
-Package pdftex.def Info: pics/syntax_tree.png used on input line 204.
-(pdftex.def)             Requested size: 142.26378pt x 138.93584pt.
+Package pdftex.def Info: pics/syntax_tree.png used on input line 160.
+(pdftex.def)             Requested size: 227.62204pt x 122.59386pt.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 161.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 161.
 
-Overfull \hbox (2.01392pt too wide) in paragraph at lines 209--210
+Overfull \hbox (2.01392pt too wide) in paragraph at lines 165--166
 \OT1/cmr/m/n/12 eld^^?ontse, megfelel a nyelv ^^Sab^^Sec^^Sej^^Senek, ^^Ses szi
 mb^^Solumokra, ^^Sugynevezett tokenere bontsa
  []
 
 
-Overfull \hbox (5.40558pt too wide) in paragraph at lines 213--214
+Overfull \hbox (5.40558pt too wide) in paragraph at lines 169--170
  [] \OT1/cmr/m/n/12 Miut^^San a bemenetet tokenekre bontottuk, meg kell }oket f
 eleltetn^^?unk a $\OML/cmm/m/it/12 P$ \OT1/cmr/m/n/12 halmazban
  []
 
 
-Overfull \hbox (6.84026pt too wide) in paragraph at lines 215--216
-\OT1/cmr/m/n/12 szintaktikus elemz^^Seskor nem volt r^^Sa lehet}os^^Seg^^?unk. 
-Kifejez^^Sesek t^^S^^Ppus^^Sanak helyess^^Seg^^Senek
+Overfull \hbox (3.08891pt too wide) in paragraph at lines 171--172
+\OT1/cmr/m/n/12 Ezek egyszer}u ellen}orz^^Ses^^Senek ^^Serdek^^Seben bevezetj^^
+?uk a szimb^^Solumt^^Sabl^^Sat, mely feladata,
  []
 
 [11 <./pics/syntax_tree.png>]
-Overfull \hbox (25.05127pt too wide) in paragraph at lines 220--221
+Overfull \hbox (25.05127pt too wide) in paragraph at lines 176--177
  [] \OT1/cmr/m/n/12 A f^^?uggv^^Senyek interpol^^Saci^^Soj^^Sahoz sz^^?uks^^Seg
 ^^?unk van arra, hogy a programban a matematikai
  []
 
 [12]
-Overfull \hbox (6.22221pt too wide) in paragraph at lines 262--263
+Overfull \hbox (8.21524pt too wide) in paragraph at lines 221--222
+\OT1/cmr/m/n/12 szolg^^Sal a m^^Sasik rekurz^^S^^Pv f^^?uggv^^Seny, mely egy ad
+ott precedenci^^San^^Sal nagyobb ^^?osszetartoz^^So
+ []
+
+[13]
+Overfull \hbox (6.22221pt too wide) in paragraph at lines 223--224
 \OT1/cmr/m/n/12 elv^^Segezni, hogy a gyerekeiben l^^Sev}o m}uveletet elv^^Segez
 t^^?uk. Eg^^Seszen addig kell rekurz^^S^^Pvan
  []
 
-[13]
+[14]
 3. fejezet.
-[14
+[15
 
 ]
 4. fejezet.
-[15
+[16
 
 ] (./documentation.aux) ) 
 Here is how much of TeX's memory you used:
- 23171 strings out of 495028
- 546258 string characters out of 6181497
- 1059079 words of memory out of 5000000
- 25914 multiletter control sequences out of 15000+600000
- 12108 words of font info for 47 fonts, out of 8000000 for 9000
+ 4871 strings out of 495028
+ 71215 string characters out of 6181497
+ 144567 words of memory out of 5000000
+ 8016 multiletter control sequences out of 15000+600000
+ 8500 words of font info for 30 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 56i,12n,84p,1045b,1860s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,12n,27p,1045b,674s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
@@ -960,10 +518,10 @@ xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on documentation.pdf (18 pages, 1111423 bytes).
+Output written on documentation.pdf (19 pages, 1213337 bytes).
 PDF statistics:
- 113 PDF objects out of 1000 (max. 8388607)
- 75 compressed objects within 1 object stream
+ 112 PDF objects out of 1000 (max. 8388607)
+ 74 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

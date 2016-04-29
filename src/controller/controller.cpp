@@ -1,11 +1,16 @@
 #include "controller.h"
 
+#include <QRect>
+#include <QApplication>
+#include <QDesktopWidget>
+
 Controller::Controller(MainView* mainView, OpenGLView* funcView, OpenGLView* interView, Model* model):
     QObject(0),
     _mainView(mainView),
     _funcView(funcView),
     _interView(interView),
-    _model(model)
+    _model(model),
+  _showFunc(false)
 {
     QObject::connect(_mainView, SIGNAL(inputSet(QString)), this, SLOT(viewInput(QString)));
     QObject::connect(_mainView, SIGNAL(inputSet(QVector<QVector<double> >)), this, SLOT(viewInput(QVector<QVector<double> >)));
@@ -26,28 +31,34 @@ Controller::~Controller()
 void Controller::start()
 {
     _mainView->show();
+    _mainView->move(300,400);
 }
 
 void Controller::modelRender()
 {
-    _funcView->update();
+    if(_showFunc)
+        _funcView->update();
     _interView->update();
 }
 
 void Controller::modelInit()
 {
+    if(_showFunc)
+        _funcView->init();
     _interView->init();
-    _funcView->init();
 }
 
 void Controller::modelClear()
 {
     _interView->clear();
-    _funcView->clear();
+    if(_showFunc)
+        _funcView->clear();
+    _showFunc = false;
 }
 
 void Controller::modelFuncPoint(QVector3D pos, QVector3D col)
 {
+    _showFunc = true;
     _funcView->addPoint(pos, col);
 }
 

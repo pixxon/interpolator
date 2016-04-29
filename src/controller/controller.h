@@ -22,6 +22,8 @@ private:
     OpenGLView* _interView;
     Model* _model;
 
+    bool _showFunc;
+
 private slots:
     void modelRender();
     void modelInit();
