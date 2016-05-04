@@ -10,9 +10,14 @@ ParserException::~ParserException() throw()
 {
 }
 
+void ParserException::raise() const
+{
+    throw *this;
+}
+
 const char* ParserException::what() const throw()
 {
-    return ("Parser exception: " + _what.toStdString()).c_str();
+    return ("Parser hiba: " + _what.toStdString()).c_str();
 }
 
 
@@ -62,7 +67,7 @@ Parser::~Parser()
 
 void Parser::setInput(const QString& str)
 {
-	_tokenizer.setInput(str);
+    _tokenizer.setInput(str);
 }
 
 Node* Parser::parse(const int& min_prec)
@@ -70,15 +75,20 @@ Node* Parser::parse(const int& min_prec)
 	Node* lhs = parse_primary();
 	Node* rhs;
 
-	Token peek = _tokenizer.peek();
+    Token peek = _tokenizer.peek();
+    if ((*_table)[peek.getType()].getArity() != ARITY_BINARY && peek.getType() != "close" && peek.getValue() != "")
+    {
+        throw ParserException("Nem várt szimbólum! (" + peek.getValue() + ").");
+    }
+
     while((*_table)[peek.getType()].getArity() == ARITY_BINARY && (*_table)[peek.getType()].getPrecedence() >= min_prec)
 	{
 		if (!_tokenizer.hasNext())
 		{
-			throw ParserException("Unexpected end of input!");
+            throw ParserException("A bemenet hirtelen véget ért.");
 		}
-		_tokenizer.next();
 
+		_tokenizer.next();
         if ((*_table)[peek.getType()].getAssociativity() == ASSOCIATIVITY_LEFT)
 		{
             rhs = parse((*_table)[peek.getType()].getPrecedence() + 1);
@@ -89,12 +99,12 @@ Node* Parser::parse(const int& min_prec)
         }
         if ((*_table)[peek.getType()].getAssociativity() == ASSOCIATIVITY_NONE)
         {
-            throw ParserException("Associativity of binary operator is none.");
+            throw ParserException("Nincs definiálva a bináris művelet asszociativitása.");
         }
 
 		lhs = new Node(lhs, rhs, peek);
 		peek = _tokenizer.peek();
-	}
+    }
 
 	return lhs;
 }
@@ -103,8 +113,8 @@ Node* Parser::parse_primary()
 {
 	Token peek = _tokenizer.peek();
 	if (peek.getType() == "num" || peek.getType() == "var")
-	{
-		_tokenizer.next();
+    {
+        _tokenizer.next();
         return new Node(0, 0, peek);
 	}
 
@@ -112,8 +122,9 @@ Node* Parser::parse_primary()
 	{
 		if (!_tokenizer.hasNext())
 		{
-			throw ParserException("Unexpected end of input!");
+            throw ParserException("A bemenet hirtelen véget ért.");
 		}
+
 		_tokenizer.next();
         return new Node(0, parse_primary(), peek);
 	}
@@ -122,18 +133,18 @@ Node* Parser::parse_primary()
 	{
 		if (!_tokenizer.hasNext())
 		{
-			throw ParserException("Unexpected end of input!");
+            throw ParserException("A bemenet hirtelen véget ért.");
 		}
-		_tokenizer.next();
 
+		_tokenizer.next();
 		Node* res = parse(0);
 
 		if (_tokenizer.peek().getType() != "close")
 		{
-            throw ParserException("Unmatched parenthesis!" + _tokenizer.peek().getValue());
+            throw ParserException("Hiányzó zárójel!");
 		}
 
-		_tokenizer.next();
+        _tokenizer.next();
 		return res;
 	}
 
@@ -141,18 +152,25 @@ Node* Parser::parse_primary()
 	{
 		if (!_tokenizer.hasNext())
 		{
-			throw ParserException("Unexpected end of input!");
+            throw ParserException("A bemenet hirtelen véget ért.");
 		}
-		_tokenizer.next();
 
+		_tokenizer.next();
         return new Node(parse_primary(), 0, peek);
     }
 
-    throw ParserException("Unexpected token: " + peek.getValue() + "!");
+    throw ParserException("Nem várt szimbólum: (" + peek.getValue() + ").");
 }
 
 Node* Parser::getTree()
 {
 	_tokenizer.next();
-	return parse(0);
+    Node* root = parse(0);
+
+    if (_tokenizer.peek().getValue() != "")
+    {
+        throw ParserException("Nem várt szimbólum: (" + _tokenizer.peek().getValue() + ").");
+    }
+
+    return root;
 }

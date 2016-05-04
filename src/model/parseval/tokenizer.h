@@ -14,7 +14,7 @@ class LexicalException: public QException
         LexicalException(const QString& what);
         ~LexicalException() throw();
 
-    protected:
+        void raise() const;
         const char* what() const throw();
 
 	private:

@@ -4,11 +4,13 @@
 #include <QObject>
 #include <QTimer>
 #include <QVector3D>
+#include <QEventLoop>
 
 #include "parseval/symbol.h"
 #include "parseval/evaluator.h"
 
 #include "interpolate/lagrange.h"
+#include "interpolate/newton.h"
 #include "interpolate/partition.h"
 
 class Model: public QObject
@@ -19,28 +21,39 @@ public:
     ~Model();
 
 private:
-    SymbolTable* table;
-    Evaluator* evaluator;
-    QTimer* timer;
-    Lagrange* interpolator;
+    SymbolTable* _table;
+    Evaluator* _evaluator;
+    QTimer* _timer;
+    Interpolation* _interpolator;
 
-    Partition partX;
-    Partition partY;
+    Partition _partX;
+    Partition _partY;
 
-public slots:
+    bool _oneDimension;
+    bool _advance;
+
+    void messageLoop(QString msg);
+
+public:
     void setInput(QString);
 	void setInput(QVector<QVector<double>>);
     void setPart(char, double, double, int, QString);
+    void setPart(char, QVector<double>);
+    void setOneDimension(bool);
+    void advance();
+
+private slots:
     void timerTick();
 
 signals:
     void render();
     void init();
     void clear();
-    void addData(QVector3D, QVector3D);
-    void addData2(QVector3D, QVector3D);
-
-    void part_changed(QVector<double>, QVector<double>);
+    void addFuncPoint(QVector3D, QVector3D);
+    void addInterPoint(QVector3D, QVector3D);
+    void message(QString);
+    void error(QString);
+    void partChanged(QVector<double>, QVector<double>);
 };
 
 #endif // MODEL_H

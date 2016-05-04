@@ -13,7 +13,13 @@ LexicalException::~LexicalException() throw()
 
 const char* LexicalException::what() const throw()
 {
-    return ("Lexical exception: " + _what.toStdString()).c_str();
+    return ("Lexikális hiba: " + _what.toStdString()).c_str();
+}
+
+
+void LexicalException::raise() const
+{
+    throw *this;
 }
 
 
@@ -63,6 +69,7 @@ void Tokenizer::next()
 {
 	if (_input == "")
 	{
+        _current = Token("", "");
 		return;
 	}
 
@@ -77,7 +84,7 @@ void Tokenizer::next()
 	}
 	if (it == _table->end())
 	{
-		throw LexicalException("Wrong input: " + _input);
+        throw LexicalException("Hibás bemenet: " + _input);
 	}
 
     _current = Token(it->getName(), it->getRegex().cap(0));

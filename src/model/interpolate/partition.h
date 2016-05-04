@@ -12,6 +12,7 @@ public:
     ~Partition();
 
     void setPartition(double min, double max, int count, Partition_Type type);
+    void setPoints(const QVector<double>&);
     int getCount();
     double at(int i);
 

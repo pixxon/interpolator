@@ -5,6 +5,7 @@
 #include <QException>
 #include <QString>
 
+
 #include "tokenizer.h"
 #include "symbol.h"
 
@@ -15,6 +16,7 @@ class ParserException: public QException
         ParserException(const QString& what);
         ~ParserException() throw();
 
+        void raise() const;
         const char* what() const throw();
 
 	private:

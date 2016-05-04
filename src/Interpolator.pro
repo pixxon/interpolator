@@ -4,9 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT       += core gui widgets opengl
 
 TARGET = Interpolator
 TEMPLATE = app
@@ -27,7 +25,9 @@ SOURCES += main.cpp\
     model/interpolate/lagrange.cpp \
     model/interpolate/datatable.cpp \
     model/interpolate/partition.cpp \
-    controller/controller.cpp
+    controller/controller.cpp \
+    model/interpolate/newton.cpp \
+    view/helpview.cpp
 
 HEADERS  += \
     model/parseval/tokenizer.h \
@@ -43,7 +43,9 @@ HEADERS  += \
     model/interpolate/lagrange.h \
     model/interpolate/datatable.h \
     model/interpolate/partition.h \
-    controller/controller.h
+    controller/controller.h \
+    model/interpolate/newton.h \
+    view/helpview.h
 
 RESOURCES += \
     resources.qrc

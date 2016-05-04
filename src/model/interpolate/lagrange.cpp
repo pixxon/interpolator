@@ -123,6 +123,13 @@ QString Lagrange::createPolynomialY(int v)
         }
     }
 
-    return "(" + numerator.join("") + ")/(" + QString::number(denominator, 'f', 10) + ")";
+    if (_data.sizeY() > 1)
+    {
+        return "(" + numerator.join("") + ")/(" + QString::number(denominator, 'f', 10) + ")";
+    }
+    else
+    {
+        return "1";
+    }
 }
 

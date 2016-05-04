@@ -55,11 +55,15 @@ QMatrix4x4 Camera::getMVP()
 	return _proj * _view * _world;
 }
 
-QMatrix4x4 Camera::lookAt(QVector3D eye, QVector3D center, QVector3D up)
+void Camera::lookAt(QVector3D eye, QVector3D center, QVector3D up)
 {
+    _eye = eye;
+    _center = center;
+    _up = up;
+
     QMatrix4x4 res;
     res.lookAt(eye, center, up);
-    return res;
+    _view = res;
 }
 
 QMatrix4x4 Camera::perspective(float angle, float ratio, float near, float far)
@@ -67,4 +71,20 @@ QMatrix4x4 Camera::perspective(float angle, float ratio, float near, float far)
     QMatrix4x4 res;
     res.perspective(angle, ratio, near, far);
     return res;
+}
+
+void Camera::move(int dir)
+{
+    if (dir == 1)
+    {
+        _eye += (_center - _eye) / 4.f;
+    }
+    if (dir == -1)
+    {
+        _eye -= (_center - _eye) / 3.f;
+    }
+
+    QMatrix4x4 res;
+    res.lookAt(_eye, _center, _up);
+    _view = res;
 }

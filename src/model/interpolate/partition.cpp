@@ -1,6 +1,6 @@
 #include "partition.h"
 
-#include <QDebug>
+#include <QtMath>
 
 Partition::Partition():
     _points()
@@ -39,6 +39,14 @@ void Partition::setPartition(double min, double max, int count, Partition_Type t
             _points.push_front(root);
         }
     }
+}
+
+void Partition::setPoints(const QVector<double>& points)
+{
+    _points.clear();
+    _points += points;
+
+    qSort(_points);
 }
 
 int Partition::getCount()

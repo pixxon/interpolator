@@ -1,12 +1,15 @@
 #ifndef DRAWABLE_H
 #define DRAWABLE_H
 
+
 #include <QOpenGLVertexArrayObject>
 #include <QOpenGLBuffer>
 #include <QOpenGLShaderProgram>
 
+
 #include <QVector>
 #include <QVector3D>
+
 
 class Drawable
 {
@@ -23,11 +26,11 @@ private:
     QOpenGLShaderProgram* _program;
 
     QOpenGLVertexArrayObject* _vao;
-    QOpenGLBuffer* _pos_vbo;
-    QOpenGLBuffer* _col_vbo;
+    QOpenGLBuffer* _posVbo;
+    QOpenGLBuffer* _colVbo;
 
-    QVector<QVector3D> _pos_data;
-    QVector<QVector3D> _col_data;
+    QVector<QVector3D> _posData;
+    QVector<QVector3D> _colData;
 };
 
 #endif // DRAWABLE_H

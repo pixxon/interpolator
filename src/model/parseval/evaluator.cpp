@@ -1,5 +1,6 @@
 #include "evaluator.h"
 
+#include <QDebug>
 
 Evaluator::Evaluator():
     _parser(),

@@ -23,13 +23,19 @@ class Camera
         QMatrix4x4 getWorldIT();
         QMatrix4x4 getMVP();
 
-        static QMatrix4x4 lookAt(QVector3D, QVector3D, QVector3D);
+        void lookAt(QVector3D, QVector3D, QVector3D);
         static QMatrix4x4 perspective(float, float, float, float);
+
+        void move(int);
 		
 	private:
         QMatrix4x4 _proj;
         QMatrix4x4 _view;
         QMatrix4x4 _world;
+
+        QVector3D _eye;
+        QVector3D _center;
+        QVector3D _up;
 };
 
 

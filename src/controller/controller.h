@@ -31,10 +31,17 @@ private slots:
     void modelFuncPoint(QVector3D, QVector3D);
     void modelInterPoint(QVector3D, QVector3D);
     void modelPartChanged(QVector<double>, QVector<double>);
+    void modelMessage(QString);
+    void modelError(QString message);
 
     void viewInput(QString);
     void viewInput(QVector<QVector<double>>);
     void viewPart(char, double, double, int, QString);
+    void viewPart(char, QVector<double>);
+    void viewDimensionChanged(bool enabled);
+    void viewContinue();
+
+    void viewClosed();
 };
 
 #endif // CONTROLLER_H

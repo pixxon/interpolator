@@ -1,6 +1,8 @@
 #ifndef MAINVIEW_H
 #define MAINVIEW_H
 
+#include "helpview.h"
+
 #include <QWidget>
 #include <QLineEdit>
 #include <QPushButton>
@@ -9,6 +11,8 @@
 #include <QDoubleSpinBox>
 #include <QComboBox>
 #include <QTabWidget>
+#include <QCheckBox>
+
 
 class MainView : public QWidget
 {
@@ -17,44 +21,72 @@ public:
     explicit MainView(QWidget *parent = 0);
     ~MainView();
 
-    void part_changed(QVector<double>, QVector<double>);
+    void partChanged(QVector<double>, QVector<double>);
+    void setPartition(char var, double min, double max, int count, QString type);
+    void setInput(QVector<QVector<double>> points);
+    void setInput(QString func);
+
+    void showMessage(QString);
+    void showError(QString);
 
 private:
 	QTabWidget* _top;
-    QWidget* _top_page_1;
-    QWidget* _top_page_2;
+    QWidget* _topPage1;
+    QWidget* _topPage2;
 
 	QTabWidget* _bottom;
-    QWidget* _bottom_page_1;
-    QWidget* _bottom_page_2;
+    QWidget* _bottomPage1;
+    QWidget* _bottomPage2;
 
-    QPushButton* _render_button;
+    QLineEdit* _funcInput;
+    QVector<QVector<QLineEdit*> > _pointInput;
 
-    QLineEdit* _func_input;
-    QVector<QVector<QLineEdit*> > _point_input;
+    QDoubleSpinBox* _partMinX;
+    QDoubleSpinBox* _partMinY;
+    QDoubleSpinBox* _partMaxX;
+    QDoubleSpinBox* _partMaxY;
+    QSpinBox* _partCountX;
+    QSpinBox* _partCountY;
+    QComboBox* _partTypeX;
+    QComboBox* _partTypeY;
 
-    QDoubleSpinBox* _part_min_X;
-    QDoubleSpinBox* _part_max_X;
-    QSpinBox* _part_count_X;
-    QComboBox* _part_type_X;
+    QSpinBox* _part2CountX;
+    QSpinBox* _part2CountY;
+    QVector<QLineEdit*> _part2BaseX;
+    QVector<QLineEdit*> _part2BaseY;
 
-    QDoubleSpinBox* _part_min_Y;
-    QDoubleSpinBox* _part_max_Y;
-    QSpinBox* _part_count_Y;
-    QComboBox* _part_type_Y;
 
-    void showEvent(QShowEvent*);
+    QPushButton* _renderButton;
+    QPushButton* _oneDimension;
+    QPushButton* _helpButton;
+    QPushButton* _showSteps;
+
+    HelpView* _help;
+
+    bool hasEmpty();
 
 signals:
     void inputSet(QString);
 	void inputSet(QVector<QVector<double>>);
     void partSet(char, double, double, int, QString);
-    void partSet(QVector<double>);
+    void partSet(char, QVector<double>);
+    void dimensionChanged(bool enabled);
+    void closed();
+    void advance();
 
 private slots:
     void buttonClick();
-    void count_x_changed();
-    void count_y_changed();
+    void partChangedX();
+    void partChangedY();
+    void countChanged();
+    void dimensionChanged();
+    void helpClicked();
+
+    void showEvent(QShowEvent*);
+    void closeEvent(QCloseEvent *);
+
+    void loadFromFile();
+    void saveToFile();
 
 };
 

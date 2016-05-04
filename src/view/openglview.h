@@ -22,12 +22,18 @@ public:
     void init();
     void clear();
     void addPoint(QVector3D, QVector3D);
+    void setOneDimension(bool enabled);
 
 private:
     QOpenGLShaderProgram* _program;
     Camera _camera;
     Drawable* _surface;
     Drawable* _coord;
+    bool _oneDimension;
+
+    void keyPressEvent(QKeyEvent*);
+
+    bool rotate;
 };
 
 #endif // OPENGLVIEW_H
