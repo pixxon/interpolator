@@ -76,12 +76,12 @@ Node* Parser::parse(const int& min_prec)
 	Node* rhs;
 
     Token peek = _tokenizer.peek();
-    if ((*_table)[peek.getType()].getArity() != ARITY_BINARY && peek.getType() != "close" && peek.getValue() != "")
+    if (peek.getValue() != "" && (*_table)[peek.getType()].getArity() != ARITY_BINARY && peek.getType() != "close")
     {
         throw ParserException("Nem várt szimbólum! (" + peek.getValue() + ").");
     }
 
-    while((*_table)[peek.getType()].getArity() == ARITY_BINARY && (*_table)[peek.getType()].getPrecedence() >= min_prec)
+    while(peek.getValue() != "" && (*_table)[peek.getType()].getArity() == ARITY_BINARY && (*_table)[peek.getType()].getPrecedence() >= min_prec)
 	{
 		if (!_tokenizer.hasNext())
 		{

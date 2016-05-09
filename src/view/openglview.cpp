@@ -12,7 +12,7 @@ OpenGLView::OpenGLView(QWidget *parent) :
     _surface = new Drawable(_program);
     _coord = new Drawable(_program);
     _oneDimension = false;
-    rotate = true;
+    _rotate = true;
 }
 
 OpenGLView::~OpenGLView()
@@ -66,7 +66,7 @@ void OpenGLView::paintGL()
     QMatrix4x4 tmp = _camera.getWorld();
     if (!_oneDimension)
     {
-        if(rotate)
+        if(_rotate)
         {
             tmp.rotate(1.f, 0.f, 1.f, 0.f);
         }
@@ -148,7 +148,7 @@ void OpenGLView::keyPressEvent(QKeyEvent* key)
     switch (key->key())
     {
         case Qt::Key_Space:
-            rotate = !rotate;
+            _rotate = !_rotate;
         break;
         case Qt::Key_W:
             _camera.move(1);

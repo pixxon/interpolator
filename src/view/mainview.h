@@ -22,10 +22,6 @@ public:
     ~MainView();
 
     void partChanged(QVector<double>, QVector<double>);
-    void setPartition(char var, double min, double max, int count, QString type);
-    void setInput(QVector<QVector<double>> points);
-    void setInput(QString func);
-
     void showMessage(QString);
     void showError(QString);
 

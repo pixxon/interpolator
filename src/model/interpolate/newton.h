@@ -11,11 +11,12 @@ class Newton : public Interpolation
         ~Newton();
 
         double calculate(double x, double y);
+        void initialize();
+        QString sampleData();
 
     private:
         QVector<double> diffs;
 
-        void initialize();
 };
 
 #endif // NEWTON_H

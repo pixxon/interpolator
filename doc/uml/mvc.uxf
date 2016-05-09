@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?><diagram program="umlet" version="11.3">
+  <zoom_level>6</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>120</x>
+      <y>168</y>
+      <w>264</w>
+      <h>234</h>
+    </coordinates>
+    <panel_attributes>Camera
+--
+- _proj: QMatrix4x4
+- _view: QMatrix4x4
+- _world: QMatrix4x4
+- _eye: QVector3D
+- _center: QVector3D
+- _up: QVector3D
+--
+&lt;&lt;constructor&gt;&gt;
++ Camera()
+&lt;&lt;constructor&gt;&gt;
++ Camera(proj, view, world: QMatrix4x4)
++ setProj(proj: QMatrix4x4): void
++ setView(view: QMatrix4x4): void
++ setWorld(world: QMatrix4x4): void
++ getProj(): QMatrix4x4
++ getView(): QMatrix4x4
++ getWorld(): QMatrix4x4
++ getWorldIT(): QMatrix4x4
++ getMVP(): QMatrix4x4
++ lookAt(eye, center, up: QVector3D): void
++ move(val: int): void
+_+ perspective(angle, ratio, near, far): QMatrix4x4_
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>438</x>
+      <y>228</y>
+      <w>270</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>Drawable
+--
+- _program: QOpenGLShaderProgram*
+- _vao: QOpenGLVertexArrayObject*
+- _posVbo: QOpenGLBuffer*
+- _colVbo: QOpenGLBuffer*
+- _posData: QVector&lt;QVector3D&gt;
+- _colData: QVector&lt;QVector3D&gt;
+--
+&lt;&lt;constructor&gt;&gt;
++ Drawable(program: QOpenGLShaderProgram*);
++ addData(pos, col: QVector3D): void
++ init(): void
++ draw(mode: GLenum): void
++ clear(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>432</x>
+      <y>378</y>
+      <w>372</w>
+      <h>288</h>
+    </coordinates>
+    <panel_attributes>Model
+--
+- _table: SymbolTable*
+- _evaluator: Evaluator*
+- _interpolator: Interpolation*
+- _partX: Partition
+- _partY: Partition
+- _oneDimension: bool
+- _advance: bool
+- _timer: QTimer*
+--
+&lt;&lt;constructor&gt;&gt;
++ Model()
++ setInput(input: QString): void
++ setInput(points: QVector&lt;QVector&lt;double&gt; &gt;): void
++ setPart(var: char, min, max: double, count: int, type: QString): void
++ setPart(var: char, points: QVector&lt;double&gt;): void
++ setDimension(enable: bool): void
++ advance(): void
+- messageLoop(msg: QString): void
+--
++ timerTick(): void
+--
++ render(): void
++ init(): void
++ clear(): void
++ addFuncPoint(pos, col: QVector3D): void
++ addInterPoint(pos, col: QVector3D): void
++ message(msg: QString): void
++ error(msg: QString): void
++ partChanged(partX, partY: QVector&lt;double&gt;): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>18</x>
+      <y>432</y>
+      <w>390</w>
+      <h>264</h>
+    </coordinates>
+    <panel_attributes>Controller
+--
+- _mainView: MainView*
+- _funcView: OpenGLView*
+- _interView: OpenGLView*
+- _model: Model*
+- _showFunc: bool
+--
+&lt;&lt;constructor&gt;&gt;
++ Controller(mainView: MainView*,
+           funcView, interView: OpenGLView*,
+           model: Model*)
+--
+- modelRender(): void
+- modelInit(): void
+- modelClear(): void
+- modelFuncPoint(pos, col: QVector3D): void
+- modelInterPoint(pos, col: QVector3D): void
+- modelMessage(msg: QString): void
+- modelError(msg: QString): void
+- modelPartChanged(partX, partY: QVector&lt;double&gt;): void
+- viewInputSet(input: QString): void
+- viewInputSet(Qvector&lt;QVector&lt;double&gt; &gt;): void
+- viewPartSet(var: char, min, max: double, count: int, QString: type): void
+- viewPartSet(var: char, points: QVector&lt;double&gt;): void
+- viewDimensionChanged(enabled: bool): void
+- viewClosed(): void
+- viewAdvance(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>822</x>
+      <y>114</y>
+      <w>366</w>
+      <h>492</h>
+    </coordinates>
+    <panel_attributes>MainView
+--
+- _top: TabWidget*
+- _bottom:Q TabWidget* 
+- _topPage1: QWidget* 
+- _topPage2: QWidget*
+- _bottomPage1: QWidget* 
+- _bottomPage2: QWidget* 
+- _funcInput: QLineEdit*
+- _pointInput: QVector&lt;QVector&lt;QLineEdit*&gt; &gt;
+- _partMinX: QDoubleSpinBox*
+- _partMinY: QDoubleSpinBox*
+- _partMaxX: QDoubleSpinBox*
+- _partMaxY: QDoubleSpinBox*
+- _partCountX: QSpinBox*
+- _partCountY: QSpinBox*
+- _partTypeX: QComboBox*
+- _partTypeY: QComboBox*
+- _part2CountX: QSpinBox*
+- _part2CountY: QSpinBox*
+- _part2BaseX: QVector&lt;QLineEdit*&gt; 
+- _part2BaseY: QVector&lt;QLineEdit*&gt; 
+- _renderButton: QPushButton*
+- _oneDimension: QPushButton*
+- _helpButton: QPushButton*
+- _showSteps: QPushButton*
+- _help: HelpView*
+--
+&lt;&lt;constructor&gt;&gt;
+MainView(parent: QWidget)
++ partChanged(partX, partY: QVector&lt;double&gt;): void
++ showMessage(msg: QString): void
++ showError(msg: QString): void
+- hasEmpty(): bool
+--
+- buttonClick(): void
+- partChangedX(): void
+- partChangedY(): void
+- countChanged(): void
+- dimensionChanged(): void
+- helpClicked(): void
+- showEvent(event: QShowEvent*): void
+- closeEvent(event: QCloseEvent*): void
+--
++ inputSet(input: QString): void
++ inputSet(Qvector&lt;QVector&lt;double&gt; &gt;): void
++ partSet(var: char, min, max: double, count: int, QString: type): void
++ partSet(var: char, points: QVector&lt;double&gt;): void
++ dimensionChanged(enabled: bool): void
++ closed(): void
++ advance(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>822</x>
+      <y>624</y>
+      <w>312</w>
+      <h>186</h>
+    </coordinates>
+    <panel_attributes>OpenGLView
+--
+- _program: QOpenGLShaderProgram*
+- _camera: Camera
+- _surface: Drawable*
+- _coord: Drawable*
+- _oneDimension: bool
+- _rotate: bool
+--
+&lt;&lt;constructor&gt;&gt;
+OpenGLView(parent: QWidget*)
++ initializeGL(): void
++ paintGL(): void
++ resizeGL(): void
++ init(): void
++ clear(): void
++ addPoint(pos, col: QVector3D): void
++ setOneDimension(enabled: bool): void
+--
+- keyPressEvent(event: QKeyEvent*): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>498</x>
+      <y>714</y>
+      <w>144</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>HelpView
+--
+_button: QPushButton*
+--
+&lt;constructor&gt;&gt;
++ HelpView(parent: QWidget*)
+--
+- buttonClicked(): void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

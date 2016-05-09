@@ -15,6 +15,8 @@ public:
     ~Lagrange();
 
     double calculate(double x, double y);
+    void initialize();
+    QString sampleData();
 
 private:
     QVector<Evaluator*> _polX;
@@ -22,8 +24,6 @@ private:
 
     QString createPolynomialX(int v);
     QString createPolynomialY(int k);
-
-    void initialize();
 };
 
 #endif // LAGRANGE_H

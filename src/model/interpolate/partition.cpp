@@ -12,7 +12,7 @@ Partition::~Partition()
     _points.clear();
 }
 
-void Partition::setPartition(double min, double max, int count, Partition_Type type)
+void Partition::setPartition(double min, double max, int count, PartitionType type)
 {
     if (type == PARTITION_TYPE_EVEN)
     {

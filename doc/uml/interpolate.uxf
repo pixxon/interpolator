@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?><diagram program="umlet" version="11.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>70</x>
+      <y>40</y>
+      <w>390</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>Partition
+--
+- _points: QVector&lt;double&gt;
+--
+&lt;&lt;constructor&gt;&gt;
++ Partition()
++ setPartition(min, max: double, count: int,
+               type: PartitionType): void
++ setPoints(points: QVector&lt;double&gt;): void
++ getCount(): int
++ at(i: int): double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>500</x>
+      <y>40</y>
+      <w>290</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>/Interpolation/
+--
+- _data: DataTable
+- _needInitialize: bool
+--
+&lt;&lt;constructor&gt;&gt;
++ Interpolation()
++ addData(x, y, z: double): void
++ clear(): void
+/+ calculate(x, y): double/
+/+ initialize(): void/
+/+ sampleData(): QString/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>220</x>
+      <y>270</y>
+      <w>330</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>Lagrange
+--
+- _polX: QVector&lt;Evaluator*&gt;
+- _polY: QVector&lt;Evaluator*&gt;
+--
+&lt;&lt;constructor&gt;&gt;
++ Lagrange()
++ calculate(x, y: double): double
++ initialize(): void
++ sampleData(): QString
+- createPolynomialX(i: int): QString
+- createPolynomialY(i: int): QString</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>580</x>
+      <y>270</y>
+      <w>330</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Newton
+--
+- _diffs: QVector&lt;double&gt;
+--
+&lt;&lt;constructor&gt;&gt;
++ Newton()
++ calculate(x, y: double): double
++ initialize(): void
++ sampleData(): QString</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>180</x>
+      <y>510</y>
+      <w>300</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>DataTable
+--
+- _baseX: QVector&lt;double&gt;
+- _baseY: QVector&lt;double&gt;
+- _val: QVector&lt;QVector&lt;double&gt;&gt;
+--
+&lt;&lt;constructor&gt;&gt;
++ DataTable()
++ addPoint(x, y, z: double): void
++ sizeX(): int
++ sizeY(): int
++ clear(): void
++ baseXAt(i: int): double
++ baseYAt(i: int): double
++ valueAt(x, y: int): double</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

@@ -16,6 +16,8 @@ public:
     void clear();
 
     virtual double calculate(double x, double y) = 0;
+    virtual void initialize() = 0;
+    virtual QString sampleData() = 0;
 
 protected:
     DataTable _data;

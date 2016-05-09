@@ -75,6 +75,29 @@ void Lagrange::initialize()
     _needInitialize = false;
 }
 
+
+QString Lagrange::sampleData()
+{
+    QString result;
+
+    for (int i = 0; i < _data.sizeX(); i++)
+    {
+        if (i != 0)
+        {
+            if (result.size() != 0)
+            {
+                result.append("*\n");
+            }
+
+            QString numerator = "(x-" + QString::number(_data.baseXAt(i), 'f', 4) + ")";
+            QString denominator = "(" + QString::number(_data.baseXAt(0), 'f', 4) + "-" + QString::number(_data.baseXAt(i), 'f', 4) + ")";
+            result.append("(" + numerator + "/" + denominator + ")");
+        }
+    }
+
+    return "Az első Lagrange alappolinom: \n\n" + result;
+}
+
 QString Lagrange::createPolynomialX(int v)
 {
     double denominator = 1;
@@ -96,7 +119,7 @@ QString Lagrange::createPolynomialX(int v)
 
 	if (_data.sizeX() > 1)
 	{
-		return "(" + numerator.join("") + ")/(" + QString::number(denominator, 'f', 10) + ")";
+        return "(" + numerator.join("") + ")/(" + QString::number(denominator, 'f', 10) + ")";
 	}
 	else
 	{
@@ -132,4 +155,3 @@ QString Lagrange::createPolynomialY(int v)
         return "1";
     }
 }
-

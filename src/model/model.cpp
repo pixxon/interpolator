@@ -44,13 +44,12 @@ Model::~Model()
 {
     delete _evaluator;
     delete _timer;
+    delete _interpolator;
 }
 
 void Model::setInput(QString str)
 {
     clear();
-
-    messageLoop("Függvény elemzése, szintaxisfa felépítése.");
 
     try
     {
@@ -62,7 +61,7 @@ void Model::setInput(QString str)
         return;
     }
 
-    messageLoop("Függvény értékének kiszámítása alappontokban.");
+    messageLoop("Függvény elemzése, szintaxisfa felépítése.\n\n" + _evaluator->toString());
 
     _interpolator->clear();
     for (int i = 0; i < _partX.getCount(); i++)
@@ -80,8 +79,16 @@ void Model::setInput(QString str)
         }
     }
 
-    messageLoop("Interpolációs polinom előállítása.");
-    messageLoop("Függvény és közelítés kiértékelése a megjelenítéshez.");
+    messageLoop("Függvény értékének kiszámítása alappontokban.\n\n" +
+                QString::number(_partX.getCount()) + (_oneDimension?"":(" x " + QString::number(_partX.getCount()))) + " pontban.");
+
+    _interpolator->initialize();
+
+    messageLoop("Interpolációs polinom előállítása.\n\n" +
+                _interpolator->sampleData());
+
+    messageLoop(QString("Függvény és közelítés kiértékelése a megjelenítéshez.\n\n") +
+                "50" + (_oneDimension?"":" x 50") + " pontban.");
 
     float deltaX = (_partX.at(_partX.getCount() - 1) - _partX.at(0)) / 50.f;
     for (float i = _partX.at(0); i <= _partX.at(_partX.getCount() - 1); i+= deltaX)
@@ -166,7 +173,9 @@ void Model::setInput(QString str)
         }
     }
 
-    messageLoop("Adatok betöltése a grafikus kártyára, inicializálás.");
+    messageLoop(QString("OpenGL inicializás és adatok betöltése a grafikus kártyára.\n\n") +
+                "Shaderek betöltése, shaderprogram összekapcsolása.\n" +
+                "50" + (_oneDimension?"":" x 50") + " pont másolása.");
 
     init();
 }
@@ -175,7 +184,8 @@ void Model::setInput(QVector<QVector<double>> points)
 {
 	clear();
 
-    messageLoop("Alappontok beállítása az interpolációhoz.");
+    messageLoop("Alappontok beállítása az interpolációhoz.\n\n" +
+                QString::number(_partX.getCount()) + (_oneDimension?"":(" x " + QString::number(_partX.getCount()))) + " pontban.");
 
     _interpolator->clear();
     for (int i = 0; i < _partX.getCount(); i++)
@@ -184,10 +194,15 @@ void Model::setInput(QVector<QVector<double>> points)
             {
                 _interpolator->addData(_partX.at(i), _partY.at(j), points[j][i]);
             }
-	}
+    }
 
-    messageLoop("Interpolációs polinom előállítása.");
-    messageLoop("Közelítés kiértékelése a megjelenítéshez.");
+    _interpolator->initialize();
+
+    messageLoop("Interpolációs polinom előállítása.\n\n" +
+                _interpolator->sampleData());
+
+    messageLoop(QString("Közelítő polinom kiértékelése a megjelenítéshez.\n\n") +
+                "50" + (_oneDimension?"":" x 50") + " pontban.");
 
     double deltaX = (_partX.at(_partX.getCount() - 1) - _partX.at(0)) / 50.f;
     for (double i = _partX.at(0); i <= _partX.at(_partX.getCount() - 1); i+= deltaX)
@@ -224,7 +239,9 @@ void Model::setInput(QVector<QVector<double>> points)
         }
 	}
 
-    messageLoop("Adatok betöltése a grafikus kártyára, inicializálás.");
+    messageLoop(QString("OpenGL inicializás és adatok betöltése a grafikus kártyára.\n\n") +
+                "Shaderek betöltése, shaderprogram összekapcsolása.\n" +
+                "50" + (_oneDimension?"":" x 50") + " pont másolása.");
 
     init();
 }
@@ -310,11 +327,15 @@ void Model::setOneDimension(bool enabled)
     {
         _table->removeSymbol("var");
         _table->insertSymbol("var", QRegExp("^x"), ARITY_CONSTANT, ASSOCIATIVITY_NONE, 0, 0);
+        delete _interpolator;
+        _interpolator = new Newton();
     }
     else
     {
         _table->removeSymbol("var");
         _table->insertSymbol("var", QRegExp("^(x|y)"), ARITY_CONSTANT, ASSOCIATIVITY_NONE, 0, 0);
+        delete _interpolator;
+        _interpolator = new Lagrange();
     }
     _oneDimension = enabled;
 }

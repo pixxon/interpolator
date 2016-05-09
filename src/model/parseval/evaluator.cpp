@@ -1,6 +1,76 @@
 #include "evaluator.h"
 
-#include <QDebug>
+
+TreePrinter::TreePrinter()
+{
+
+}
+
+TreePrinter::~TreePrinter()
+{
+
+}
+
+QString TreePrinter::toString(Node* root)
+{
+    QString result;
+    QTextStream stream(&result);
+    print(stream, root, 0);
+    return result;
+}
+
+void TreePrinter::indent(QTextStream& out, int level)
+{
+    for (int i = 0; i < level; i++)
+    {
+        if (set.contains(i))
+        {
+            out << "   | ";
+        }
+        else
+        {
+            out << "    ";
+        }
+    }
+}
+
+void TreePrinter::tee(QTextStream& out, int level)
+{
+    indent(out, level);
+    out << "   |-";
+    set.insert(level);
+}
+
+void TreePrinter::ell(QTextStream& out, int level)
+{
+    indent(out, level);
+    out << "   `-";
+    set.remove(level);
+}
+
+void TreePrinter::print(QTextStream& out, Node* node, int level)
+{
+    out << "( " << node->getToken().getValue() << " )" << endl;
+
+    if (node->getLeft() != nullptr && node->getRight() != nullptr)
+    {
+        tee(out, level);
+        print(out, node->getLeft(), level + 1);
+        ell(out, level);
+        print(out, node->getRight(), level + 1);
+    }
+    else if (node->getLeft() != nullptr)
+    {
+        ell(out, level);
+        print(out, node->getLeft(), level + 1);
+    }
+    else if (node->getRight() != nullptr)
+    {
+        ell(out, level);
+        print(out, node->getRight(), level + 1);
+    }
+}
+
 
 Evaluator::Evaluator():
     _parser(),
@@ -12,6 +82,13 @@ Evaluator::Evaluator():
 Evaluator::~Evaluator()
 {
 	delete _root;
+}
+
+QString Evaluator::toString() const
+{
+    TreePrinter printer;
+
+    return printer.toString(_root);
 }
 
 void Evaluator::setExpression(const QString& str)

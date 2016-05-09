@@ -30,10 +30,10 @@ private:
     Drawable* _surface;
     Drawable* _coord;
     bool _oneDimension;
+    bool _rotate;
 
+private slots:
     void keyPressEvent(QKeyEvent*);
-
-    bool rotate;
 };
 
 #endif // OPENGLVIEW_H

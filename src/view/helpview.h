@@ -14,7 +14,7 @@ public:
 private:
     QPushButton* _button;
 
-public slots:
+private slots:
     void buttonClicked();
 };
 

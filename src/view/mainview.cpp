@@ -16,7 +16,6 @@
 #include <QTextStream>
 #include <QMessageBox>
 
-
 MainView::MainView(QWidget *parent) :
     QWidget(parent)
 {
@@ -194,11 +193,11 @@ void MainView::showEvent(QShowEvent*)
     _renderButton = new QPushButton("Kirajzolás", this);
     QObject::connect(_renderButton, SIGNAL(clicked(bool)), this, SLOT(buttonClick()));
 
-    _oneDimension = new QPushButton("Egy dimenzió?", this);
+    _oneDimension = new QPushButton("Egy dimenzió", this);
     QObject::connect(_oneDimension, SIGNAL(clicked(bool)), this, SLOT(dimensionChanged()));
     _oneDimension->setCheckable(true);
 
-    _showSteps = new QPushButton("Lépések jelzése?", this);
+    _showSteps = new QPushButton("Lépések kiírása", this);
     _showSteps->setCheckable(true);
 
     _helpButton = new QPushButton("Súgó", this);
@@ -278,6 +277,9 @@ bool MainView::hasEmpty()
             }
         }
 
+        if (_oneDimension->isChecked())
+            return false;
+
         for (int i = 0; i < _part2BaseY.size(); i++)
         {
             if (_part2BaseY[i]->text() == "")
@@ -308,6 +310,9 @@ void MainView::buttonClick()
         return;
     }
 
+    partChangedX();
+    partChangedY();
+
 	if (_top->currentIndex() == 0)
     {
         inputSet(_funcInput->text());
@@ -323,7 +328,7 @@ void MainView::buttonClick()
             points[i].resize(_pointInput[i].size());
             for (int j = 0; j < _pointInput[i].size(); j++)
             {
-                points[i][j] = _pointInput[i][j]->text().toDouble();
+                points[i][j] = _pointInput[i][j]->text().replace(",",".").toDouble();
 			}
 		}
 
@@ -363,7 +368,7 @@ void MainView::partChangedX()
                     }
                 }
             }
-            baseX.push_back(_part2BaseX[i]->text().toDouble());
+            baseX.push_back(_part2BaseX[i]->text().replace(",",".").toDouble());
         }
         partSet('x', baseX);
     }
@@ -371,6 +376,11 @@ void MainView::partChangedX()
 
 void MainView::partChangedY()
 {
+    if (_oneDimension->isChecked())
+    {
+        return;
+    }
+
     if (_bottom->currentIndex() == 0)
     {
         partSet('y', _partMinY->value(), _partMaxY->value(), _partCountY->value(), _partTypeY->currentText());
@@ -401,7 +411,7 @@ void MainView::partChangedY()
                     }
                 }
             }
-            baseY.push_back(_part2BaseY[i]->text().toDouble());
+            baseY.push_back(_part2BaseY[i]->text().replace(",",".").toDouble());
         }
         partSet('y', baseY);
     }
@@ -493,6 +503,12 @@ void MainView::countChanged()
         _part2BaseY[i] ->setFixedHeight(25);
         _part2BaseY[i] ->setFixedWidth(50);
         _part2BaseY[i] ->setValidator(new QDoubleValidator());
+
+        if (_oneDimension->isChecked())
+        {
+            _part2BaseY[i]->setEnabled(false);
+        }
+
         QObject::connect(_part2BaseY[i], SIGNAL(editingFinished()), this, SLOT(partChangedY()));
        _bottom2Layout->addWidget(_part2BaseY[i], 3, i, 1, 1);
     }

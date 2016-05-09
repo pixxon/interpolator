@@ -7,6 +7,7 @@
 #include <QString>
 #include <QException>
 
+
 class SymbolException: public QException
 {
     public:
