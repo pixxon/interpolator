@@ -24,7 +24,7 @@ class Camera
         QMatrix4x4 getMVP();
 
         void lookAt(QVector3D, QVector3D, QVector3D);
-        static QMatrix4x4 perspective(float, float, float, float);
+        static QMatrix4x4 perspective(double, double, double, double);
 
         void move(int);
 		

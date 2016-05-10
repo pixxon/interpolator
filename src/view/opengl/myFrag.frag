@@ -10,7 +10,7 @@ void main()
 {
 	if (coloring == 0)
 	{
-		fs_out_col = vec4(0, 0, 0, 1);
+                fs_out_col = vec4(vs_out_col, 1);
 	}
 	else
 	{

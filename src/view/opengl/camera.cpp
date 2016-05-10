@@ -66,7 +66,7 @@ void Camera::lookAt(QVector3D eye, QVector3D center, QVector3D up)
     _view = res;
 }
 
-QMatrix4x4 Camera::perspective(float angle, float ratio, float near, float far)
+QMatrix4x4 Camera::perspective(double angle, double ratio, double near, double far)
 {
     QMatrix4x4 res;
     res.perspective(angle, ratio, near, far);

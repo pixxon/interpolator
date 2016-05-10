@@ -6,13 +6,15 @@
 #include <QtConcurrent/QtConcurrent>
 #include <QFuture>
 
-Controller::Controller(MainView* mainView, OpenGLView* funcView, OpenGLView* interView, Model* model):
+Controller::Controller(MainView* mainView, OpenGLView* funcView, OpenGLView* interView, OpenGLView* diffView, Model* model):
     QObject(0),
     _mainView(mainView),
     _funcView(funcView),
     _interView(interView),
+    _diffView(diffView),
     _model(model),
-    _showFunc(false)
+    _showFunc(false),
+    _showDiff(false)
 {
     QObject::connect(_mainView, SIGNAL(inputSet(QString)), this, SLOT(viewInput(QString)));
     QObject::connect(_mainView, SIGNAL(inputSet(QVector<QVector<double> >)), this, SLOT(viewInput(QVector<QVector<double> >)));
@@ -27,6 +29,8 @@ Controller::Controller(MainView* mainView, OpenGLView* funcView, OpenGLView* int
     QObject::connect(_model, SIGNAL(clear()), this, SLOT(modelClear()));
     QObject::connect(_model, SIGNAL(addInterPoint(QVector3D,QVector3D)), this, SLOT(modelInterPoint(QVector3D,QVector3D)));
     QObject::connect(_model, SIGNAL(addFuncPoint(QVector3D,QVector3D)), this, SLOT(modelFuncPoint(QVector3D,QVector3D)));
+    QObject::connect(_model, SIGNAL(addDiffPoint(QVector3D,QVector3D)), this, SLOT(modelDiffPoint(QVector3D,QVector3D)));
+    QObject::connect(_model, SIGNAL(addCommonPoint(QVector3D)), this, SLOT(modelCommonPoint(QVector3D)));
     QObject::connect(_model, SIGNAL(partChanged(QVector<double>,QVector<double>)), this, SLOT(modelPartChanged(QVector<double>,QVector<double>)));
     QObject::connect(_model, SIGNAL(message(QString)), this, SLOT(modelMessage(QString)));
     QObject::connect(_model, SIGNAL(error(QString)), this, SLOT(modelError(QString)));
@@ -45,14 +49,26 @@ void Controller::start()
 void Controller::modelRender()
 {
     if(_showFunc)
+    {
         _funcView->update();
+    }
+    if(_showDiff)
+    {
+        _diffView->update();
+    }
     _interView->update();
 }
 
 void Controller::modelInit()
 {
     if(_showFunc)
+    {
         _funcView->init();
+    }
+    if(_showDiff)
+    {
+        _diffView->init();
+    }
     _interView->init();
 }
 
@@ -60,8 +76,15 @@ void Controller::modelClear()
 {
     _interView->clear();
     if(_showFunc)
+    {
         _funcView->clear();
+    }
+    if(_showDiff)
+    {
+        _diffView->clear();
+    }
     _showFunc = false;
+    _showDiff = false;
 }
 
 void Controller::modelFuncPoint(QVector3D pos, QVector3D col)
@@ -73,6 +96,18 @@ void Controller::modelFuncPoint(QVector3D pos, QVector3D col)
 void Controller::modelInterPoint(QVector3D pos, QVector3D col)
 {
     _interView->addPoint(pos, col);
+}
+
+void Controller::modelDiffPoint(QVector3D pos, QVector3D col)
+{
+    _showDiff = true;
+    _diffView->addPoint(pos, col);
+}
+
+void Controller::modelCommonPoint(QVector3D pos)
+{
+    _funcView->addCommonPoint(pos);
+    _interView->addCommonPoint(pos);
 }
 
 void Controller::modelPartChanged(QVector<double> partX, QVector<double> partY)
@@ -116,6 +151,7 @@ void Controller::viewDimensionChanged(bool enabled)
 {
     _funcView->setOneDimension(enabled);
     _interView->setOneDimension(enabled);
+    _diffView->setOneDimension(enabled);
     _model->setOneDimension(enabled);
 }
 
@@ -123,6 +159,7 @@ void Controller::viewClosed()
 {
     _funcView->close();
     _interView->close();
+    _diffView->close();
 }
 
 void Controller::viewContinue()

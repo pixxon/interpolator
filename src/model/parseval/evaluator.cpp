@@ -91,6 +91,9 @@ QString Evaluator::toString() const
     return printer.toString(_root);
 }
 
+
+#include <QDebug>
+
 void Evaluator::setExpression(const QString& str)
 {
     for (QMap<double, QMap<double, double> >::iterator it = _cache.begin(); it != _cache.end(); it++)
@@ -98,7 +101,6 @@ void Evaluator::setExpression(const QString& str)
         it->clear();
     }
     _cache.clear();
-    delete _root;
 
     _parser.setInput(str);
     _root = _parser.getTree();

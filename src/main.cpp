@@ -16,9 +16,11 @@ int main(int argc, char *argv[])
     interView.setWindowTitle("Interpoláció");
     OpenGLView funcView;
     funcView.setWindowTitle("Függvény");
+    OpenGLView diffView;
+    diffView.setWindowTitle("Hiba");
     Model model;
 
-    Controller controller(&mainView, &funcView, &interView, &model);
+    Controller controller(&mainView, &funcView, &interView, &diffView, &model);
 
     controller.start();
 

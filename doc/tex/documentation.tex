@@ -454,8 +454,45 @@ Utolsó lépés az előállított fa segítségével kiértékelni a függvényt
 
 \chapter{Felhasználói dokumentáció}
 \section{Telepítés}
+\subsection{Rendszer követelmények}
+\paragraph{}
+Az alkalmazás működéséhez és megjelenítéshez az futtató számítógépnek az alábbi követelményeket teljesíteni-e kell: \\
+\begin{tabular}{l | l}
+Operációs rendszer & Windows 7, 8, 10 vagy Linux \\
+Felbontás & Legalább 1280x1024, ajánlott 1980x1080 \\
+Processzor & Az optimális működéshez 2 szálat támogató, 3GHz órajelű \\
+Grafikus kártya & OpenGL 4.0-et támogató, legalább 512MB memóriával rendelkező \\
+Háttértároló & Nem igényel a futtatható állomány méreténél nagyobb területet \\
+Internet & Nincs szükség internetkapcsolatra \\
+Bemenet & Billentyűzet és egér szükséges
+\end{tabular}
+\subsection{Egyéb függőségek}
+\paragraph{}
+A program nem igényel telepítést, elegendő az operációs rendszerhez tartozó futtatható állományt a számítógépre másolni. Mivel a Qt keretrendszer segítségével készült a program, ezért egyéb segédfájlok meglétét igényli.
+\paragraph{}
+Ezek a fájlok is megtalálhatóak a futtatható állomány mellett, csak a program által elérhető mappába kell őket másolni. Ez operációs rendszerenként eltérő, van ahol elegendő a futtatható állomány mellé helyezni, viszont egyes esetekben elkerülhetetlen, hogy rendszermappába helyezze őket.
+\paragraph{}
+Amennyiben nem sikerül a másolással megoldani a függőségeket, úgy a Qt keretrendszer oldaláról letölthető a Qt 5.6-os verziója, mely letöltése és telepítése elhelyezi a szükséges segédfájlokat a megfelelő mappákban.
 \section{Használat}
-
+\paragraph{}
+A programot az Interpolator futtatható állomány segítségével indíthatja el, ekkor megjelenik a főablak.
+Itt a bemeneti információkat különböző módon adhatja meg. A módok közötti az elhelyezett fülek segítségével tud váltani.
+\paragraph{}
+Ajánlott először az alappontokat megadni. A kényelmesebb megoldás, ha a Felosztás opciót választja. Ekkor az intervallumok két végpontját és az alappontok számának megadása után térjen az értékek megadása részhez.
+\paragraph{}
+Amennyiben szeretné manuálisan beállítani az alappontokat, úgy a másik fül segítségével, először az alappontok számának megadása után tudja megadni a pontok helyzetét. Ügyeljen arra, hogy ne maradjon üresen mező, valamint ne legyenek azonos alappontok sem.
+\paragraph{}
+Miután megadta az alappontokat, az értékek megadására is két módszert nyújt a program. Amennyiben ismert a függvény, úgy elegendő azt a Függvény fül alatt található szövegdobozba beírni, majd a Kirajzolás gomb lenyomására megjelenik.
+\paragraph{}
+Ismeretlen függvény esetén az Értékek fül alatt tudja megadni az alappontokban felvett értékeket. Amennyiben minden mezőt kitöltött, a Kirajzolás gomb segítségével megjelenítheti az interpoláció eredményét.
+\paragraph{}
+A menüben található Mentés és Betöltés gombok használatával van lehetősége a jelenlegi konfiguráció lementésére, valamint ismételt betöltésére. A gomb lenyomása után egy párbeszédablak segítségével választhatja ki a kívánt fájlt.
+\paragraph{}
+A program egyváltozós függvény megjelenítését is támogatja, ezt az Egyváltozós gomb lenyomásával érhetjük el. Ekkor a felületen a második változóra vonatkozó mezők kikapcsolnak, és csak az egyik változóra vonatkozó adatokat kell megadnia.
+\paragraph{}
+Szemléltetés céljából, a Lépések mutatása gombbal tud be- és kikapcsolni egy segédfunkciót. A bekapcsolásakor a megjelenítés folyamata párbeszédablakokban érdekes és hasznos információkat jelenít meg.
+\paragraph{}
+A programot a főnézet bezárógombjának segítségével tudja megállítani. Ekkor az összes többi ablak is bezáródik, valamint a program terminál.
 \chapter{Fejlesztői dokumentáció}
 \section{Feladat specifikálása}
 \paragraph{}

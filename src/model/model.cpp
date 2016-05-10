@@ -58,6 +58,7 @@ void Model::setInput(QString str)
     catch(QException& ex)
     {
         error(ex.what());
+        _evaluator->setExpression("x");
         return;
     }
 
@@ -68,13 +69,17 @@ void Model::setInput(QString str)
     {
         if (_oneDimension)
         {
-            _interpolator->addData(_partX.at(i), 0, _evaluator->calculate(_partX.at(i), 0));
+            double res = _evaluator->calculate(_partX.at(i), 0);
+            _interpolator->addData(_partX.at(i), 0, res);
+            addCommonPoint(QVector3D(_partX.at(i), res, 0));
         }
         else
         {
             for (int j = 0; j < _partY.getCount(); j++)
             {
-                _interpolator->addData(_partX.at(i), _partY.at(j), _evaluator->calculate(_partX.at(i), _partY.at(j)));
+                double res = _evaluator->calculate(_partX.at(i), _partY.at(j));
+                _interpolator->addData(_partX.at(i), _partY.at(j),res);
+                addCommonPoint(QVector3D(_partX.at(i), res, _partY.at(j)));
             }
         }
     }
@@ -90,49 +95,58 @@ void Model::setInput(QString str)
     messageLoop(QString("Függvény és közelítés kiértékelése a megjelenítéshez.\n\n") +
                 "50" + (_oneDimension?"":" x 50") + " pontban.");
 
-    float deltaX = (_partX.at(_partX.getCount() - 1) - _partX.at(0)) / 50.f;
-    for (float i = _partX.at(0); i <= _partX.at(_partX.getCount() - 1); i+= deltaX)
+
+
+    double maxDiff = 0;
+    double deltaX = (_partX.at(_partX.getCount() - 1) - _partX.at(0)) / 50.f;
+    for (double i = _partX.at(0); i <= _partX.at(_partX.getCount() - 1); i+= deltaX)
     {
         if (_oneDimension)
         {
-            float tmp = _interpolator->calculate(i, 0);
-            float tmp2 = _evaluator->calculate(i, 0);
-            float diff = tmp - tmp2;
-            if (diff < 0)
+            double tmp1 = _interpolator->calculate(i, 0);
+            double tmp2 = _evaluator->calculate(i, 0);
+            double diff1 = tmp1 - tmp2;
+            if (diff1 < 0)
             {
-                diff *= -1;
+                diff1 *= -1;
             }
+            maxDiff = (maxDiff < diff1)?diff1:maxDiff;
 
-            addInterPoint({i, tmp, 0}, {diff, diff, diff});
-            addFuncPoint({i, tmp2, 0}, {diff, diff, diff});
-
-
-            tmp = _interpolator->calculate(i + deltaX, 0);
-            tmp2 = _evaluator->calculate(i + deltaX, 0);
-            diff = tmp - tmp2;
-            if (diff < 0)
+            double tmp3 = _interpolator->calculate(i + deltaX, 0);
+            double tmp4 = _evaluator->calculate(i + deltaX, 0);
+            double diff2 = tmp3 - tmp4;
+            if (diff2 < 0)
             {
-                diff *= -1;
+                diff2 *= -1;
             }
+            maxDiff = (maxDiff < diff2)?diff2:maxDiff;
 
-            addInterPoint({i + deltaX, tmp, 0}, {diff, diff, diff});
-            addFuncPoint({i + deltaX, tmp2, 0}, {diff, diff, diff});
+            addInterPoint(QVector3D(i, tmp1, 0), QVector3D(diff1, diff1, diff1));
+            addInterPoint(QVector3D(i + deltaX, tmp3, 0), QVector3D(diff2, diff2, diff2));
+
+            addDiffPoint(QVector3D(i, diff1, 0), QVector3D(1, 1, 1));
+            addDiffPoint(QVector3D(i + deltaX, diff2, 0), QVector3D(1, 1, 1));
+
+            addInterPoint(QVector3D(i, tmp2, 0), QVector3D(0, 0, 0));
+            addInterPoint(QVector3D(i + deltaX, tmp4, 0), QVector3D(0, 0, 0));
         }
         else
         {
-            float deltaY = (_partY.at(_partY.getCount() - 1) - _partY.at(0)) / 50.f;
-            for (float j = _partY.at(0); j <= _partY.at(_partY.getCount() - 1); j+= deltaY)
+            double deltaY = (_partY.at(_partY.getCount() - 1) - _partY.at(0)) / 50.f;
+            for (double j = _partY.at(0); j <= _partY.at(_partY.getCount() - 1); j+= deltaY)
             {
-                float tmp = _interpolator->calculate(i, j);
-                float tmp2 = _evaluator->calculate(i, j);
-                float diff = tmp - tmp2;
+                double tmp = _interpolator->calculate(i, j);
+                double tmp2 = _evaluator->calculate(i, j);
+                double diff = tmp - tmp2;
                 if (diff < 0)
                 {
                     diff *= -1;
                 }
+                maxDiff = (maxDiff < diff)?diff:maxDiff;
 
-                addInterPoint({i, tmp, j}, {diff, diff, diff});
-                addFuncPoint({i, tmp2, j}, {diff, diff, diff});
+                addInterPoint(QVector3D(i, tmp, j), QVector3D(diff, diff, diff));
+                addFuncPoint(QVector3D(i, tmp2, j), QVector3D(0, 0, 0));
+                addDiffPoint(QVector3D(i, diff, j), QVector3D(1, 1, 1));
 
 
                 tmp = _interpolator->calculate(i, j + deltaY);
@@ -142,9 +156,11 @@ void Model::setInput(QString str)
                 {
                     diff *= -1;
                 }
+                maxDiff = (maxDiff < diff)?diff:maxDiff;
 
-                addInterPoint({i, tmp, j + deltaY}, {diff, diff, diff});
-                addFuncPoint({i, tmp2, j + deltaY}, {diff, diff, diff});
+                addInterPoint(QVector3D(i, tmp, j + deltaY), QVector3D(diff, diff, diff));
+                addFuncPoint(QVector3D(i, tmp2, j + deltaY), QVector3D(0.1, 0.1, 0.1));
+                addDiffPoint(QVector3D(i, diff, j + deltaY), QVector3D(0.9, 0.9, 0.9));
 
 
                 tmp = _interpolator->calculate(i + deltaX, j + deltaY);
@@ -154,9 +170,11 @@ void Model::setInput(QString str)
                 {
                     diff *= -1;
                 }
+                maxDiff = (maxDiff < diff)?diff:maxDiff;
 
-                addInterPoint({i + deltaX, tmp, j + deltaY}, {diff, diff, diff});
-                addFuncPoint({i + deltaX, tmp2, j + deltaY}, {diff, diff, diff});
+                addInterPoint(QVector3D(i + deltaX, tmp, j + deltaY), QVector3D(diff, diff, diff));
+                addFuncPoint(QVector3D(i + deltaX, tmp2, j + deltaY), QVector3D(0, 0, 0));
+                addDiffPoint(QVector3D(i + deltaX, diff, j + deltaY), QVector3D(1, 1, 1));
 
 
                 tmp = _interpolator->calculate(i + deltaX, j);
@@ -166,12 +184,17 @@ void Model::setInput(QString str)
                 {
                     diff *= -1;
                 }
+                maxDiff = (maxDiff < diff)?diff:maxDiff;
 
-                addInterPoint({i + deltaX, tmp, j}, {diff, diff, diff});
-                addFuncPoint({i + deltaX, tmp2, j}, {diff, diff, diff});
+                addInterPoint(QVector3D(i + deltaX, tmp, j), QVector3D(diff, diff, diff));
+                addFuncPoint(QVector3D(i + deltaX, tmp2, j), QVector3D(0.1, 0.1, 0.1));
+                addDiffPoint(QVector3D(i + deltaX, diff, j), QVector3D(0.9, 0.9, 0.9));
             }
         }
     }
+
+    messageLoop(QString("A kiértékelések után, a legnagyobb abszolút hiba " +
+                        QString::number(maxDiff, 'f', 4) + " volt."));
 
     messageLoop(QString("OpenGL inicializás és adatok betöltése a grafikus kártyára.\n\n") +
                 "Shaderek betöltése, shaderprogram összekapcsolása.\n" +
@@ -193,6 +216,7 @@ void Model::setInput(QVector<QVector<double>> points)
             for (int j = 0; j < _partY.getCount(); j++)
             {
                 _interpolator->addData(_partX.at(i), _partY.at(j), points[j][i]);
+                addCommonPoint(QVector3D(_partX.at(i), points[j][i], _partY.at(j)));
             }
     }
 
@@ -210,11 +234,11 @@ void Model::setInput(QVector<QVector<double>> points)
         if (_oneDimension)
         {
             double tmp = _interpolator->calculate(i, _partY.at(0));
-            addInterPoint(QVector3D(i, tmp, _partY.at(0)), {0, 0, 0});
+            addInterPoint(QVector3D(i, tmp, _partY.at(0)), QVector3D(0, 0, 0));
 
 
             tmp = _interpolator->calculate(i + deltaX, _partY.at(0));
-            addInterPoint(QVector3D(i + deltaX, tmp, _partY.at(0)), {0, 0, 0});
+            addInterPoint(QVector3D(i + deltaX, tmp, _partY.at(0)), QVector3D(0, 0, 0));
         }
         else
         {
@@ -222,19 +246,19 @@ void Model::setInput(QVector<QVector<double>> points)
             for (double j = _partY.at(0); j <= _partY.at(_partY.getCount() - 1); j+= deltaY)
             {
                 double tmp = _interpolator->calculate(i, j);
-                addInterPoint(QVector3D(i, tmp, j), {0, 0, 0});
+                addInterPoint(QVector3D(i, tmp, j), QVector3D(0.1, 0.1, 0.1));
 
 
                 tmp = _interpolator->calculate(i, j + deltaY);
-                addInterPoint(QVector3D(i, tmp, j + deltaY), {0, 0, 0});
+                addInterPoint(QVector3D(i, tmp, j + deltaY), QVector3D(0, 0, 0));
 
 
                 tmp = _interpolator->calculate(i + deltaX, j + deltaY);
-                addInterPoint(QVector3D(i + deltaX, tmp, j + deltaY), {0, 0, 0});
+                addInterPoint(QVector3D(i + deltaX, tmp, j + deltaY), QVector3D(0.1, 0.1, 0.1));
 
 
                 tmp = _interpolator->calculate(i + deltaX, j);
-                addInterPoint(QVector3D(i + deltaX, tmp, j), {0, 0, 0});
+                addInterPoint(QVector3D(i + deltaX, tmp, j), QVector3D(0, 0, 0));
             }
         }
 	}
@@ -278,14 +302,14 @@ void Model::setPart(char var, double min, double max, int count, QString type)
 
     QVector<double> resultX;
     resultX.resize(_partX.getCount());
-    for (int i = 0; i < resultX.size(); i++)
+    for (int i = 0; i < _partX.getCount(); i++)
     {
         resultX[i] = _partX.at(i);
     }
 
     QVector<double> resultY;
     resultY.resize(_partY.getCount());
-    for (int i = 0; i < resultY.size(); i++)
+    for (int i = 0; i < _partY.getCount(); i++)
     {
         resultY[i] = _partY.at(i);
     }
@@ -306,14 +330,14 @@ void Model::setPart(char var, QVector<double> points)
 
     QVector<double> resultX;
     resultX.resize(_partX.getCount());
-    for (int i = 0; i < resultX.size(); i++)
+    for (int i = 0; i < _partX.getCount(); i++)
     {
         resultX[i] = _partX.at(i);
     }
 
     QVector<double> resultY;
     resultY.resize(_partY.getCount());
-    for (int i = 0; i < resultY.size(); i++)
+    for (int i = 0; i < _partY.getCount(); i++)
     {
         resultY[i] = _partY.at(i);
     }

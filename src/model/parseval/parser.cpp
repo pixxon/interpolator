@@ -28,16 +28,18 @@ Node::Node(Node* left, Node* right, const Token& token):
 {
 }
 
+#include <QDebug>
+
 Node::~Node()
 {
     if (_left != 0)
-	{
-		delete _left;
-	}
+    {
+        delete _left;
+    }
     if (_right != 0)
-	{
-		delete _right;
-	}
+    {
+        delete _right;
+    }
 }
 
 Node* Node::getLeft() const
@@ -73,7 +75,7 @@ void Parser::setInput(const QString& str)
 Node* Parser::parse(const int& min_prec)
 {
 	Node* lhs = parse_primary();
-	Node* rhs;
+    Node* rhs = 0;
 
     Token peek = _tokenizer.peek();
     if (peek.getValue() != "" && (*_table)[peek.getType()].getArity() != ARITY_BINARY && peek.getType() != "close")

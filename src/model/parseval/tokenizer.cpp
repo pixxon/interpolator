@@ -73,6 +73,11 @@ void Tokenizer::next()
 		return;
 	}
 
+    int i = 0;
+    while(_input.at(i) == ' ')
+        i++;
+    _input.remove(0, i);
+
 	SymbolTable::const_iterator it = _table->begin();
 	while(it != _table->end())
     {

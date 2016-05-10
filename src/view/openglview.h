@@ -22,6 +22,7 @@ public:
     void init();
     void clear();
     void addPoint(QVector3D, QVector3D);
+    void addCommonPoint(QVector3D);
     void setOneDimension(bool enabled);
 
 private:
@@ -29,8 +30,13 @@ private:
     Camera _camera;
     Drawable* _surface;
     Drawable* _coord;
+    Drawable* _ball;
     bool _oneDimension;
     bool _rotate;
+
+    QVector<QVector3D> _ballPos;
+
+    double _maxDist;
 
 private slots:
     void keyPressEvent(QKeyEvent*);

@@ -310,9 +310,6 @@ void MainView::buttonClick()
         return;
     }
 
-    partChangedX();
-    partChangedY();
-
 	if (_top->currentIndex() == 0)
     {
         inputSet(_funcInput->text());

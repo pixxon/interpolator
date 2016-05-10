@@ -51,6 +51,8 @@ signals:
     void clear();
     void addFuncPoint(QVector3D, QVector3D);
     void addInterPoint(QVector3D, QVector3D);
+    void addDiffPoint(QVector3D, QVector3D);
+    void addCommonPoint(QVector3D);
     void message(QString);
     void error(QString);
     void partChanged(QVector<double>, QVector<double>);
