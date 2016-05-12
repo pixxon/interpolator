@@ -1,12 +1,10 @@
 \documentclass[12pt]{report}
-\usepackage[
-	a4paper,
-	inner = 35mm,
-	outer = 25mm,
-	top = 25mm,
-	bottom = 25mm
-]{geometry}
 
+\usepackage[a4paper,
+			inner = 35mm,
+			outer = 25mm,
+			top = 25mm,
+			bottom = 25mm]{geometry}
 \usepackage{lmodern}
 \usepackage[magyar]{babel}
 \usepackage[utf8]{inputenc}
@@ -15,6 +13,8 @@
 \usepackage{graphicx}
 \usepackage{amssymb}
 \usepackage{setspace}
+
+\setcounter{secnumdepth}{3}
 \onehalfspacing
 
 \begin{document}
@@ -27,9 +27,9 @@
 \includegraphics[width=1\textwidth]{pics/eltecimerszines}
 \end{minipage} & &
 \begin{minipage}{7cm}
-\vspace{0pt}Eötvös Loránd Tudományegyetem \vspace{10pt}
-\newline Informatikai Kar \vspace{10pt}
-\newline Numerikus Analízis tanszék
+\vspace{0pt}Eötvös Loránd Tudományegyetem \vspace{10pt} \newline
+Informatikai Kar \vspace{10pt} \newline
+Numerikus Analízis tanszék
 \end{minipage}
 \end{tabular}
 
@@ -64,6 +64,7 @@ Ehhez szükségünk van arra, hogy a létrejött függvény véges sok pontban k
 Mindig is szerettem ötvözni más-más területen megszerzett tudásomat, így ebben a dolgozatban is ez a célom. A háromdimenziós vizualizáció érdekelt, így a megjelenítés már adott volt. A matematikai háttér kisebb utána olvasás és kutatás után véglegesedett ki, hiszen az egyetem alatt csak egyváltozós függvények interpolációját tanultuk, de találtam módszereket az interpolációs polinom előállítására többváltozós függvények esetén. A matematikai függvények kiértékelhető formára való átalakítása hasonló, mint a fordítóprogramok működése. Így végül egy viszonylag komplex és sokrétegű programmal sikerült megoldani a kitűzött feladatot.
 
 \chapter{Tudományos háttér}
+
 \section{Interpoláció}
 \paragraph{}
 Az interpolációs alapfeladat egy olyan $P(x)$ függvény meghatározása, melyre teljesül, hogy $P(x_i)=f(x_i) \; \forall i = 0 \dots n$, ahol az $x_0, \dots, x_n$ különböző pontok a mérések helyeit, továbbiakban alappontokat, és $f(x_0), \dots, f(x_n)$ a mérések eredményét, vagyis az alappontokban az eredeti függvény által felvett értékeket jelölik.
@@ -76,7 +77,8 @@ Az előállított közelítő függvény típusa alapján három nagyobb csoport
 \end{itemize}
 A továbbiakban csak a polinomiális módszerrel foglalkozunk, mert ezen függvényeket a Horner-algoritmussal adott pontban lineáris időben ki tudjuk értékelni.
 \paragraph{}
-Egy változóban a program polinom interpoláció felhasználásával készíti el a közelítést. Célja, hogy $n+1$ darab pontra előállítsa az egyértelműen létező $n$-ed fokú polinomot. Ezen függvények előnye, hogy kiszámításuk viszonylag olcsó, a Horner algoritmus felhasználásával lineáris időben ki lehet őket értékelni. Lentebb a két legnépszerűbb interpolációs polinom előállítását mutatom be. 
+Egy változóban a program polinom interpoláció felhasználásával készíti el a közelítést. Célja, hogy $n+1$ darab pontra előállítsa az egyértelműen létező $n$-ed fokú polinomot. Ezen függvények előnye, hogy kiszámításuk viszonylag olcsó, a Horner algoritmus felhasználásával lineáris időben ki lehet őket értékelni. Lentebb a két legnépszerűbb interpolációs polinom előállítását mutatom be.
+
 \subsection{Lagrange-interpoláció}
 \paragraph{}
 A módszer lényege, hogy $n+1$ darab különböző alappontból előállítunk egy polinom bázist, melyeket Lagrange alappolinomoknak nevezünk, és ebben a bázisban előállítjuk a közelítő függvényt. Előnye a módszernek, hogy könnyen bővíthető kétváltozós függvényekre is, hátránya a kiértékelés magas költsége.
@@ -135,7 +137,7 @@ $$
 p_i(x) = \prod_{k = 0, k \neq i}^{n}\frac{x-x_k}{x_i-x_k},\; q_j(y) = \prod_{k = 0, k \neq j}^{n}\frac{y-y_k}{y_j-y_k}
 $$
 A szorzatukból előáll a keresett bázis, hiszen az $l_{i, j}(x,y) = p_i(x)\cdot q_j(y)$ függvény az $(x_i, y_j)$ alappontban 1 értéket vesz fel, míg más alappontokban 0-át.
-\newpage
+
 \subsection{Az interpolációs polinom Newton-alakja}
 \paragraph{}
 Ez a módszer is, a Lagrange-interpolációhoz hasonlóan, egy polinombázisban készíti el a közelítő függvényt. Előnye a gyors számítás, az osztott differenciák akár helyben is számolhatóak, új pont megadásakor nem kell teljesen újra számolni, elegendő csak az utolsó együtthatót kiszámolni. Hátránya, hogy nehezen terjeszthető ki több dimenzióra.
@@ -157,7 +159,7 @@ Ekkor felhasználva az osztott differenciát felírhatjuk az interpolációs pol
 $$
 N(x) = f(x_0) + \sum_{k=1}^{n} f[x_0, \dots, x_k] \cdot n_i(x)
 $$
-\newpage
+
 \subsection{Alappontok választása}
 \paragraph{}
 A függvény és az azt közelítő polinom közötti eltérést szeretnénk a lehető legjobban lecsökkenteni, erre egy lehetőség az alappontok precíz megválasztása.
@@ -198,10 +200,11 @@ Elértük, hogy legyen $n$ darab alappontunk az $[a,b]$ intervallumon, melyekre 
 $$
 |f(x)-I_n(x)| \leq \frac{M_{n+1}\cdot(b-a)^{n+1}}{(n+1)! \cdot 2^{2n+1}}
 $$
-\newpage
+
 \section{3D grafika}
 \paragraph{}
 A kezdeti számítógépek csak szöveges formában kommunikáltak a felhasználókkal, majd később született meg a grafikus ábrázolás, ami nagyban megkönnyítette a használatot. Ahogy fejlődtek a számítógépek, az egyre erősebb grafikus processzorok képesek már háromdimenziós ábrázolásra is. Ez nem tényleges háromdimenziós megjelenítést jelent, a legtöbb esetben egy három dimenziós jelenet egy adott pontból látható képét jeleníti meg.
+
 \subsection{Modellek}
 \paragraph{}
 A pontábrázolás legelterjedtebb módszer a Descartes-féle koordináta-rendszer, melyben kitüntetett szerepe van az origónak, a rendszer középpontjának. Minden más egy háromelemű bázis lineáris kombinációjának segítségével adható meg. Az alapértelmezett jelölésben:
@@ -332,6 +335,7 @@ $$
 \cdot
 P
 $$
+
 \subsection{Megjelenítés}
 \paragraph{}
 Alakzatokból a fentebb ismertetett transzformációk segítségével létre tudjuk hozni a háromdimenziós képet, azonban ezt még nem lehet megjeleníteni, hiszen a legtöbb számítógép kimeneti perifériája egy monitor, ami csak kétdimenziós képmegjelenítést támogat. Így csak egy térbeli hatást tudunk kelteni, például azzal, hogy a közelebbi tárgy eltakarja a távolabbit, ami messzebb van, az kisebbnek látszódik.
@@ -358,10 +362,10 @@ Már elkészített transzformált vertexekből háromszögeket épít fel a köv
 \paragraph{}
 Raszterizáció lényege, hogy az elkészült háromszögeket a lehető legkisebb egységekre bontsa. Első lépésben meghatározza egy háromszögről, hogy mely pixelek tartoznak hozzá, vagyis vannak benne. Ezután a háromszög három csúcspontjának színe és távolsága alapján meghatározza minden fragment színét, majd innen az adatokat egy bufferba küldi tovább. A kép frissítésekor a buffer tartalma alapján ki tudjuk rajzolni a képernyőre a kívánt alakzatot.
 
-\newpage
-\section{Formális nyelvek és fordító programok}
+\section{Formális nyelvek és fordítóprogramok}
 \paragraph{}
 A matematika világában mindent megpróbálunk formálisan leírni, mert csak így tudjuk a fogalmakat használni és bizonyítani a tételeket. A formális nyelvekkel is ugyanígy járunk el, megpróbálunk szabályokat felírni, mely segítségével a nyelv levezethető. Ezzel el tudjuk dönteni, hogy egy adott, formális nyelvben vett szó, egy adott nyelvhez tartozik-e. Ez a folyamat történik akkor is, mikor a fordító program az általunk írt kódot elemzi és készíti el a futtatható állományt. Ekkor a programunk lesz a szó, és a fordítóprogram különböző elemzői döntik el, hogy valóban az adott programnyelvbe tartozik-e a kódunk.
+
 \subsection{Nyelvek leírása formálisan}
 \paragraph{}
 A nyelvek alapjai a szimbólumok, a nem üres véges halmazuk pedig az ábécé. Egy $L$ ábécé feletti szavak halmazát $L^+$-al jelöljük, ha az üres szót is belevesszük, akkor $L^*$-al jelöljük.
@@ -388,6 +392,7 @@ A szabályok alkalmazásával minden szóhoz elő tudunk állítani egy szintaxi
 \includegraphics[width=8cm]{pics/syntax_tree}\\
 {\footnotesize A $2+3\cdot4$ kifejezés két szintaxisfája.}
 \end{center}
+
 \subsection{Fordítás menete}
 \paragraph{}
 A fordítás első lépése a lexikális elemzés, melynek feladata, hogy a bemenetről eldöntse, megfelel a nyelv ábécéjének, és szimbólumokra, úgynevezett tokenere bontsa azt. Ennek segítségére reguláris kifejezéseket használunk, melyekkel könnyen fel tudunk írni akár bonyolultabb szimbólumokat is.
@@ -399,6 +404,7 @@ Miután a bemenetet tokenekre bontottuk, meg kell őket feleltetnünk a $P$ halm
 Szemantikus elemzést azért végzünk, hogy az elkészített grammatika egyszerűbb legyen, és egyéb olyan feladatokat teljesítsen, melyeket szükséges elvégezni, de a szintaktikus elemzéskor nem volt rá lehetőségünk. Ez tipikusan kifejezések típusának helyességének ellenőrzése, újra deklarálás, vagy a nem deklarált változók felismerése. Ezek egyszerű ellenőrzésének érdekében bevezetjük a szimbólumtáblát, mely feladata, hogy számon tartsa, mely függvények, változók vannak jelenleg definiálva, és mi az ő típusuk.
 \paragraph{}
 A lexikális, szintaktikus és szemantikus elemzés után már biztosítva van, hogy a fordítás lehetséges, ilyenkor az adott nyelvünket bizonyos szabályok alapján egy másik nyelvre tudjuk fordítani, mely lehet akár már futtatható kód, vagy még csak egy köztes nyelv, amiből egy másik fordítóprogram segítségével futtatható kódot kapunk.
+
 \subsection{Matematikai függvények formális nyelve}
 \paragraph{}
 A függvények interpolációjához szükségünk van arra, hogy a programban a matematikai függvényeket feltudjuk ismerni, kitudjuk értékelni. Erre az előbb bemutatott formális nyelv modellt használjuk fel. Jelölje a $G=(N, T, P, S)$ a matematikai függvények nyelvét, már csak az egyes részeket kell definiálnunk.
@@ -444,19 +450,24 @@ P= & \{Start \rightarrow Expression, \\
 \end{array}
 $$
 A $var$ és $num$ tokeneket úgynevezett szemantikus értékkel is ellátjuk, itt tároljuk, hogy melyik változóról van szó, $x$ vagy $y$, illetve, hogy az adott számnak mi az értéke. A nyelvhez előre elkészített szimbólumtábla tartozik, melyben az egyes műveletek és függvények kiszámításának módja található. Megtalálható még benne az egyes bináris műveletek precedenciája, mely segít a helyes szintaxisfa előállításában.
+
 \subsection{Precedencia elemző}
 \paragraph{}
 A precedenciák ismeretében fel kell építenünk a helyes szintaxisfát, lásd $2+3\cdot4$ esete, csak az egyik változata eredményezte a helyes végeredményt. Ilyen feladatnak többféle megoldása is létezik, futási idő, fa felépítések iránya és előre olvasott szimbólumok száma alapján. A programban egy LR(1) parser, a precedencia elemőzre esett a választás. Az L jelentése, hogy a bemenetet balról jobbra olvasva, visszalépés nélkül elemzi, az R jelentése, hogy jobboldali levezetést használ, vagyis a fát lentről felfelé építi fel. Az 1-es jelentése, hogy egyetlen szimbólum előreolvasása után dönti el, hogy a bemenetet kell léptetnie, vagy a jelenlegit redukálnia.
 \paragraph{}
-Az elemző két rekurzív függvény segítségével lett megvalósítva, az első feladata az elemi kifejezések felismerése, ezek jelen esetben lehetnek előjeles számok, változók, függvények, valamint zárolójelek közötti összetett kifejezések. Ezek felismerésére szolgál a másik rekurzív függvény, mely egy adott precedenciánál nagyobb összetartozó részeket ismeri fel. Az algoritmus implementációjáról és működéséről részletes leírás a Parser osztály című alfejezetben olvasható.
+Az elemző két rekurzív függvény segítségével lett megvalósítva, az első feladata az elemi kifejezések felismerése, ezek jelen esetben lehetnek előjeles számok, változók, függvények, valamint zárolójelek közötti összetett kifejezések. Ezek felismerésére szolgál a másik rekurzív függvény, mely egy adott precedenciánál nagyobb összetartozó részeket ismeri fel. Az algoritmus implementációja Fejlesztői fejezetben további információ található.
 \paragraph{}
 Utolsó lépés az előállított fa segítségével kiértékelni a függvényt adott pontban. A mélységi bejárás algoritmusának postorder változatával könnyen el is tudjuk ezt végezni, hiszen szülő mindig egy részkifejezés főművelete, így azt az után kell elvégezni, hogy a gyerekeiben lévő műveletet elvégeztük. Egészen addig kell rekurzívan lefelé mennünk, amíg el nem érünk egy levélhez, ahol két lehetőség van. Az első, hogy a levélben egy változó van, ekkor a szemantikus érték alapján kiválasztjuk, hogy melyik változó értékét kell behelyettesíteni, a másik lehetőség, hogy egy szám áll ott, ilyenkor csak a szemantikus értékkel számolunk tovább.
 
 \chapter{Felhasználói dokumentáció}
+
+\section{Bemutatás}
+
 \section{Telepítés}
+
 \subsection{Rendszer követelmények}
 \paragraph{}
-Az alkalmazás működéséhez és megjelenítéshez az futtató számítógépnek az alábbi követelményeket teljesíteni-e kell: \\
+Az alkalmazás működéséhez és megjelenítéshez az futtató számítógépnek az alábbi követelményeket teljesíteni-e kell: \\ \\
 \begin{tabular}{l | l}
 Operációs rendszer & Windows 7, 8, 10 vagy Linux \\
 Felbontás & Legalább 1280x1024, ajánlott 1980x1080 \\
@@ -466,6 +477,8 @@ Háttértároló & Nem igényel a futtatható állomány méreténél nagyobb te
 Internet & Nincs szükség internetkapcsolatra \\
 Bemenet & Billentyűzet és egér szükséges
 \end{tabular}
+Amennyiben valamelyik feltétel nem teljesül, úgy a program kényelmes működése nem garantált.
+
 \subsection{Egyéb függőségek}
 \paragraph{}
 A program nem igényel telepítést, elegendő az operációs rendszerhez tartozó futtatható állományt a számítógépre másolni. Mivel a Qt keretrendszer segítségével készült a program, ezért egyéb segédfájlok meglétét igényli.
@@ -473,14 +486,25 @@ A program nem igényel telepítést, elegendő az operációs rendszerhez tartoz
 Ezek a fájlok is megtalálhatóak a futtatható állomány mellett, csak a program által elérhető mappába kell őket másolni. Ez operációs rendszerenként eltérő, van ahol elegendő a futtatható állomány mellé helyezni, viszont egyes esetekben elkerülhetetlen, hogy rendszermappába helyezze őket.
 \paragraph{}
 Amennyiben nem sikerül a másolással megoldani a függőségeket, úgy a Qt keretrendszer oldaláról letölthető a Qt 5.6-os verziója, mely letöltése és telepítése elhelyezi a szükséges segédfájlokat a megfelelő mappákban.
+
 \section{Használat}
+
+\subsection{Funkciók leírása}
 \paragraph{}
 A programot az Interpolator futtatható állomány segítségével indíthatja el, ekkor megjelenik a főablak.
 Itt a bemeneti információkat különböző módon adhatja meg. A módok közötti az elhelyezett fülek segítségével tud váltani.
 \paragraph{}
 Ajánlott először az alappontokat megadni. A kényelmesebb megoldás, ha a Felosztás opciót választja. Ekkor az intervallumok két végpontját és az alappontok számának megadása után térjen az értékek megadása részhez.
+\begin{center}
+\includegraphics[width=7cm]{pics/gui/partition1}  \\
+{\footnotesize Felosztás fül} 
+\end{center}
 \paragraph{}
 Amennyiben szeretné manuálisan beállítani az alappontokat, úgy a másik fül segítségével, először az alappontok számának megadása után tudja megadni a pontok helyzetét. Ügyeljen arra, hogy ne maradjon üresen mező, valamint ne legyenek azonos alappontok sem.
+\begin{center}
+\includegraphics[width=7cm]{pics/gui/partition2}  \\
+{\footnotesize Alappontok fül} 
+\end{center}
 \paragraph{}
 Miután megadta az alappontokat, az értékek megadására is két módszert nyújt a program. Amennyiben ismert a függvény, úgy elegendő azt a Függvény fül alatt található szövegdobozba beírni, majd a Kirajzolás gomb lenyomására megjelenik.
 \paragraph{}
@@ -491,12 +515,20 @@ A menüben található Mentés és Betöltés gombok használatával van lehető
 A program egyváltozós függvény megjelenítését is támogatja, ezt az Egyváltozós gomb lenyomásával érhetjük el. Ekkor a felületen a második változóra vonatkozó mezők kikapcsolnak, és csak az egyik változóra vonatkozó adatokat kell megadnia.
 \paragraph{}
 Szemléltetés céljából, a Lépések mutatása gombbal tud be- és kikapcsolni egy segédfunkciót. A bekapcsolásakor a megjelenítés folyamata párbeszédablakokban érdekes és hasznos információkat jelenít meg.
+\begin{center}
+\includegraphics[width=5cm]{pics/gui/menu}  \\
+{\footnotesize A menü} 
+\end{center}
 \paragraph{}
 A programot a főnézet bezárógombjának segítségével tudja megállítani. Ekkor az összes többi ablak is bezáródik, valamint a program terminál.
+\subsection{Hibaüzenetek jelentése}
+
 \chapter{Fejlesztői dokumentáció}
-\section{Feladat specifikálása}
+
+\section{Feladat specifikációja}
 \paragraph{}
 A feladat egy olyan grafikus alkalmazás elkészítése, mely a felhasználó által megadott adatokból elkészíti, és megjeleníti az interpolációs közelítést, valamint ha lehetséges, azt a függvényt is, melyet közelít.
+
 \subsection{Követelmények}
 \paragraph{}
 Kényelmi funkciók miatt a felhasználónak több lehetőséget kell biztosítani az információk megadására. Az alappontokat megadhatja manuálisan is, de legyen lehetősége az intervallum és a pontok számával is, ekkor automatikusan állítódjanak be a pontok.
@@ -510,6 +542,7 @@ Az újrahasználás, és hordozhatóság céljából tudjuk menteni az adatokat 
 Egyszerű személyre szabás és használhatóság érdekében külön ablakokban jelenítse meg az információkat, a felhasználó az ablakokat mozgathatja és átméretezheti.
 \paragraph{}
 A programnak több platformon is működnie kell, ezzel növelve a lehetséges felhasználók számát. Feltételezhetjük, hogy a futtató számítógép rendelkezik grafikus megjelenítővel és támogatja az OpenGL szabványt.
+
 \subsection{Felhasználói esetek}
 \paragraph{}
 A programot egyidejűleg egyetlen felhasználó használja, aki minden funkciót elér. A következő ábrán látható a rendszer összes felhasználói esetét tartalmazó UML diagram. Alatta a funkciók részletes leírása következik.
@@ -517,38 +550,49 @@ A programot egyidejűleg egyetlen felhasználó használja, aki minden funkciót
 \includegraphics[width=11cm]{pics/uml/use_case}\\
 {\footnotesize A felhasználói esetek}
 \end{center}
+
 \subsubsection{Adatok megadása funkció}
 \paragraph{}
 Nincs előfeltétele, így bármikor végrehajtható. Két fő részből áll, az interpolációhoz szükséges adatokat kell megadnia a felhasználónak. Ezek az alappontok és ezen pontokban felvett függvényérték. Ha bármely szükséges információ hiányzik, a program hibajelzéssel közli.
+
 \subsubsection{Alappontok megadása funkció}
 \paragraph{}
 Az interpolációhoz szükséges mintavételezési pontok megadása. A felhasználói kényelem céljából megadható egy intervallum és pontszám segítségével, azonban a jobb használhatóságért a pontok egyenként is megadhatóak.
+
 \subsubsection{Felosztás megadása funkció}
 \paragraph{}
 Kényelmi funkció, elegendő a kívánt intervallum két végpontját megadni, valamint hogy hány pontban szeretne mintát vételezni. Ezután a program automatikusan kiszámolja az alappontokat.
+
 \subsubsection{Pontok megadása funkció}
 \paragraph{}
 Ezzel a funkcióval tud tetszőleges alappontokat megadni, így az interpoláció teljesen konfigurálható. Az alappontok számának megadása után tud megadni annyi darab számot, melyek az alappontok lesznek.
+
 \subsubsection{Értékek megadása funkció}
 \paragraph{}
 Az alappontokban felvett értékeket is meg kell adni ahhoz, hogy az interpolációt végre lehessen hajtani. Két eltérő lehetőséget biztosítunk, attól függően, hogy ismeri-e a függvény, vagy csak az értékeket.
+
 \subsubsection{Függvény megadása funkció}
 \paragraph{}
 Szöveges formában megadhatja a függvényt, ekkor a program fogja az alappontokban kiértékelni a függvény, és ez alapján hajtódik végre az interpoláció. Amennyiben a függvény értelmezése közben hiba történt, a program jelzést ad róla.
+
 \subsubsection{Alappontban felvett értékek megadása funkció}
 \paragraph{}
 Ismeretlen függvényt is tud közelíteni a program segítségével, ezen funkcióval. Az alappontokon felvett függvény értékét kell csak megadni, ezután elkezdhető a kirajzolás folyamata.
+
 \subsubsection{Kirajzolás funkció}
 \paragraph{}
 Előfeltétele, az Adatok megadása funkció, mert csak akkor indítható el a kirajzolás folyamata, mikor minden szükséges információ a rendelkezésünkre áll. Ezen funkció eredménye az elkészített közelítés (és ha rendelkezésre áll, az eredeti függvény) megjelenítése.
+
 \subsubsection{Mentés funkció}
 \paragraph{}
 A Kirajzoláshoz hasonlóan, előfeltétele az Adatok megadása funkció, ezzel biztosítva, hogy a fájlba minden adat helyesen belekerül. A kívánt fájl a felhasználó választja ki, így a későbbiekben bármikor újra el tudja érni.
+
 \subsubsection{Betöltés funkció}
 \paragraph{}
 Mivel a Mentés funkció feltétele az Adatok megadása, így a Betöltés annak egy speciális változata, ekkor a felhasználó egy fájl kiválasztásával szolgáltatja a szükséges információkat.
-\newpage
+
 \section{Tervezés}
+
 \subsection{Elemzés}
 \paragraph{}
 A bemeneti nézetet 3 részre bontjuk, a bal oldalon találhatóak a menü gombjai, valamint a rajzolást előidéző gomb. A jobb oldal felső részén az alappontokat tudjuk megadni, a két különböző opciót két fül alatt találjuk meg. Az intervallumot a két végpontja segítségével adhatjuk meg, ügyelve arra, hogy ne legyenek azonosak. Az alappontok számát egyessével tudjuk léptetni, az interpolációhoz legalább kettőre szükség van, tíz felett pedig túl hosszú időbe kerül végrehajtani a műveleteket, így csak ebből az intervallumból adhatjuk meg. Plusz lehetőségként megadható a generálás típusa, az egyenletes felosztás a legelterjedtebb, azonban a legkisebb hibát a Csebisev alappontok gyökeinek segítségével érhetjük el. A másik fülön először meg kell adnunk az alappontok számát, a bemeneti mezők száma dinamikusan hozzáigazodik.
@@ -562,6 +606,7 @@ Miután a felhasználó minden szükséges mezőt kitöltött, lehetősége van 
 A teljes megjelenítés három ablak segítségével történik. A főablakban találhatóak a bemeneti adatot tartalmazó mezők, míg a másik kettőben a vizuális megjelenítés. A programot a főablak bezárásával tudjuk leállítani, ekkor az összes többi ablak is bezáródik.
 \paragraph{}
 A Windows, Linux és OSX operációsrendszereken való működést a Qt keretrendszer biztosítja, így platformspecifikus kódrészletek nélkül kivitelezhető a program, csak a megfelelő segédfájlok másolása szükséges.
+
 \subsection{Grafikus felület}
 \paragraph{}
 Az alkalmazás több ablakból épül fel, ezeket most egyenként jellemezzük. A következő képek a program Ubuntu 14.04 operációs rendszer alatt készültek, más környezetben eltérően nézhet ki, azonban a folyamatmenet azonos marad.
@@ -578,6 +623,7 @@ Az alappontokat automatikusan felosztással, és manuálisan egyenként is meg l
 \includegraphics[width=7cm]{pics/gui/partition1} & \includegraphics[width=7cm]{pics/gui/partition2} \\
 {\footnotesize A két változóhoz tartozó intervallumok} & {\footnotesize Az alappontok manuális megadása} 
 \end{tabular}
+
 \subsection{Program felépítése}
 \paragraph{}
 A programot az MVC (modell - nézet - kontroller) architektúrában valósítjuk meg. A megjelenítésért felelős osztályok a View névtérben találhatóak, feladatuk a felhasználóval való kommunikáció, a bemeneti mezők megjelenítése, valamint a függvények vizualizációjának megjelenítése. A Model névtérben találhatóak a program logikáját tartalmazó osztályok, két névtérben (Parseval és Interpolation) a függvény kiértékeléshez és interpolációhoz szükségesek, valamint egy főosztály hangolja össze ezen részek működését. A Controller névtérben a nézet és modell közötti kommunikációt létrehozó osztály található. Feladata a felhasználói interakciók elküldése a modellnek, valamint a nézet frissítése a modell változásai alapján.
@@ -585,6 +631,18 @@ A programot az MVC (modell - nézet - kontroller) architektúrában valósítjuk
 \includegraphics[width=14cm]{pics/uml/package}\\
 {\footnotesize Az névterek kapcsolata}
 \end{center}
+\newpage
+
+\section{Megvalósítás}
+\subsection{Fázisok}
+\subsubsection{Függvény elemző}
+\subsubsection{Háromdimenziós megjelenítés}
+\subsubsection{Interpolációs polinom előállítása}
+\subsubsection{Grafikus felület elkészítése}
+\subsubsection{Használhatóság könnyítése}
+\subsubsection{Funkcionalitás bővítése}
+
+\subsection{Az osztályok}
 Az objektumorientált programozás módszertanát szem előtt tartva, minden metódust, adattagot osztályokba szervezve tárolunk. A programban számos osztály található, a közöttük lévő kapcsolatok az alábbi ábrán láthatóak.
 \begin{center}
 \includegraphics[width=14cm]{pics/uml/classes}\\
@@ -592,24 +650,24 @@ Az objektumorientált programozás módszertanát szem előtt tartva, minden met
 \end{center}
 \paragraph{}
 A jobb átláthatóság érdekében az osztályok részletezése lentebb található, a diagram mellett egy rövid leírás és fontosabb metódusok bemutatása olvasható.
-\newpage
-\section{Osztályok leírása}
-\subsection{Model névtér}
 
-\subsubsection{SymbolException osztály}
+\subsubsection{Model névtér}
 \paragraph{}
+Az összes osztály, mely a program logikáját tartalmazza ebben a névtérben található. Két alnévtér található benne, az Interpolation és a Parseval, melyek teljesen elkülönülő feladatokat látnak el. Az első az interpolációt végzi, míg a második a matematikai függvények elemzését és kiértékelését.
+
+\paragraph{SymbolException osztály}
 Célja a SymbolTable osztály publikus metódusaiban keletkező hibák jelzése. Ősosztálya a QException osztály, így biztosítva van, hogy a kivétel szálbiztos. Pontosabb hibajelzés érdekében a konstruktorában megadható szöveges információ, mely egy privát adattagban tárolódik. A felülírt what() függvény segítségével kérdezhetjük le.
 \begin{center}
 \includegraphics[width=6cm]{pics/uml/SymbolException}
 \end{center}
-\subsubsection{SymbolInfo osztály}
-\paragraph{}
+
+\paragraph{SymbolInfo osztály}
 A szimbólumokhoz fontos információk tartoznak, a SymbolInfo osztály feladata, hogy ezeket együttesen tárolja. A szimbólum neve, reguláris kifejezése, paraméter száma, bináris függvény esetén asszociativitása, precedenciája, illetve a kiszámításhoz szükséges függvény a konstruktorban megadott értékkel inicializálódik. A getterek segítségével kérdezhetjük le a szükséges információt, hatékonyság céljából mindegyik metódus egy konstans referenciával tér vissza, így nem történik másolás.
 \begin{center}
 \includegraphics[width=8cm]{pics/uml/SymbolInfo}
 \end{center}
-\subsubsection{SymbolTable osztály}
-\paragraph{}
+
+\paragraph{SymbolTable osztály}
 A szimbólumok rendszerett tárolására szolgál a SymbolTable osztály, mely a singleton tervezési mintát megvalósítva biztosítja, hogy a programban mindenhol ugyanazok a szimbólumok legyenek elérhetőek. A szimbólumok azonosítója a nevük, így feltétel, hogy ne szerepelhessen két szimbólum azonos névvel. Bejárást egy belső osztály, const\_iterator, teszi lehetővé. Biztosítja a gyorsaságot a másolás elkerülésével, azzal a feltétellel, hogy nem változtathatjuk az adatokat.
 \begin{center}
 \includegraphics[width=10cm]{pics/uml/SymbolTable}
@@ -621,20 +679,19 @@ A szimbólumok rendszerett tárolására szolgál a SymbolTable osztály, mely a
 \item Meglévő szimbólumot a removeSymbol segítségével, név alapján tudunk eltávolítani. Ha nem létezik szimbólum a megadott névvel, akkor SymbolException kivételt dob.
 \end{itemize}
 
-\subsubsection{LexicalException osztály}
-\paragraph{}
+\paragraph{LexicalException osztály}
 A LexicalException osztály célja, hogy jelezze a lexikális elemzés közben fellépők hibákat. Ősosztálya a QException osztály, így biztosítva van, hogy a kivétel szálbiztos. Pontosabb hibajelzés érdekében a konstruktorában megadható szöveges információ, mely egy privát adattagban tárolódik. A felülírt what() függvény segítségével kérdezhetjük le.
 \begin{center}
 \includegraphics[width=6cm]{pics/uml/LexicalException}
 \end{center}
-\subsubsection{Token osztály}
-\paragraph{}
+
+\paragraph{Token osztály}
 A feldolgozás első lépése, hogy a bemenetet szimbólumokra bontsuk. Mivel a szimbólumokat a nevük alapján tudjuk azonosítani, így elegendő azt eltárolni. A változók és számok esetén a szemantikus értéket is meg kell őriznünk, hogy később be tudjuk helyettesíteni az értékét. Példányosításkor a konstruktorban megtudjuk adni ezt a két információt, az adattagok ezekkel az értékekkel inicializálódnak.
 \begin{center}
 \includegraphics[width=6cm]{pics/uml/Token}
 \end{center}
-\subsubsection{Tokenizer osztály}
-\paragraph{}
+
+\paragraph{Tokenizer osztály}
 A Tokenizer osztály az függvény szöveges megadása után, a szimbólumtábla segítségével, tokenekre bontja a bemenetet. A jobb párhuzamosság elérése céljából, bontja fel azonnal a bemenetet. Megpróbálja a bemenetet megfeleltetni valamelyik szimbólumnak, ha sikerül, akkor elmenti egy adattagba a kapott eredményt, és lépteti a bemenetet. Ha nem talál egyezést egyik szimbólum reguláris kifejezésére sem, akkor LexicalException kivétel dobásával jelzi azt.
 \begin{center}
 \includegraphics[width=6cm]{pics/uml/Tokenizer}
@@ -644,20 +701,19 @@ A Tokenizer osztály az függvény szöveges megadása után, a szimbólumtábla
 \item A peek metódus segítségével kérdezhetjük le a jelenlegi Token-t.
 \end{itemize}
 
-\subsubsection{ParserException osztály}
-\paragraph{}
+\paragraph{ParserException osztály}
 Az osztály célja, hogy a szintakszis fa építése közben keletkező hibákat jelezze. Ősosztálya a QException osztály, így biztosítva van, hogy a kivétel szálbiztos. Pontosabb hibajelzés érdekében a konstruktorában megadható szöveges információ, mely egy privát adattagban tárolódik. A felülírt what() függvény segítségével kérdezhetjük le.
 \begin{center}
 \includegraphics[width=6cm]{pics/uml/ParserException}
 \end{center}
-\subsubsection{Node osztály}
-\paragraph{}
+
+\paragraph{Node osztály}
 Láncolt, bináris fa építőköve. Egy csúcsról tárolja a benne tárolt tokent, valamint a két gyerekről egy-egy mutatót. Így fentről-lefelé mélységi bejárással gyorsan végig tudunk menni a gráfon.
 \begin{center}
 \includegraphics[width=6cm]{pics/uml/Node}
 \end{center}
-\subsubsection{Parser osztály}
-\paragraph{}
+
+\paragraph{Parser osztály}
 A precedecia elemző implementációja. Feladata felismerni az egyszerű és összetett kifejezeséket és felépíteni belőlük a szintakszis fát. A lexikális elemzővel folyamatos összeköttetésben áll, ő mondja meg, hogy mikor lépjen a következő szimbólumra. Ennek a következménye, hogy a szintakszisfát lineáris időben előtudja állítani.
 \begin{center}
 \includegraphics[width=6cm]{pics/uml/Parser}
@@ -668,8 +724,7 @@ A precedecia elemző implementációja. Feladata felismerni az egyszerű és ös
 \item A getTree metódus indítja el a teljes rekurzív folyamatot, és visszatérési értéke a szintakszis fa gyökerére mutató pointer. 
 \end{itemize}
 
-\subsubsection{Evaluator osztály}
-\paragraph{}
+\paragraph{Evaluator osztály}
 A precedencia elemző által előálított fát megadott pontokban ki kell számolni. Ehhez a gyökérből elindulva, postorder mélységi bejárást használva végigmegy a fán, és a változók helyére a szemantikus érték alapján a megfelelő értéket helyettesíti, illetve számok esetén magát a szemantikus értéket helyettesíti be. A számolás költségének csökkentése érdekében egy gyorsítótárral rendelkezik, mely az x,y értékpárokhoz hozzárendeli a függvény értékét, így a következő alkalommal nem kell kiszámolni, elegendő csak innen kiolvasni.
 \begin{center}
 \includegraphics[width=10cm]{pics/uml/Evaluator}
@@ -679,8 +734,7 @@ A precedencia elemző által előálított fát megadott pontokban ki kell szám
 \item A calculateAt metódus valósítja meg a mélységi bejárást a node csúcsból. Rekurzívan addig megy le a fában, amíg levelet nem talál, és közben folyamatosan elvégzi az adott műveletet. Függvények és operátorok esetén a szimbólumtáblából kérdezi le az adott műveletet.
 \end{itemize}
 
-\subsubsection{DataTable osztály}
-\paragraph{}
+\paragraph{DataTable osztály}
 Az alappontokat sokszor az indexük alapján használjuk az interpoláció során, az osztály levehető teszi, hogy tároljuk, és az index alapján elérjük az alappontokat, és az ott felvett értékeket. Az alappontok növekvő sorrendben vannak tárolva, így a beszúrás lineáris idejű. Mivel feltétel, hogy a rács minden pontjában meglegyen adva a függvény értéke, ezért beszúráskor egyből egy sort vagy oszlopot tesz be.
 \begin{center}
 \includegraphics[width=7cm]{pics/uml/DataTable}
@@ -690,14 +744,13 @@ Az alappontokat sokszor az indexük alapján használjuk az interpoláció sorá
 \item A többi függvény segítséget nyújt index alapú lekérdezéshez.
 \end{itemize}
 
-\subsubsection{Interpolation osztály}
-\paragraph{}
+\paragraph{Interpolation osztály}
 Egy absztrakt osztály, mely segítséget nyújt ahhoz, hogy a megvalósítást többféle, különböző módon valósítsuk meg. Az alappontokat kezeli, de a kiszámítás már egy tisztán virtuális függvény segítségével van megvalósítva. Ennek következménye, hogy az osztályt nem tudjuk példányosítani. Származtatáskor pedig felül kell írnunk, és itt tudjuk kiszámolni az eredményt.
 \begin{center}
 \includegraphics[width=7cm]{pics/uml/Interpolation}
 \end{center}
-\subsubsection{Lagrange osztály}
-\paragraph{}
+
+\paragraph{Lagrange osztály}
 A polinom interpoláció Lagrange alakját használva készíti el a függvény közelítését. Mivel az Interpolation-ből származtatott osztály, így az alappontok kezelésével már nem kell foglalkoznia, csak a polinom előállításával és kiszámításával. Első lépésben előállítja a Lagrange alappolinomokat mindkét változóra, a calculate függvényben pedig kiértékeli őket az adott pontban.
 \begin{center}
 \includegraphics[width=7cm]{pics/uml/Lagrange}
@@ -708,8 +761,7 @@ A polinom interpoláció Lagrange alakját használva készíti el a függvény 
 \item A calculate metódus az alappolinomokat kiértékeli a pontban, megszorozza a megfelelő függvényértékkel, majd összeadja őket.
 \end{itemize}
 
-\subsubsection{Newton osztály}
-\paragraph{}
+\paragraph{Newton osztály}
 A Newton-alakú interpolációt használva, az osztott differenciák segítségével készíti el a közelítést. Az Interpolation osztályból származtatott, így az alappontok kezelésével nem kell foglalkoznia. A differenciák előállítása után, a Horner algoritmus segítségével értékeli ki a polinomot az adott pontban.
 \begin{center}
 \includegraphics[width=7cm]{pics/uml/Newton}
@@ -719,8 +771,7 @@ A Newton-alakú interpolációt használva, az osztott differenciák segítség�
 \item A calculate függvény a Horner algoritmus segítségével értékeli ki a polinomot.
 \end{itemize}
 
-\subsubsection{Partition osztály}
-\paragraph{}
+\paragraph{Partition osztály}
 Egy intervallum felosztását tárolja. Automatikusan előtudja állítani a pontokat, egyenletesen elosztva, vagy a Csebisev polinomok gyökeinek transzformációjával. Manuálisan is megadható a kívánt alappontok halmaza.
 \begin{center}
 \includegraphics[width=7cm]{pics/uml/Partition}
@@ -729,8 +780,7 @@ Egy intervallum felosztását tárolja. Automatikusan előtudja állítani a pon
 \item A setPartition függvény a típus alapján generálja ki a felosztást, ezzel megsegítve a felhasználó munkáját.
 \end{itemize}
 
-\subsubsection{Model osztály}
-\paragraph{}
+\paragraph{Model osztály}
 A Model feladata, hogy összehangolja a különböző modulokat, elvégezze a szükséges számításokat és jelezze a nézeteknak a megjelenítendő adatokat. Lehetőséget biztosít arra, hogy a lépéseket megjelenjenek a felhasználó számára. A nézettel a kontroller osztályon keresztül, szignálokkal kommunikál, mely a QObject osztályból való származtatással lehetséges.
 \begin{center}
 \includegraphics[width=10cm]{pics/uml/Model}
@@ -755,10 +805,12 @@ A Model feladata, hogy összehangolja a különböző modulokat, elvégezze a sz
 	\end{itemize}
 \item Különböző típusú információt a message és error szignálok segítségével közöl, melyek paraméterében található az üzenet. A message a lépések megjelenítéséhez használt, míg az error a feldolgozás alatt keletkezett hibák jelzésére szolgál.
 \end{itemize}
-\subsection{Controller névtér}
-\subsubsection{Controller osztály}
-\paragraph{}
-Feladata a nézet és a modell közötti kommunikáció megvalósítása, valamint az ő irányításuk. Mivel a modell és a nézetek is szignálok segítégével jelzik a változásokat, így feladata ezeket kezelni. A szignálok kezeléséhez a QObject osztályból származik, és injektálás útján kapja meg az objektumokat, melyek szignáljaira rákapcsolja a megfelelő kezelőket. Mivel ő az, aki mindenki lát a rendszerben, így nincs szüksége szignálokra, függvényhívások segítségével hajt végre mindent.
+
+\subsubsection{Controller névtér}
+A kontroller feladata, hogy vezérleje a többi egység működését, összeköttetést biztosít a nézetek és a modell között. 
+
+\paragraph{Controller osztály}
+Mivel a modell és a nézetek is szignálok segítégével jelzik a változásokat, így feladata ezeket kezelni. A szignálok kezeléséhez a QObject osztályból származik, és injektálás útján kapja meg az objektumokat, melyek szignáljaira rákapcsolja a megfelelő kezelőket. Mivel ő az, aki mindenki lát a rendszerben, így nincs szüksége szignálokra, függvényhívások segítségével hajt végre mindent.
 \begin{center}
 \includegraphics[width=10cm]{pics/uml/Controller}
 \end{center}
@@ -767,9 +819,10 @@ Feladata a nézet és a modell közötti kommunikáció megvalósítása, valami
 \item Egyetlen kitüntetett feladata van, eldönteni, hogy meg kell-e jeleníteni a függvény nézetét is, vagy sem. Ez attól függ, hogy a modell küldött-e a nézetnek adatot, vagy sem.
 \end{itemize}
 
-\subsection{View névtér}
-\subsubsection{Drawable osztály}
-\paragraph{}
+\subsubsection{View névtér}
+A felhasználóval való kommunikáció és információ közlés a nézetben található osztályok feladata. Egyéb segédosztályok is találhatóak benne, melyek a grafikus megjelenítéshez szükségesek.
+
+\paragraph{Drawable osztály}
 A célja egy grafikus alakzat tulajdonságainak beállítása és rendszerezése. Tárolja a pontok koordinátáját és színét a memóriában. Inicializáláskor lefoglalja az adatoknak szükséges területet a grafikus kártyán, majd miután felparaméterezte azt, át is másolja őket.
 \begin{center}
 \includegraphics[width=7cm]{pics/uml/Drawable}
@@ -779,8 +832,7 @@ A célja egy grafikus alakzat tulajdonságainak beállítása és rendszerezése
 \item A draw metódus rajzolja ki a tárolt objektumot a képernyőre, szükséges megadnunk a pontok összekötésének módját, a modell egyváltozós függvény esetén vonalakkal, kétváltozós esetén háromszögekkel dolgozik.
 \end{itemize}
 
-\subsubsection{Camera osztály}
-\paragraph{}
+\paragraph{Camera osztály}
 A térben elhelyezett kamera szerepét tölti be. Az osztályszintű metódusai a mátrixtranszformációk egyszerű használatát teszik lehetővé. A vertex transzformációhoz szükséges világ, nézet és vetítés mátrixokat is letudjuk kérdezni. A világban történő mozgást is a kamera eltolásával végezzük.
 \begin{center}
 \includegraphics[width=7cm]{pics/uml/Camera}
@@ -790,8 +842,7 @@ A térben elhelyezett kamera szerepét tölti be. Az osztályszintű metódusai 
 \item A move metódussal tudjuk a kamerát közelíteni, illetve távolítani a középponthoz képest.
 \end{itemize}
 
-\subsubsection{OpenGLView osztály}
-\paragraph{}
+\paragraph{OpenGLView osztály}
 Az osztály egy OpenGL támogatással rendelkező ablakot valósít meg, melyben megjelenik a függvény. A QOpenGLWidget osztályból származik, így a szükséges inicializációkat már nem kell elvégeznie. Egy beépített koordináta rendszerrel rendelkezik, illetve lehetőséget nyújt, hogy egy alakzat adatait is megadjuk.
 \begin{center}
 \includegraphics[width=7cm]{pics/uml/OpenGLView}
@@ -801,24 +852,21 @@ Az osztály egy OpenGL támogatással rendelkező ablakot valósít meg, melyben
 \item A paintGL függvényben történik a renderelés, törekedve a minél jobb teljesítményre, a függvény gyorsan végrehajtódik.
 \end{itemize}
 
-\subsubsection{MainView osztály}
-\paragraph{}
+\paragraph{MainView osztály}
 Feladata a felhasználóval való kommunikáció megvalósítása, illetve ha szükséges, az információk továbbítása a modell felé. A QWidget osztályból származik, így rendelkezik grafikus felülettel, melyen elhelyezett bemeneti mezők és nyomógombok segítségével tudja használni a programot.
 \begin{center}
 \includegraphics[width=10cm]{pics/uml/MainView}
 \end{center}
 
-\subsubsection{HelpView osztály}
-\paragraph{}
+\paragraph{HelpView osztály}
 A súgó megjelenítésért felelős osztály, a QDialog osztályból származik, így amíg nem zárjuk be, nem tudjuk használni a bemeneti nézetet. Rendelkezik egy nyomógombbal, mely segítségével vissza tudunk térni. A különböző fülek alatt érhetjük el az egyes információkat.
 \begin{center}
 \includegraphics[width=5cm]{pics/uml/HelpView}
 \end{center}
 
-\newpage
 \section{Tesztelés}
-\paragraph{}
 A tesztelést két csoportban végeztem el. Először a modell fő funkcionalitásainak helyes működését teszteltem, utána pedig a végleges program használhatóságát.
+
 \subsection{Egységtesztek}
 \paragraph{}
 A QtTest keretrendszer segítségével automatizált tesztelést valósítottam meg. Célja az, hogy a modell részkomponensei megfelelően működjenek, ezzel biztosítva, hogy a program is helyesen működjön.
@@ -831,7 +879,8 @@ A tesztek megtalálhatóak a test mappában, és az InterpolatorTest projekt has
 \item Az elkészített interpoláció átmegy az alappontokon a Newton- és Lagrange-alakban leírt függvények esetén is.
 \end{itemize}
 Mivel minden tesztet hibátlanul teljesített a program, így levonhatjuk a következtetést, a program helyesen működik.
-\subsection{Használhatósági teszt}
+
+\subsection{Használhatósági tesztek}
 \paragraph{}
 Az elkészült programmal a tesztalanyoknak el kellett végezniük a megadott feladatokat, majd értékelniük, hogy mennyire volt egyszerű a program használata.
 \paragraph{}
