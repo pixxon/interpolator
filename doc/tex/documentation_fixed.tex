@@ -496,13 +496,13 @@ Itt a bemeneti információkat különböző módon adhatja meg. A módok közö
 \paragraph{}
 Ajánlott először az alappontokat megadni. A kényelmesebb megoldás, ha a Felosztás opciót választja. Ekkor az intervallumok két végpontját és az alappontok számának megadása után térjen az értékek megadása részhez.
 \begin{center}
-\includegraphics[width=7cm]{pics/gui/partition1}  \\
+\includegraphics[width=12cm]{pics/gui/partition1}  \\
 {\footnotesize Felosztás fül} 
 \end{center}
 \paragraph{}
 Amennyiben szeretné manuálisan beállítani az alappontokat, úgy a másik fül segítségével, először az alappontok számának megadása után tudja megadni a pontok helyzetét. Ügyeljen arra, hogy ne maradjon üresen mező, valamint ne legyenek azonos alappontok sem.
 \begin{center}
-\includegraphics[width=7cm]{pics/gui/partition2}  \\
+\includegraphics[width=12cm]{pics/gui/partition2}  \\
 {\footnotesize Alappontok fül} 
 \end{center}
 \paragraph{}
@@ -636,7 +636,29 @@ A programot az MVC (modell - nézet - kontroller) architektúrában valósítjuk
 \section{Megvalósítás}
 \subsection{Fázisok}
 \subsubsection{Függvény elemző}
+Első fázisnak a matematikai függvények elemzését elvégző egység implementációját választottam. Ezt további négy részfeladatra bontva szűkítettem le az egyes problémák körét.
+
+\paragraph{Szimbólumok}
+Folyamatosan gyűjtöttem össze, hogy milyen információk szükségesek az egyes feladatok elvégzésére. Az egy szimbólumhoz tartozó információk a SymbolInfo osztályba kerültek, az összes szimbólum pedig a SymbolTable osztályba. Azért, hogy a sok másolást elkerüljem, de mégis a program mindenhol azonos szimbólumok legyenek elérhetőek, a Singleton tervezési mintát valósítja meg. A másoló és értékadás operátorok törlésre kerültek, a konstruktor és destruktor pedig az osztály privát részébe került. Ezzel biztosítva van, hogy csak egyetlen objektum létezik és senki sem tudja azt törölni.
+
+\paragraph{Tokenizálás}
+Először egy leghosszabb illeszkedést vizsgáló lexikális elemzőt választottam, azonban ez feleslegessé vált, mert a nyelvben már az első karakteren eldönthető, hogy melyik szimbólum következik. Így a lexikális elemző valójában csak megkeresi az első illeszkedő szimbólumot a táblából, amennyiben az létezik. Ezzel a reguláris kifejezések egyszerűsödtek, valamint az elemző komplexitása is.
+
+\paragraph{Szintaktikus elemző}
+Matematikai kifejezések kiértékelésére gyakran használjuk a Lengyel-formát. Az első választás így rá esett, azonban az elkészülte után kiderült, hogy az előjeles számokat nem képes kezelni. A probléma, hogy nem tud különbséget tenni az unáris és a bináris '-' kifejezés között. Így kutatás után találtam rá a precedencia elemzőre, mely végül kisebb változtatásokkal megfelelt az elvárásoknak. 
+
+\paragraph{Kiértékelés}
+Az elkészült fát bejárni és kiértékelni egyszerű postorder mélységi bejárás segítségével történik. A szimbólumokhoz tartozó függvény, mellyel el tudjuk végezni a műveletet, tárolva van a szimbólum tulajdonságai között. Először az std::function template osztály segítségével valósítottam meg, azonban ez túl lassúnak bizonyult. Megoldást a függvénypointerek jelentettek, azonban további változtatások voltak szükségesek. Egy gyorsítótár használatával elkerülhető, hogy ugyanabban a pontban többször ki kelljen értékelni.
+
 \subsubsection{Háromdimenziós megjelenítés}
+Második lépés egy háromdimenziós teret megjelenítő ablak létrehozása volt. Követelmény egy koordináta-rendszer kirajzolása, valamint a megadott pontok alapján egy folytonos vonal vagy összefüggő felület.
+
+\paragraph{Ablak}
+Ablak létrehozására több módszer is létezik, először a Számítógépes Grafika órán tanult SDL programkönyvtár segítségével akartam létrehozni. A megoldás viszonylag működőképes volt, azonban amikor a Qt keretrendszerben készült többi komponenssel kellett kommunikálnia, akkor problémák léptek fel. Így végül minden ablak, így az is mely a grafikus felületet tartalmazza, a Qt keretrendszer által lett létrehozva.
+
+\paragraph{OpenGL}
+Először szintén Számítógépes Grafikán tanult GLEW szoftverkönyvtár segítségével szerettem volna megvalósítani, azonban komoly problémák léptek fel. A Qt keretrendszer által biztosított OpenGL támogatással létrehozott ablakok nem voltak kompatibilisek vele. Végül a QOpenGLWidget osztály használatával sikerült minden problémát megoldani és mellette minden elvárást teljesíteni. A belőle származtatott OpenGLView elegendő csak az alakzatokat elkészítenie, és kirajzolnia azt ami szükséges. A háttérben történő OpenGL keret elkészítése és egyéb inicializálásokat a QOpenGLWidget osztály elvégez helyette.
+
 \subsubsection{Interpolációs polinom előállítása}
 \subsubsection{Grafikus felület elkészítése}
 \subsubsection{Használhatóság könnyítése}
