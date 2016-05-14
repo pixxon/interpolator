@@ -13,7 +13,7 @@ OpenGLView::OpenGLView(QWidget *parent) :
     _surface = new Drawable(_program);
     _coord = new Drawable(_program);
     _ball = new Drawable(_program);
-    _oneDimension = false;
+    _twoDimension = false;
     _rotate = true;
     _maxDist = 0;
 }
@@ -70,7 +70,7 @@ void OpenGLView::paintGL()
     QOpenGLContext::currentContext()->functions()->glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     QMatrix4x4 tmp = _camera.getWorld();
-    if (_oneDimension)
+    if (_twoDimension)
     {
         tmp.setToIdentity();
 
@@ -89,7 +89,7 @@ void OpenGLView::paintGL()
     _program->setUniformValue("proj", _camera.getProj());
 
 	_program->setUniformValue("coloring", 1);
-    if (_oneDimension)
+    if (_twoDimension)
     {
         _surface->draw(GL_LINES);
     }
@@ -119,7 +119,7 @@ void OpenGLView::resizeGL(int w, int h)
 
 void OpenGLView::init()
 {
-    if(_oneDimension)
+    if(_twoDimension)
     {
         _camera.lookAt(QVector3D(0, 0, _maxDist * 3), QVector3D(0, 0, 0), QVector3D(0, 1, 0));
     }
@@ -190,10 +190,10 @@ void OpenGLView::addCommonPoint(QVector3D pos)
     _ballPos.push_back(pos);
 }
 
-void OpenGLView::setOneDimension(bool enabled)
+void OpenGLView::setTwoDimension(bool enabled)
 {
     hide();
-    _oneDimension = enabled;
+    _twoDimension = enabled;
 }
 
 void OpenGLView::keyPressEvent(QKeyEvent* key)

@@ -23,7 +23,7 @@ public:
     void clear();
     void addPoint(QVector3D, QVector3D);
     void addCommonPoint(QVector3D);
-    void setOneDimension(bool enabled);
+    void setTwoDimension(bool enabled);
 
 private:
     QOpenGLShaderProgram* _program;
@@ -31,7 +31,7 @@ private:
     Drawable* _surface;
     Drawable* _coord;
     Drawable* _ball;
-    bool _oneDimension;
+    bool _twoDimension;
     bool _rotate;
 
     QVector<QVector3D> _ballPos;

@@ -29,8 +29,8 @@ private:
     Partition _partX;
     Partition _partY;
 
-    bool _oneDimension;
-    bool _advance;
+    bool _twoDimension;
+    bool volatile _advance;
 
     void messageLoop(QString msg);
 
@@ -39,7 +39,7 @@ public:
 	void setInput(QVector<QVector<double>>);
     void setPart(char, double, double, int, QString);
     void setPart(char, QVector<double>);
-    void setOneDimension(bool);
+    void setTwoDimension(bool);
     void advance();
 
 private slots:

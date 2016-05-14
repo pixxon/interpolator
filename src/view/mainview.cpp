@@ -193,9 +193,9 @@ void MainView::showEvent(QShowEvent*)
     _renderButton = new QPushButton("Kirajzolás", this);
     QObject::connect(_renderButton, SIGNAL(clicked(bool)), this, SLOT(buttonClick()));
 
-    _oneDimension = new QPushButton("Egy dimenzió", this);
-    QObject::connect(_oneDimension, SIGNAL(clicked(bool)), this, SLOT(dimensionChanged()));
-    _oneDimension->setCheckable(true);
+    _twoDimension = new QPushButton("Két dimenzió", this);
+    QObject::connect(_twoDimension, SIGNAL(clicked(bool)), this, SLOT(dimensionChanged()));
+    _twoDimension->setCheckable(true);
 
     _showSteps = new QPushButton("Lépések kiírása", this);
     _showSteps->setCheckable(true);
@@ -212,7 +212,7 @@ void MainView::showEvent(QShowEvent*)
     QVBoxLayout* menuLayout = new QVBoxLayout();
     menuLayout->addWidget(load, Qt::AlignTop);
     menuLayout->addWidget(save, Qt::AlignTop);
-    menuLayout->addWidget(_oneDimension, Qt::AlignTop);
+    menuLayout->addWidget(_twoDimension, Qt::AlignTop);
     menuLayout->addWidget(_showSteps, Qt::AlignTop);
     menuLayout->addWidget(_helpButton, Qt::AlignTop);
     menuLayout->addStretch();
@@ -277,7 +277,7 @@ bool MainView::hasEmpty()
             }
         }
 
-        if (_oneDimension->isChecked())
+        if (_twoDimension->isChecked())
             return false;
 
         for (int i = 0; i < _part2BaseY.size(); i++)
@@ -373,7 +373,7 @@ void MainView::partChangedX()
 
 void MainView::partChangedY()
 {
-    if (_oneDimension->isChecked())
+    if (_twoDimension->isChecked())
     {
         return;
     }
@@ -416,8 +416,8 @@ void MainView::partChangedY()
 
 void MainView::dimensionChanged()
 {
-    dimensionChanged(_oneDimension->isChecked());
-    if(_oneDimension->isChecked())
+    dimensionChanged(_twoDimension->isChecked());
+    if(_twoDimension->isChecked())
     {
         _partMinY->setEnabled(false);
         _partMaxY->setEnabled(false);
@@ -501,7 +501,7 @@ void MainView::countChanged()
         _part2BaseY[i] ->setFixedWidth(50);
         _part2BaseY[i] ->setValidator(new QDoubleValidator());
 
-        if (_oneDimension->isChecked())
+        if (_twoDimension->isChecked())
         {
             _part2BaseY[i]->setEnabled(false);
         }
@@ -602,7 +602,7 @@ void MainView::saveToFile()
     file.open(QIODevice::WriteOnly);
     QTextStream stream(&file);
 
-    stream << _oneDimension->isChecked() << '\n';
+    stream << _twoDimension->isChecked() << '\n';
 
     stream << _bottom->currentIndex() << '\n';
     if (_bottom->currentIndex() == 0)
@@ -711,11 +711,11 @@ void MainView::loadFromFile()
 
     if (dim == 1)
     {
-        _oneDimension->setChecked(true);
+        _twoDimension->setChecked(true);
     }
     else
     {
-        _oneDimension->setChecked(false);
+        _twoDimension->setChecked(false);
     }
     dimensionChanged();
 

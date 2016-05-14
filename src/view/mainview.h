@@ -53,7 +53,7 @@ private:
 
 
     QPushButton* _renderButton;
-    QPushButton* _oneDimension;
+    QPushButton* _twoDimension;
     QPushButton* _helpButton;
     QPushButton* _showSteps;
 

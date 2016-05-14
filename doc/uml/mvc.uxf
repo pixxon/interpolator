@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><diagram program="umlet" version="11.3">
-  <zoom_level>6</zoom_level>
+  <zoom_level>5</zoom_level>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>120</x>
-      <y>168</y>
-      <w>264</w>
-      <h>234</h>
+      <x>85</x>
+      <y>45</y>
+      <w>220</w>
+      <h>195</h>
     </coordinates>
     <panel_attributes>Camera
 --
@@ -39,10 +39,10 @@ _+ perspective(angle, ratio, near, far): QMatrix4x4_
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>438</x>
-      <y>228</y>
-      <w>270</w>
-      <h>144</h>
+      <x>350</x>
+      <y>95</y>
+      <w>225</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>Drawable
 --
@@ -64,10 +64,10 @@ _+ perspective(angle, ratio, near, far): QMatrix4x4_
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>432</x>
-      <y>378</y>
-      <w>372</w>
-      <h>288</h>
+      <x>345</x>
+      <y>220</y>
+      <w>310</w>
+      <h>260</h>
     </coordinates>
     <panel_attributes>Model
 --
@@ -86,7 +86,7 @@ _+ perspective(angle, ratio, near, far): QMatrix4x4_
 + setInput(points: QVector&lt;QVector&lt;double&gt; &gt;): void
 + setPart(var: char, min, max: double, count: int, type: QString): void
 + setPart(var: char, points: QVector&lt;double&gt;): void
-+ setDimension(enable: bool): void
++ setTwoDimension(enable: bool): void
 + advance(): void
 - messageLoop(msg: QString): void
 --
@@ -97,6 +97,8 @@ _+ perspective(angle, ratio, near, far): QMatrix4x4_
 + clear(): void
 + addFuncPoint(pos, col: QVector3D): void
 + addInterPoint(pos, col: QVector3D): void
++ addDiffPoint(pos, col: QVector3D): void
++ addCommonPoint(pos: QVector3D): void
 + message(msg: QString): void
 + error(msg: QString): void
 + partChanged(partX, partY: QVector&lt;double&gt;): void</panel_attributes>
@@ -105,22 +107,24 @@ _+ perspective(angle, ratio, near, far): QMatrix4x4_
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>18</x>
-      <y>432</y>
-      <w>390</w>
-      <h>264</h>
+      <x>0</x>
+      <y>265</y>
+      <w>325</w>
+      <h>260</h>
     </coordinates>
     <panel_attributes>Controller
 --
 - _mainView: MainView*
 - _funcView: OpenGLView*
 - _interView: OpenGLView*
+- _diffView: OpenGLView*
 - _model: Model*
 - _showFunc: bool
+- _showDiff: bool
 --
 &lt;&lt;constructor&gt;&gt;
 + Controller(mainView: MainView*,
-           funcView, interView: OpenGLView*,
+           funcView, interView, diffView: OpenGLView*,
            model: Model*)
 --
 - modelRender(): void
@@ -128,6 +132,8 @@ _+ perspective(angle, ratio, near, far): QMatrix4x4_
 - modelClear(): void
 - modelFuncPoint(pos, col: QVector3D): void
 - modelInterPoint(pos, col: QVector3D): void
+- modelDiffPoint(pos, col: QVector3D): void
+- modelCommonPoint(pos: QVector3D): void
 - modelMessage(msg: QString): void
 - modelError(msg: QString): void
 - modelPartChanged(partX, partY: QVector&lt;double&gt;): void
@@ -143,10 +149,10 @@ _+ perspective(angle, ratio, near, far): QMatrix4x4_
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>822</x>
-      <y>114</y>
-      <w>366</w>
-      <h>492</h>
+      <x>670</x>
+      <y>0</y>
+      <w>305</w>
+      <h>390</h>
     </coordinates>
     <panel_attributes>MainView
 --
@@ -204,19 +210,22 @@ MainView(parent: QWidget)
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>822</x>
-      <y>624</y>
-      <w>312</w>
-      <h>186</h>
+      <x>670</x>
+      <y>425</y>
+      <w>260</w>
+      <h>195</h>
     </coordinates>
     <panel_attributes>OpenGLView
 --
 - _program: QOpenGLShaderProgram*
 - _camera: Camera
 - _surface: Drawable*
+- _ball: Drawable*
 - _coord: Drawable*
-- _oneDimension: bool
+- _twoDimension: bool
 - _rotate: bool
+- _ballPos: QVector&lt;QVector3D&gt;
+- _maxDist: double
 --
 &lt;&lt;constructor&gt;&gt;
 OpenGLView(parent: QWidget*)
@@ -226,7 +235,8 @@ OpenGLView(parent: QWidget*)
 + init(): void
 + clear(): void
 + addPoint(pos, col: QVector3D): void
-+ setOneDimension(enabled: bool): void
++ addCommonPoint(pos: QVector3D): void
++ setTwoDimension(enabled: bool): void
 --
 - keyPressEvent(event: QKeyEvent*): void</panel_attributes>
     <additional_attributes/>
@@ -234,10 +244,10 @@ OpenGLView(parent: QWidget*)
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>498</x>
-      <y>714</y>
-      <w>144</w>
-      <h>60</h>
+      <x>400</x>
+      <y>500</y>
+      <w>120</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>HelpView
 --

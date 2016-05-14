@@ -3,8 +3,8 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>220</x>
-      <y>100</y>
+      <x>60</x>
+      <y>80</y>
       <w>280</w>
       <h>120</h>
     </coordinates>
@@ -21,8 +21,8 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>600</x>
-      <y>100</y>
+      <x>440</x>
+      <y>80</y>
       <w>280</w>
       <h>120</h>
     </coordinates>
@@ -39,8 +39,8 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>920</x>
-      <y>90</y>
+      <x>760</x>
+      <y>70</y>
       <w>280</w>
       <h>120</h>
     </coordinates>
@@ -57,8 +57,8 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>160</x>
-      <y>240</y>
+      <x>0</x>
+      <y>220</y>
       <w>410</w>
       <h>340</h>
     </coordinates>
@@ -89,8 +89,8 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>190</x>
-      <y>590</y>
+      <x>30</x>
+      <y>570</y>
       <w>460</w>
       <h>260</h>
     </coordinates>
@@ -118,8 +118,8 @@ innerclass}
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>610</x>
-      <y>240</y>
+      <x>450</x>
+      <y>220</y>
       <w>260</w>
       <h>130</h>
     </coordinates>
@@ -137,8 +137,8 @@ innerclass}
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>590</x>
-      <y>390</y>
+      <x>430</x>
+      <y>370</y>
       <w>290</w>
       <h>180</h>
     </coordinates>
@@ -159,8 +159,8 @@ innerclass}
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>900</x>
-      <y>220</y>
+      <x>740</x>
+      <y>200</y>
       <w>350</w>
       <h>170</h>
     </coordinates>
@@ -181,8 +181,8 @@ innerclass}
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>930</x>
-      <y>410</y>
+      <x>770</x>
+      <y>390</y>
       <w>290</w>
       <h>170</h>
     </coordinates>
@@ -202,8 +202,8 @@ innerclass}
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>700</x>
-      <y>610</y>
+      <x>540</x>
+      <y>590</y>
       <w>420</w>
       <h>200</h>
     </coordinates>

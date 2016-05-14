@@ -37,7 +37,7 @@ Model::Model():
 
     _interpolator = new Lagrange();
 
-    _oneDimension = false;
+    _twoDimension = false;
 }
 
 Model::~Model()
@@ -67,7 +67,7 @@ void Model::setInput(QString str)
     _interpolator->clear();
     for (int i = 0; i < _partX.getCount(); i++)
     {
-        if (_oneDimension)
+        if (_twoDimension)
         {
             double res = _evaluator->calculate(_partX.at(i), 0);
             _interpolator->addData(_partX.at(i), 0, res);
@@ -85,7 +85,7 @@ void Model::setInput(QString str)
     }
 
     messageLoop("Függvény értékének kiszámítása alappontokban.\n\n" +
-                QString::number(_partX.getCount()) + (_oneDimension?"":(" x " + QString::number(_partX.getCount()))) + " pontban.");
+                QString::number(_partX.getCount()) + (_twoDimension?"":(" x " + QString::number(_partX.getCount()))) + " pontban.");
 
     _interpolator->initialize();
 
@@ -93,7 +93,7 @@ void Model::setInput(QString str)
                 _interpolator->sampleData());
 
     messageLoop(QString("Függvény és közelítés kiértékelése a megjelenítéshez.\n\n") +
-                "50" + (_oneDimension?"":" x 50") + " pontban.");
+                "50" + (_twoDimension?"":" x 50") + " pontban.");
 
 
 
@@ -101,7 +101,7 @@ void Model::setInput(QString str)
     double deltaX = (_partX.at(_partX.getCount() - 1) - _partX.at(0)) / 50.f;
     for (double i = _partX.at(0); i <= _partX.at(_partX.getCount() - 1); i+= deltaX)
     {
-        if (_oneDimension)
+        if (_twoDimension)
         {
             double tmp1 = _interpolator->calculate(i, 0);
             double tmp2 = _evaluator->calculate(i, 0);
@@ -198,7 +198,7 @@ void Model::setInput(QString str)
 
     messageLoop(QString("OpenGL inicializás és adatok betöltése a grafikus kártyára.\n\n") +
                 "Shaderek betöltése, shaderprogram összekapcsolása.\n" +
-                "50" + (_oneDimension?"":" x 50") + " pont másolása.");
+                "50" + (_twoDimension?"":" x 50") + " pont másolása.");
 
     init();
 }
@@ -208,7 +208,7 @@ void Model::setInput(QVector<QVector<double>> points)
 	clear();
 
     messageLoop("Alappontok beállítása az interpolációhoz.\n\n" +
-                QString::number(_partX.getCount()) + (_oneDimension?"":(" x " + QString::number(_partX.getCount()))) + " pontban.");
+                QString::number(_partX.getCount()) + (_twoDimension?"":(" x " + QString::number(_partX.getCount()))) + " pontban.");
 
     _interpolator->clear();
     for (int i = 0; i < _partX.getCount(); i++)
@@ -226,12 +226,12 @@ void Model::setInput(QVector<QVector<double>> points)
                 _interpolator->sampleData());
 
     messageLoop(QString("Közelítő polinom kiértékelése a megjelenítéshez.\n\n") +
-                "50" + (_oneDimension?"":" x 50") + " pontban.");
+                "50" + (_twoDimension?"":" x 50") + " pontban.");
 
     double deltaX = (_partX.at(_partX.getCount() - 1) - _partX.at(0)) / 50.f;
     for (double i = _partX.at(0); i <= _partX.at(_partX.getCount() - 1); i+= deltaX)
     {
-        if (_oneDimension)
+        if (_twoDimension)
         {
             double tmp = _interpolator->calculate(i, _partY.at(0));
             addInterPoint(QVector3D(i, tmp, _partY.at(0)), QVector3D(0, 0, 0));
@@ -265,7 +265,7 @@ void Model::setInput(QVector<QVector<double>> points)
 
     messageLoop(QString("OpenGL inicializás és adatok betöltése a grafikus kártyára.\n\n") +
                 "Shaderek betöltése, shaderprogram összekapcsolása.\n" +
-                "50" + (_oneDimension?"":" x 50") + " pont másolása.");
+                "50" + (_twoDimension?"":" x 50") + " pont másolása.");
 
     init();
 }
@@ -345,7 +345,7 @@ void Model::setPart(char var, QVector<double> points)
     partChanged(resultY, resultX);
 }
 
-void Model::setOneDimension(bool enabled)
+void Model::setTwoDimension(bool enabled)
 {
     if (enabled)
     {
@@ -361,7 +361,7 @@ void Model::setOneDimension(bool enabled)
         delete _interpolator;
         _interpolator = new Lagrange();
     }
-    _oneDimension = enabled;
+    _twoDimension = enabled;
 }
 
 void Model::advance()

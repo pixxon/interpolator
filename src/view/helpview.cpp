@@ -44,7 +44,7 @@ HelpView::HelpView(QWidget* parent):
     QVBoxLayout* usageLayout = new QVBoxLayout(this);
     usageLayout->addWidget(new QLabel("<b>Függvény bemenet:</b>", this));
     usageLayout->addWidget(new QLabel("A függvényt szöveges formában tudja megadni.\n"
-                                      "Egyváltozó esetén a paraméter az 'x', kétváltozó esetén 'x' és 'y'.\n"
+                                      "Egy változó esetén a paraméter az 'x', két változó esetén 'x' és 'y'.\n"
                                       "Ügyeljen arra, helyen legyen a bemenet, ellenkező esetben hibajelzés történik.\n"
                                       "A támogatott műveletek listája: +, -, *, /, ^\n"
                                       "A támogatott beépített függvények listája: sin, cos, tg, ctg, abs, log", this));

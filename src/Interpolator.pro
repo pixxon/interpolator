@@ -4,7 +4,9 @@
 #
 #-------------------------------------------------
 
-QT       += core gui widgets opengl
+QT       += core gui widgets opengl concurrent
+
+RC_ICONS = icon.ico
 
 TARGET = Interpolator
 TEMPLATE = app

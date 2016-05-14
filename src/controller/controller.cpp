@@ -149,10 +149,10 @@ void Controller::viewPart(char var, QVector<double> points)
 
 void Controller::viewDimensionChanged(bool enabled)
 {
-    _funcView->setOneDimension(enabled);
-    _interView->setOneDimension(enabled);
-    _diffView->setOneDimension(enabled);
-    _model->setOneDimension(enabled);
+    _funcView->setTwoDimension(enabled);
+    _interView->setTwoDimension(enabled);
+    _diffView->setTwoDimension(enabled);
+    _model->setTwoDimension(enabled);
 }
 
 void Controller::viewClosed()
