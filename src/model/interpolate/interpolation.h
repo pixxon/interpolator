@@ -29,12 +29,8 @@ namespace Model
 
                 /**
                  * @brief addData Adds a new basepoint with given value.
-                 *
-                 * @param x Position on the x axis.
-                 * @param y Position on the y axis.
-                 * @param z Value at given point.
                  */
-                void addData(double x, double y, double z);
+                void addData(double, double, double);
 
                 /**
                  * @brief clear Clears the table.
@@ -43,12 +39,8 @@ namespace Model
 
                 /**
                  * @brief calculate Pure virtual method. Calculates value at given point.
-                 *
-                 * @param x Position on the x axis.
-                 * @param y Position on the y axis.
-                 * @return Interpolation value at point.
                  */
-                virtual double calculate(double x, double y) = 0;
+                virtual double calculate(double, double) = 0;
 
                 /**
                  * @brief initialize Pure virtual method. Initializes the needed values.
@@ -56,8 +48,7 @@ namespace Model
                 virtual void initialize() = 0;
 
                 /**
-                 * @brief sampleData Provides some information about the method.
-                 * @return Information in a string.
+                 * @brief sampleData Returns some information about the method in a string.
                  */
                 virtual QString sampleData() = 0;
 

@@ -37,14 +37,14 @@ namespace Model
             }
         }
 
-        void TreePrinter::tee(QTextStream& out, int level)
+        void TreePrinter::left(QTextStream& out, int level)
         {
             indent(out, level);
             out << "   |-";
             set.insert(level);
         }
 
-        void TreePrinter::ell(QTextStream& out, int level)
+        void TreePrinter::right(QTextStream& out, int level)
         {
             indent(out, level);
             out << "   `-";
@@ -57,19 +57,19 @@ namespace Model
 
             if (node->getLeft() != nullptr && node->getRight() != nullptr)
             {
-                tee(out, level);
+                left(out, level);
                 print(out, node->getLeft(), level + 1);
-                ell(out, level);
+                right(out, level);
                 print(out, node->getRight(), level + 1);
             }
             else if (node->getLeft() != nullptr)
             {
-                ell(out, level);
+                right(out, level);
                 print(out, node->getLeft(), level + 1);
             }
             else if (node->getRight() != nullptr)
             {
-                ell(out, level);
+                right(out, level);
                 print(out, node->getRight(), level + 1);
             }
         }

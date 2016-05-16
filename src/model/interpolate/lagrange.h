@@ -30,12 +30,8 @@ namespace Model
 
                 /**
                  * @brief calculate Calculates value at given point.
-                 *
-                 * @param x Position on the x axis.
-                 * @param y Position on the y axis.
-                 * @return Interpolation value at point.
                  */
-                double calculate(double x, double y);
+                double calculate(double, double);
 
                 /**
                  * @brief initialize Creates the base polinomials and their evaluators.
@@ -43,8 +39,7 @@ namespace Model
                 void initialize();
 
                 /**
-                 * @brief sampleData Shows some information by telling the used methods.
-                 * @return Used methods in a string.
+                 * @brief sampleData Returns some information by telling the used methods.
                  */
                 QString sampleData();
 
@@ -61,17 +56,13 @@ namespace Model
 
                 /**
                  * @brief createPolynomialX Creates a base polinomial on the x axis.
-                 * @param v The index of the base.
-                 * @return Function in a string.
                  */
-                QString createPolynomialX(int v);
+                QString createPolynomialX(int);
 
                 /**
                  * @brief createPolynomialY Creates a base polinomial on the y axis.
-                 * @param k The index of the base.
-                 * @return Function in a string.
                  */
-                QString createPolynomialY(int k);
+                QString createPolynomialY(int);
         };
     }
 }

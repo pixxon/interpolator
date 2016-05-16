@@ -14,9 +14,15 @@ namespace Controller
     {
         Q_OBJECT
         public:
-            explicit Controller(View::MainView* mainView, View::OpenGLView* funcView, View::OpenGLView* interView, View::OpenGLView* diffView, Model::Model* model);
+            /**
+             * @brief Controller Connects to the private slots to the given objects' signals.
+             */
+            explicit Controller(View::MainView*, View::OpenGLView*, View::OpenGLView*, View::OpenGLView*, Model::Model*);
             ~Controller();
 
+            /**
+             * @brief start Main entrypoint for the application
+             */
             void start();
 
         private:

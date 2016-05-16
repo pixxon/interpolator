@@ -25,12 +25,8 @@ namespace Model
 
                 /**
                  * @brief calculate Calculates value at given point.
-                 *
-                 * @param x Position on the x axis.
-                 * @param y Position on the y axis.
-                 * @return Interpolation value at point.
                  */
-                double calculate(double x, double y);
+                double calculate(double, double);
 
                 /**
                  * @brief initialize Calculates diffs from given bases.
@@ -39,8 +35,6 @@ namespace Model
 
                 /**
                  * @brief sampleData Shows some information by telling the calculated diffs.
-                 *
-                 * @return The calculated divided differences in a string.
                  */
                 QString sampleData();
 

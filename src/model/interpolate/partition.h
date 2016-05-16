@@ -29,32 +29,21 @@ namespace Model
 
                 /**
                  * @brief setPartition Sets the basepoints automatically.
-                 *
-                 * @param min Lower end of the interval.
-                 * @param max Upper end of the interval.
-                 * @param count Number of points in the interval.
-                 * @param type Type of the partition.
                  */
-                void setPartition(double min, double max, int count, PartitionType type);
+                void setPartition(double, double, int, PartitionType);
 
                 /**
                  * @brief setPoints Sets the points to the given ones.
-                 *
-                 * @param points The new base points.
                  */
-                void setPoints(const QVector<double>& points);
+                void setPoints(const QVector<double>&);
 
                 /**
                  * @brief getCount Getter for number of base points.
-                 * @return Number of base points.
                  */
                 int getCount();
 
                 /**
                  * @brief at Returns the value of the base at given index.
-                 *
-                 * @param i Index of the base.
-                 * @return Value of the base.
                  */
                 double at(int i);
 
