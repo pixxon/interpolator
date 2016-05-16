@@ -1,22 +1,28 @@
 #include "interpolation.h"
 
-Interpolation::Interpolation():
-    _needInitialize(false)
+namespace Model
 {
-}
+    namespace Interpolate
+    {
+        Interpolation::Interpolation():
+            _needInitialize(false)
+        {
+        }
 
-Interpolation::~Interpolation()
-{
-}
+        Interpolation::~Interpolation()
+        {
+        }
 
-void Interpolation::addData(double x, double y, double z)
-{
-    _data.addPoint(x, y, z);
+        void Interpolation::addData(double x, double y, double z)
+        {
+            _data.addPoint(x, y, z);
 
-    _needInitialize = true;
-}
+            _needInitialize = true;
+        }
 
-void Interpolation::clear()
-{
-    _data.clear();
+        void Interpolation::clear()
+        {
+            _data.clear();
+        }
+    }
 }

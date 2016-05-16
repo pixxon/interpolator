@@ -5,38 +5,43 @@
 #include <QMatrix4x4>
 #include <QVector3D>
 
-
-class Camera
+namespace View
 {
-	public:
-		Camera();
-        Camera(QMatrix4x4, QMatrix4x4, QMatrix4x4);
-        ~Camera();
+    namespace OpenGL
+    {
+        class Camera
+        {
+            public:
+                Camera();
+                Camera(QMatrix4x4, QMatrix4x4, QMatrix4x4);
+                ~Camera();
 
-        void setProj(QMatrix4x4);
-        void setView(QMatrix4x4);
-        void setWorld(QMatrix4x4);
+                void setProj(QMatrix4x4);
+                void setView(QMatrix4x4);
+                void setWorld(QMatrix4x4);
 
-        QMatrix4x4 getProj();
-        QMatrix4x4 getView();
-        QMatrix4x4 getWorld();
-        QMatrix4x4 getWorldIT();
-        QMatrix4x4 getMVP();
+                QMatrix4x4 getProj();
+                QMatrix4x4 getView();
+                QMatrix4x4 getWorld();
+                QMatrix4x4 getWorldIT();
+                QMatrix4x4 getMVP();
 
-        void lookAt(QVector3D, QVector3D, QVector3D);
-        static QMatrix4x4 perspective(double, double, double, double);
+                void lookAt(QVector3D, QVector3D, QVector3D);
+                static QMatrix4x4 perspective(double, double, double, double);
 
-        void move(int);
-		
-	private:
-        QMatrix4x4 _proj;
-        QMatrix4x4 _view;
-        QMatrix4x4 _world;
+                void move(int);
 
-        QVector3D _eye;
-        QVector3D _center;
-        QVector3D _up;
-};
+            private:
+                QMatrix4x4 _proj;
+                QMatrix4x4 _view;
+                QMatrix4x4 _world;
+
+                QVector3D _eye;
+                QVector3D _center;
+                QVector3D _up;
+        };
+    }
+}
 
 
 #endif // CAMERA_H

@@ -9,54 +9,59 @@
 #include "tokenizer.h"
 #include "symbol.h"
 
-
-class ParserException: public QException
+namespace Model
 {
-	public:
-        ParserException(const QString& what);
-        ~ParserException() throw();
+    namespace Parseval
+    {
+        class ParserException: public QException
+        {
+            public:
+                ParserException(const QString& what);
+                ~ParserException() throw();
 
-        void raise() const;
-        const char* what() const throw();
+                void raise() const;
+                const char* what() const throw();
 
-	private:
-        const QString _what;
-};
-
-
-class Node
-	{
-	private:
-        Node* _left;
-        Node* _right;
-        Token _token;
-
-	public:
-        Node(Node* left, Node* right, const Token&);
-		~Node();
-
-        Node* getLeft() const;
-        Node* getRight() const;
-		const Token& getToken() const;
-};
+            private:
+                const QString _what;
+        };
 
 
-class Parser
-{
-	public:
-        Parser();
-		~Parser();
+        class Node
+            {
+            private:
+                Node* _left;
+                Node* _right;
+                Token _token;
 
-		Node* getTree();
-        void setInput(const QString& str);
+            public:
+                Node(Node* left, Node* right, const Token&);
+                ~Node();
 
-	private:
-		SymbolTable* _table;
-		Tokenizer _tokenizer;
+                Node* getLeft() const;
+                Node* getRight() const;
+                const Token& getToken() const;
+        };
 
-        Node* parse(const int& min_prec);
-        Node* parse_primary();
-};
+
+        class Parser
+        {
+            public:
+                Parser();
+                ~Parser();
+
+                Node* getTree();
+                void setInput(const QString& str);
+
+            private:
+                SymbolTable* _table;
+                Tokenizer _tokenizer;
+
+                Node* parse(const int& min_prec);
+                Node* parse_primary();
+        };
+    }
+}
 
 
 #endif // PARSER_H

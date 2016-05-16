@@ -11,26 +11,32 @@
 #include <QVector3D>
 
 
-class Drawable
+namespace View
 {
-public:
-    Drawable(QOpenGLShaderProgram*);
-	~Drawable();
+    namespace OpenGL
+    {
+        class Drawable
+        {
+            public:
+                Drawable(QOpenGLShaderProgram*);
+                ~Drawable();
 
-    void addData(QVector3D, QVector3D);
-	void init();
-    void draw(GLenum);
-    void clear();
+                void addData(QVector3D, QVector3D);
+                void init();
+                void draw(GLenum);
+                void clear();
 
-private:
-    QOpenGLShaderProgram* _program;
+            private:
+                QOpenGLShaderProgram* _program;
 
-    QOpenGLVertexArrayObject* _vao;
-    QOpenGLBuffer* _posVbo;
-    QOpenGLBuffer* _colVbo;
+                QOpenGLVertexArrayObject* _vao;
+                QOpenGLBuffer* _posVbo;
+                QOpenGLBuffer* _colVbo;
 
-    QVector<QVector3D> _posData;
-    QVector<QVector3D> _colData;
-};
+                QVector<QVector3D> _posData;
+                QVector<QVector3D> _colData;
+        };
+    }
+}
 
 #endif // DRAWABLE_H

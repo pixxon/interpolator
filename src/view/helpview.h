@@ -4,18 +4,22 @@
 
 #include <QDialog>
 
-class HelpView: public QDialog
+
+namespace View
 {
-    Q_OBJECT
-public:
-    HelpView(QWidget* parent = 0);
-    ~HelpView();
+    class HelpView: public QDialog
+    {
+        Q_OBJECT
+        public:
+            HelpView(QWidget* parent = 0);
+            ~HelpView();
 
-private:
-    QPushButton* _button;
+        private:
+            QPushButton* _button;
 
-private slots:
-    void buttonClicked();
-};
+        private slots:
+            void buttonClicked();
+    };
+}
 
 #endif // HELPVIEW_H

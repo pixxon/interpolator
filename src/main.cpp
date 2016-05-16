@@ -5,22 +5,21 @@
 
 #include <QApplication>
 #include <QVector3D>
-#include <QDebug>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    MainView mainView;
-    OpenGLView interView;
+    View::MainView mainView;
+    View::OpenGLView interView;
     interView.setWindowTitle("Interpoláció");
-    OpenGLView funcView;
+    View::OpenGLView funcView;
     funcView.setWindowTitle("Függvény");
-    OpenGLView diffView;
+    View::OpenGLView diffView;
     diffView.setWindowTitle("Hiba");
-    Model model;
+    Model::Model model;
 
-    Controller controller(&mainView, &funcView, &interView, &diffView, &model);
+    Controller::Controller controller(&mainView, &funcView, &interView, &diffView, &model);
 
     controller.start();
 

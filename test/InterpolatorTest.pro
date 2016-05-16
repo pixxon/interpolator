@@ -1,10 +1,12 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2016-05-04T21:35:33
+# Project created by QtCreator 2016-05-16T15:40:35
 #
 #-------------------------------------------------
 
-QT       += testlib gui
+QT       += testlib
+
+QT       -= gui
 
 TARGET = tst_interpolatortest
 CONFIG   += console
@@ -14,7 +16,7 @@ TEMPLATE = app
 
 QMAKE_CXXFLAGS += -std=c++11
 
-SOURCES += \
+SOURCES += tst_interpolatortest.cpp \
     ../src/model/interpolate/datatable.cpp \
     ../src/model/interpolate/interpolation.cpp \
     ../src/model/interpolate/lagrange.cpp \
@@ -23,9 +25,7 @@ SOURCES += \
     ../src/model/parseval/evaluator.cpp \
     ../src/model/parseval/parser.cpp \
     ../src/model/parseval/symbol.cpp \
-    ../src/model/parseval/tokenizer.cpp \
-   ../src/ model/model.cpp \
-    main.cpp
+    ../src/model/parseval/tokenizer.cpp
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
 HEADERS += \
@@ -37,5 +37,4 @@ HEADERS += \
     ../src/model/parseval/evaluator.h \
     ../src/model/parseval/parser.h \
     ../src/model/parseval/symbol.h \
-    ../src/model/parseval/tokenizer.h \
-    ../src/model/model.h
+    ../src/model/parseval/tokenizer.h

@@ -7,52 +7,57 @@
 
 #include "symbol.h"
 
-
-class LexicalException: public QException
+namespace Model
 {
-	public:
-        LexicalException(const QString& what);
-        ~LexicalException() throw();
+    namespace Parseval
+    {
+        class LexicalException: public QException
+        {
+            public:
+                LexicalException(const QString& what);
+                ~LexicalException() throw();
 
-        void raise() const;
-        const char* what() const throw();
+                void raise() const;
+                const char* what() const throw();
 
-	private:
-        const QString _what;
-};
-
-
-class Token
-{
-	public:
-        Token(const QString&, const QString&);
-		~Token();
-
-        const QString& getType() const;
-        const QString& getValue() const;
-
-	private:
-        QString _type;
-        QString _value;
-};
+            private:
+                const QString _what;
+        };
 
 
-class Tokenizer
-{
-	public:
-        Tokenizer();
-		~Tokenizer();
+        class Token
+        {
+            public:
+                Token(const QString&, const QString&);
+                ~Token();
 
-        void setInput(const QString&);
-        const Token peek() const;
-		void next();	
-		bool hasNext() const;	
+                const QString& getType() const;
+                const QString& getValue() const;
 
-	private:
-		Token _current;
-        QString _input;
-        const SymbolTable* _table;
-};
+            private:
+                QString _type;
+                QString _value;
+        };
+
+
+        class Tokenizer
+        {
+            public:
+                Tokenizer();
+                ~Tokenizer();
+
+                void setInput(const QString&);
+                const Token peek() const;
+                void next();
+                bool hasNext() const;
+
+            private:
+                Token _current;
+                QString _input;
+                const SymbolTable* _table;
+        };
+    }
+}
 
 
 #endif // TOKENIZER_H
