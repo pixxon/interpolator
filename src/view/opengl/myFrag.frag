@@ -8,20 +8,20 @@ uniform int coloring;
 
 void main()
 {
-	if (coloring == 0)
-	{
+        if (coloring == 0)
+        {
                 fs_out_col = vec4(vs_out_col, 1);
-	}
-	else
-	{
-		vec3 col = vec3(0.f, 1.f, 0.f);
-		if (vs_out_col.x > 0.1f)
-		{
-			col = vec3(1.f, 0.f, 0.f);
-		}
+        }
+        else
+        {
+                vec3 col = vec3(0, 1, 0);
+                if (vs_out_col.x > 0.1)
+                {
+                        col = vec3(1, 0, 0);
+                }
 
-		col *= (vs_out_col.x > 0.1f)?(vs_out_col.x):(vs_out_col.x + 0.7f);
+                col *= (vs_out_col.x > 0.1)?(vs_out_col.x):(vs_out_col.x + 0.7);
 
-		fs_out_col = vec4(col, 1.f);
-	}
+                fs_out_col = vec4(col, 1);
+        }
 }

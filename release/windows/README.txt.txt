@@ -1,0 +1,1 @@
+Hiba esetén ajánlott a mellékelt telepítõvel a Visual C++ Redistributable csomagot telepíteni, mely tartalmazza a szükséges fájlokat.
